@@ -4,7 +4,7 @@ node_js:
 script:
   - echo "Deploying!"
 before_install: 
-  - cd ./fixbot/web/
+  - cd 
 install:
   - npm install -g firebase-tools
 after_success:
