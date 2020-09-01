@@ -625,13 +625,13 @@
                 <div class="row">
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('FUEL LEVEL', this)">
+                        <div class="card card-body" onclick="changeBarlog('BATTERY VOLTAGE', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">324</h2>
-                                    <h4 class="text-muted">FUEL LEVEL</h4></div>
+                                    <h4 class="text-muted">BATTERY VOLTAGE</h4></div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
                                     <div data-label="20%" class="css-bar m-b-0 css-bar-info css-bar-20"></div>
@@ -641,13 +641,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('ENGINE COOLANT TEMPERATURE', this)">
+                        <div class="card card-body" onclick="changeBarlog('ENGINE SPEED(RPM)', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">2376</h2>
-                                    <h4 class="text-muted">ENGINE COOLANT TEMPERATURE</h4></div>
+                                    <h4 class="text-muted">ENGINE SPEED(RPM)</h4></div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
                                     <div data-label="30%" class="css-bar m-b-0 css-bar-success css-bar-30"></div>
@@ -756,6 +756,145 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card card-body" onclick="changeBarlog('FUEL LEVEL', this)">
+                            <!-- Row -->
+                            <div class="row">
+                                <!-- Column -->
+                                <div class="col p-r-0 align-self-center">
+                                    <h2 class="font-light m-b-0">324</h2>
+                                    <h4 class="text-muted">FUEL LEVEL</h4>
+                                </div>
+                                <!-- Column -->
+                                <div class="col text-right align-self-center">
+                                    <div data-label="20%" class="css-bar m-b-0 css-bar-info css-bar-20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card card-body" onclick="changeBarlog('ENGINE COOLANT TEMPERATURE', this)">
+                            <!-- Row -->
+                            <div class="row">
+                                <!-- Column -->
+                                <div class="col p-r-0 align-self-center">
+                                    <h2 class="font-light m-b-0">2376</h2>
+                                    <h4 class="text-muted">ENGINE COOLANT TEMPERATURE</h4>
+                                </div>
+                                <!-- Column -->
+                                <div class="col text-right align-self-center">
+                                    <div data-label="30%" class="css-bar m-b-0 css-bar-success css-bar-30"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card card-body" onclick="changeBarlog('VEHICLE SPEED', this)">
+                            <!-- Row -->
+                            <div class="row">
+                                <!-- Column -->
+                                <div class="col p-r-0 align-self-center">
+                                    <h2 class="font-light m-b-0">1795</h2>
+                                    <h4 class="text-muted">VEHICLE SPEED</h4>
+                                </div>
+                                <!-- Column -->
+                                <div class="col text-right ">
+                                    <div data-label="40%" class="css-bar m-b-0 css-bar-primary css-bar-40"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card card-body" onclick="changeBarlog('AMBIENT AIR TEMPERATURE', this)">
+                            <!-- Row -->
+                            <div class="row">
+                                <!-- Column -->
+                                <div class="col p-r-0 align-self-center">
+                                    <h2 class="font-light m-b-0">36870</h2>
+                                    <h4 class="text-muted">AMBIENT AIR TEMPERATURE</h4>
+                                </div>
+                                <!-- Column -->
+                                <div class="col text-right align-self-center">
+                                    <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card card-body" onclick="changeBarlog('ENGINE OIL TEMPERATURE', this)">
+                            <!-- Row -->
+                            <div class="row">
+                                <!-- Column -->
+                                <div class="col p-r-0 align-self-center">
+                                    <h2 class="font-light m-b-0">360</h2>
+                                    <h4 class="text-muted">ENGINE OIL TEMPERATURE</h4>
+                                </div>
+                                <!-- Column -->
+                                <div class="col text-right align-self-center">
+                                    <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card card-body" onclick="changeBarlog('INTAKE AIR TEMPERATURE', this)">
+                            <!-- Row -->
+                            <div class="row">
+                                <!-- Column -->
+                                <div class="col p-r-0 align-self-center">
+                                    <h2 class="font-light m-b-0">36870</h2>
+                                    <h4 class="text-muted">INTAKE AIR TEMPERATURE</h4>
+                                </div>
+                                <!-- Column -->
+                                <div class="col text-right align-self-center">
+                                    <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card card-body" onclick="changeBarlog('ENGINE RPM', this)">
+                            <!-- Row -->
+                            <div class="row">
+                                <!-- Column -->
+                                <div class="col p-r-0 align-self-center">
+                                    <h2 class="font-light m-b-0">36870</h2>
+                                    <h4 class="text-muted">ENGINE RPM</h4>
+                                </div>
+                                <!-- Column -->
+                                <div class="col text-right align-self-center">
+                                    <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card card-body" onclick="changeBarlog('CALCULATED LOAD VALUE', this)">
+                            <!-- Row -->
+                            <div class="row">
+                                <!-- Column -->
+                                <div class="col p-r-0 align-self-center">
+                                    <h2 class="font-light m-b-0">36870</h2>
+                                    <h4 class="text-muted">CALCULATED LOAD VALUE</h4>
+                                </div>
+                                <!-- Column -->
+                                <div class="col text-right align-self-center">
+                                    <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Row -->
                 <!-- Row -->
                 <div class="row">
@@ -1324,11 +1463,12 @@
     <script src="../assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="../assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
     <script src="js/dashboard3.js"></script>
-    <script>
-        function changeBarlog(data, button) {
+    <script type="text/javascript">
+        function changeBarlog(data, but) {
+            alert("changing to " + data);
             document.getElementById("barlog").innerHTML = data;
-            // $(button).addClass("acitve")
-            var rt = data + ' DATA'
+            $("but").addClass("selected");
+            var rt = data + ' DATA';
             document.getElementById("rtdata").innerHTML = rt;
             document.getElementById("rtdatasub").innerHTML = data;
 
