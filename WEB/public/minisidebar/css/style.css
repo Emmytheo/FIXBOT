@@ -8046,20 +8046,16 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 
     
 
-/* .card-body:hover{
-  border: 1px solid;
-  padding: 10px;
+.card-body:hover{
+  border-radius: 20px;
   box-shadow: 5px 10px #888888;
 
 }
 .card-body:visited{
-  border: 1px solid;
-  padding: 10px;
-  box-shadow: 5px 10px #048eeb;
+  box-shadow: 5px 10px #eb2704;
 
-} */
-.selected{
-  border: 1px solid;
-  padding: 10px;
-  box-shadow: 5px 10px #048eeb;
 }
+.selected{
+  box-shadow: 5px 10px #888888;
+}
+

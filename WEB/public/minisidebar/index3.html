@@ -24,6 +24,11 @@
     <link href="../assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .disapp{
+            display: none !important;
+        }
+    </style>
     <!-- You can change the theme colors from here -->
     <link href="css/colors/default-dark.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -657,13 +662,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" id="runningspeed" onclick="changeBarlog('VEHICLE SPEED', this)">
+                        <div class="card card-body" id="runningspeed" onclick="changeBarlog('RUNNING SPEED', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">1795</h2>
-                                    <h4 class="text-muted">VEHICLE SPEED</h4></div>
+                                    <h4 class="text-muted">RUNNING SPEED</h4></div>
                                 <!-- Column -->
                                 <div class="col text-right ">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-primary css-bar-40"></div>
@@ -673,13 +678,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('AMBIENT AIR TEMPERATURE', this)">
+                        <div class="card card-body" id="throttleopeningwidth" onclick="changeBarlog('THROTTLE OPENING WIDTH', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
-                                    <h4 class="text-muted">AMBIENT AIR TEMPERATURE</h4></div>
+                                    <h4 class="text-muted">THROTTLE OPENING WIDTH</h4></div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
@@ -689,13 +694,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('ENGINE OIL TEMPERATURE', this)">
+                        <div class="card card-body" id="engineload" onclick="changeBarlog('ENGINE LOAD', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">360</h2>
-                                    <h4 class="text-muted">ENGINE OIL TEMPERATURE</h4>
+                                    <h4 class="text-muted">ENGINE LOAD</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -706,13 +711,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('INTAKE AIR TEMPERATURE', this)">
+                        <div class="card card-body" id="coolanttemperature" onclick="changeBarlog('COOLANT TEMPERATURE', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
-                                    <h4 class="text-muted">INTAKE AIR TEMPERATURE</h4>
+                                    <h4 class="text-muted">COOLANT TEMPERATURE</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -723,13 +728,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('ENGINE RPM', this)">
+                        <div class="card card-body" id="instantenousfuelconsumption" onclick="changeBarlog('INSTANTENOUS FUEL CONSUMPTION', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
-                                    <h4 class="text-muted">ENGINE RPM</h4>
+                                    <h4 class="text-muted">INSTANTENOUS FUEL CONSUMPTION</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -740,13 +745,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('CALCULATED LOAD VALUE', this)">
+                        <div class="card card-body" id="averagefuelconsumption" onclick="changeBarlog('AVERGAE FUEL CONSUMPTION', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
-                                    <h4 class="text-muted">CALCULATED LOAD VALUE</h4>
+                                    <h4 class="text-muted">AVERGAE FUEL CONSUMPTION</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -759,13 +764,13 @@
                 <div class="row">
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('FUEL LEVEL', this)">
+                        <div class="card card-body" id="drivingrange" onclick="changeBarlog('DRIVING RANGE', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">324</h2>
-                                    <h4 class="text-muted">FUEL LEVEL</h4>
+                                    <h4 class="text-muted">DRIVING RANGE</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -776,13 +781,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('ENGINE COOLANT TEMPERATURE', this)">
+                        <div class="card card-body" id="totalmileage" onclick="changeBarlog('TOTAL MILEAGE', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">2376</h2>
-                                    <h4 class="text-muted">ENGINE COOLANT TEMPERATURE</h4>
+                                    <h4 class="text-muted">TOTAL MILEAGE</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -793,13 +798,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('VEHICLE SPEED', this)">
+                        <div class="card card-body" id="singlefuelconsumptionvol" onclick="changeBarlog('SINGLE FUEL CONSUMPTION VOL', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">1795</h2>
-                                    <h4 class="text-muted">VEHICLE SPEED</h4>
+                                    <h4 class="text-muted">SINGLE FUEL CONSUMPTION VOL</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right ">
@@ -810,13 +815,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('AMBIENT AIR TEMPERATURE', this)">
+                        <div class="card card-body" id="totalfuelconsumptionvol" onclick="changeBarlog('TOTAL FUEL CONSUMPTION VOL', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
-                                    <h4 class="text-muted">AMBIENT AIR TEMPERATURE</h4>
+                                    <h4 class="text-muted">TOTAL FUEL CONSUMPTION VOL</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -827,13 +832,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('ENGINE OIL TEMPERATURE', this)">
+                        <div class="card card-body" id="currenterrorcodenos" onclick="changeBarlog('CURRENT FAULT CODES', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">360</h2>
-                                    <h4 class="text-muted">ENGINE OIL TEMPERATURE</h4>
+                                    <h4 class="text-muted">CURRENT FAULT CODES</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -844,13 +849,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('INTAKE AIR TEMPERATURE', this)">
+                        <div class="card card-body" id="harshaccelerationno" onclick="changeBarlog('NUMBER OF HARSH ACCELERATIONS', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
-                                    <h4 class="text-muted">INTAKE AIR TEMPERATURE</h4>
+                                    <h4 class="text-muted">NUMBER OF HARSH ACCELERATIONS</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -861,13 +866,13 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('ENGINE RPM', this)">
+                        <div class="card card-body" id="harshbrakeno" onclick="changeBarlog('NUMBER OF HARSH BRAKES', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
-                                    <h4 class="text-muted">ENGINE RPM</h4>
+                                    <h4 class="text-muted">NUMBER OF HARSH BRAKES</h4>
                                 </div>
                                 <!-- Column -->
                                 <div class="col text-right align-self-center">
@@ -878,18 +883,18 @@
                     </div>
                     <!-- Column -->
                     <div class="col-md-6 col-lg-3">
-                        <div class="card card-body" onclick="changeBarlog('CALCULATED LOAD VALUE', this)">
+                        <div class="card card-body" id="drivingbehaviourdata" onclick="changeBarlog('DRIVING BEHAVIOUR DATA', this)">
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
                                 <div class="col p-r-0 align-self-center">
-                                    <h2 class="font-light m-b-0">36870</h2>
-                                    <h4 class="text-muted">CALCULATED LOAD VALUE</h4>
+                                    <h2 class="font-light m-b-0">DRIVING BEHAVIOUR DATA</h2>
+                                    <h4 class="text-muted">KNOW YOUR DRIVING PATTERN</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right align-self-center">
+                                <!-- <div class="col text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -1465,10 +1470,27 @@
     <script src="js/dashboard3.js"></script>
     <script type="text/javascript">
         function changeBarlog(data, but) {
-            alert("changing to " + data);
             document.getElementById("barlog").innerHTML = data;
-            $("but").addClass("selected");
+            // $(but).addClass("selected");
             var rt = data + ' DATA';
+            switch (data) {
+                        case 'login_request':
+                            _this.login_request(msgParts);
+                            break;
+                        case 'ping':
+                            _this.ping(msgParts);
+                            break;
+                        case 'alarm':
+                            _this.receive_alarm(msgParts);
+                            break;
+                        case 'decode_canbus_data':
+                            _this.decode_canbus_data(msgParts);
+                            break;
+                        case 'other':
+                            _this.adapter.run_other(msgParts.cmd, msgParts);
+                            break;
+                    }
+                };
             document.getElementById("rtdata").innerHTML = rt;
             document.getElementById("rtdatasub").innerHTML = data;
 
