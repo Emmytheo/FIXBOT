@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>preprocess.py – Medium</title><meta name="description" content="You can&#39;t perform that action at this time. You signed in with another tab or window. You signed out in another tab or window. Reload to refresh your session. Reload to refresh your session."><meta name="twitter:widgets:csp" content="on"><meta name="robots" content="noindex"><!--<base target="_blank">--><base href="." target="_blank"><style>body {text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family: "ff-tisa-web-pro", Georgia, Cambria, "Times New Roman", Times, serif; font-weight: 400; color: #333332; font-size: 18px; line-height: 1.4; margin: 0; background-color: white; overflow: hidden;}iframe {max-width: 100%;}</style></head><body><style>.gist .gist-file { margin-bottom: 0 !important; }.gist { text-rendering: auto; }</style><script src="./cac95d1e0329f132d6393530448cc1f8.js.download" charset="utf-8"></script><link rel="stylesheet" href="./gist-embed-fd43f22140a6ad2cc9d0aa1f169a01f3.css"><div id="gist103680215" class="gist">
+    <div class="gist-file">
+      <div class="gist-data">
+        <div class="js-gist-file-update-container js-task-list-container file-box">
+  <div id="file-preprocess-py" class="file my-2">
+    
+
+  <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  ">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="8" data-paste-markdown-skip="">
+      <tbody><tr>
+        <td id="file-preprocess-py-L1" class="blob-num js-line-number" data-line-number="1"></td>
+        <td id="file-preprocess-py-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">tokenizer</span> <span class="pl-c1">=</span> <span class="pl-v">BertTokenizer</span>.<span class="pl-en">from_pretrained</span>(<span class="pl-s">'bert-base-uncased'</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L2" class="blob-num js-line-number" data-line-number="2"></td>
+        <td id="file-preprocess-py-LC2" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L3" class="blob-num js-line-number" data-line-number="3"></td>
+        <td id="file-preprocess-py-LC3" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># Model parameter</span></td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L4" class="blob-num js-line-number" data-line-number="4"></td>
+        <td id="file-preprocess-py-LC4" class="blob-code blob-code-inner js-file-line"><span class="pl-v">MAX_SEQ_LEN</span> <span class="pl-c1">=</span> <span class="pl-c1">128</span></td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L5" class="blob-num js-line-number" data-line-number="5"></td>
+        <td id="file-preprocess-py-LC5" class="blob-code blob-code-inner js-file-line"><span class="pl-v">PAD_INDEX</span> <span class="pl-c1">=</span> <span class="pl-s1">tokenizer</span>.<span class="pl-en">convert_tokens_to_ids</span>(<span class="pl-s1">tokenizer</span>.<span class="pl-s1">pad_token</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L6" class="blob-num js-line-number" data-line-number="6"></td>
+        <td id="file-preprocess-py-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-v">UNK_INDEX</span> <span class="pl-c1">=</span> <span class="pl-s1">tokenizer</span>.<span class="pl-en">convert_tokens_to_ids</span>(<span class="pl-s1">tokenizer</span>.<span class="pl-s1">unk_token</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L7" class="blob-num js-line-number" data-line-number="7"></td>
+        <td id="file-preprocess-py-LC7" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L8" class="blob-num js-line-number" data-line-number="8"></td>
+        <td id="file-preprocess-py-LC8" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># Fields</span></td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L9" class="blob-num js-line-number" data-line-number="9"></td>
+        <td id="file-preprocess-py-LC9" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L10" class="blob-num js-line-number" data-line-number="10"></td>
+        <td id="file-preprocess-py-LC10" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">label_field</span> <span class="pl-c1">=</span> <span class="pl-v">Field</span>(<span class="pl-s1">sequential</span><span class="pl-c1">=</span><span class="pl-c1">False</span>, <span class="pl-s1">use_vocab</span><span class="pl-c1">=</span><span class="pl-c1">False</span>, <span class="pl-s1">batch_first</span><span class="pl-c1">=</span><span class="pl-c1">True</span>, <span class="pl-s1">dtype</span><span class="pl-c1">=</span><span class="pl-s1">torch</span>.<span class="pl-s1">float</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L11" class="blob-num js-line-number" data-line-number="11"></td>
+        <td id="file-preprocess-py-LC11" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">text_field</span> <span class="pl-c1">=</span> <span class="pl-v">Field</span>(<span class="pl-s1">use_vocab</span><span class="pl-c1">=</span><span class="pl-c1">False</span>, <span class="pl-s1">tokenize</span><span class="pl-c1">=</span><span class="pl-s1">tokenizer</span>.<span class="pl-s1">encode</span>, <span class="pl-s1">lower</span><span class="pl-c1">=</span><span class="pl-c1">False</span>, <span class="pl-s1">include_lengths</span><span class="pl-c1">=</span><span class="pl-c1">False</span>, <span class="pl-s1">batch_first</span><span class="pl-c1">=</span><span class="pl-c1">True</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L12" class="blob-num js-line-number" data-line-number="12"></td>
+        <td id="file-preprocess-py-LC12" class="blob-code blob-code-inner js-file-line">                   <span class="pl-s1">fix_length</span><span class="pl-c1">=</span><span class="pl-v">MAX_SEQ_LEN</span>, <span class="pl-s1">pad_token</span><span class="pl-c1">=</span><span class="pl-v">PAD_INDEX</span>, <span class="pl-s1">unk_token</span><span class="pl-c1">=</span><span class="pl-v">UNK_INDEX</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L13" class="blob-num js-line-number" data-line-number="13"></td>
+        <td id="file-preprocess-py-LC13" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">fields</span> <span class="pl-c1">=</span> [(<span class="pl-s">'label'</span>, <span class="pl-s1">label_field</span>), (<span class="pl-s">'title'</span>, <span class="pl-s1">text_field</span>), (<span class="pl-s">'text'</span>, <span class="pl-s1">text_field</span>), (<span class="pl-s">'titletext'</span>, <span class="pl-s1">text_field</span>)]</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L14" class="blob-num js-line-number" data-line-number="14"></td>
+        <td id="file-preprocess-py-LC14" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L15" class="blob-num js-line-number" data-line-number="15"></td>
+        <td id="file-preprocess-py-LC15" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># TabularDataset</span></td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L16" class="blob-num js-line-number" data-line-number="16"></td>
+        <td id="file-preprocess-py-LC16" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L17" class="blob-num js-line-number" data-line-number="17"></td>
+        <td id="file-preprocess-py-LC17" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">train</span>, <span class="pl-s1">valid</span>, <span class="pl-s1">test</span> <span class="pl-c1">=</span> <span class="pl-v">TabularDataset</span>.<span class="pl-en">splits</span>(<span class="pl-s1">path</span><span class="pl-c1">=</span><span class="pl-s1">source_folder</span>, <span class="pl-s1">train</span><span class="pl-c1">=</span><span class="pl-s">'train.csv'</span>, <span class="pl-s1">validation</span><span class="pl-c1">=</span><span class="pl-s">'valid.csv'</span>,</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L18" class="blob-num js-line-number" data-line-number="18"></td>
+        <td id="file-preprocess-py-LC18" class="blob-code blob-code-inner js-file-line">                                           <span class="pl-s1">test</span><span class="pl-c1">=</span><span class="pl-s">'test.csv'</span>, <span class="pl-s1">format</span><span class="pl-c1">=</span><span class="pl-s">'CSV'</span>, <span class="pl-s1">fields</span><span class="pl-c1">=</span><span class="pl-s1">fields</span>, <span class="pl-s1">skip_header</span><span class="pl-c1">=</span><span class="pl-c1">True</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L19" class="blob-num js-line-number" data-line-number="19"></td>
+        <td id="file-preprocess-py-LC19" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L20" class="blob-num js-line-number" data-line-number="20"></td>
+        <td id="file-preprocess-py-LC20" class="blob-code blob-code-inner js-file-line"><span class="pl-c"># Iterators</span></td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L21" class="blob-num js-line-number" data-line-number="21"></td>
+        <td id="file-preprocess-py-LC21" class="blob-code blob-code-inner js-file-line">
+</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L22" class="blob-num js-line-number" data-line-number="22"></td>
+        <td id="file-preprocess-py-LC22" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">train_iter</span> <span class="pl-c1">=</span> <span class="pl-v">BucketIterator</span>(<span class="pl-s1">train</span>, <span class="pl-s1">batch_size</span><span class="pl-c1">=</span><span class="pl-c1">16</span>, <span class="pl-s1">sort_key</span><span class="pl-c1">=</span><span class="pl-k">lambda</span> <span class="pl-s1">x</span>: <span class="pl-en">len</span>(<span class="pl-s1">x</span>.<span class="pl-s1">text</span>),</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L23" class="blob-num js-line-number" data-line-number="23"></td>
+        <td id="file-preprocess-py-LC23" class="blob-code blob-code-inner js-file-line">                            <span class="pl-s1">device</span><span class="pl-c1">=</span><span class="pl-s1">device</span>, <span class="pl-s1">train</span><span class="pl-c1">=</span><span class="pl-c1">True</span>, <span class="pl-s1">sort</span><span class="pl-c1">=</span><span class="pl-c1">True</span>, <span class="pl-s1">sort_within_batch</span><span class="pl-c1">=</span><span class="pl-c1">True</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L24" class="blob-num js-line-number" data-line-number="24"></td>
+        <td id="file-preprocess-py-LC24" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">valid_iter</span> <span class="pl-c1">=</span> <span class="pl-v">BucketIterator</span>(<span class="pl-s1">valid</span>, <span class="pl-s1">batch_size</span><span class="pl-c1">=</span><span class="pl-c1">16</span>, <span class="pl-s1">sort_key</span><span class="pl-c1">=</span><span class="pl-k">lambda</span> <span class="pl-s1">x</span>: <span class="pl-en">len</span>(<span class="pl-s1">x</span>.<span class="pl-s1">text</span>),</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L25" class="blob-num js-line-number" data-line-number="25"></td>
+        <td id="file-preprocess-py-LC25" class="blob-code blob-code-inner js-file-line">                            <span class="pl-s1">device</span><span class="pl-c1">=</span><span class="pl-s1">device</span>, <span class="pl-s1">train</span><span class="pl-c1">=</span><span class="pl-c1">True</span>, <span class="pl-s1">sort</span><span class="pl-c1">=</span><span class="pl-c1">True</span>, <span class="pl-s1">sort_within_batch</span><span class="pl-c1">=</span><span class="pl-c1">True</span>)</td>
+      </tr>
+      <tr>
+        <td id="file-preprocess-py-L26" class="blob-num js-line-number" data-line-number="26"></td>
+        <td id="file-preprocess-py-LC26" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">test_iter</span> <span class="pl-c1">=</span> <span class="pl-v">Iterator</span>(<span class="pl-s1">test</span>, <span class="pl-s1">batch_size</span><span class="pl-c1">=</span><span class="pl-c1">16</span>, <span class="pl-s1">device</span><span class="pl-c1">=</span><span class="pl-s1">device</span>, <span class="pl-s1">train</span><span class="pl-c1">=</span><span class="pl-c1">False</span>, <span class="pl-s1">shuffle</span><span class="pl-c1">=</span><span class="pl-c1">False</span>, <span class="pl-s1">sort</span><span class="pl-c1">=</span><span class="pl-c1">False</span>)</td>
+      </tr>
+</tbody></table>
+
+
+  </div>
+
+  </div>
+</div>
+
+      </div>
+      <div class="gist-meta">
+        <a href="https://gist.github.com/itsuncheng/cac95d1e0329f132d6393530448cc1f8/raw/1325c4ef2ab6ffefe67517386776b121c33b2cb9/preprocess.py" style="float:right">view raw</a>
+        <a href="https://gist.github.com/itsuncheng/cac95d1e0329f132d6393530448cc1f8#file-preprocess-py">preprocess.py</a>
+        hosted with ❤ by <a href="https://github.com/">GitHub</a>
+      </div>
+    </div>
+</div>
+<script>var height = -1; var delayMs = 200; if (document) {document.domain = document.domain;}function notifyResize(height) {height = height ? height : document.documentElement.offsetHeight; var resized = false; if (window.donkey && donkey.resize) {donkey.resize(height);var elements = document.getElementsByClassName("gist-data"); for (var i = 0; i < elements.length; i++) {elements[i].style.overflow = "visible"}resized = true;}if (parent && parent._resizeIframe) {var obj = {iframe: window.frameElement, height: height}; parent._resizeIframe(obj); resized = true;}if (window.location && window.location.hash === "#amp=1" && window.parent && window.parent.postMessage) {window.parent.postMessage({sentinel: "amp", type: "embed-size", height: height}, "*");}if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.resize) {window.webkit.messageHandlers.resize.postMessage(height); resized = true;}return resized;}function maybeResize() {try {if (document.documentElement.offsetHeight != height && notifyResize()) {height = document.documentElement.offsetHeight;}delayMs = Math.min(delayMs * 2, 1000000); setTimeout(maybeResize, delayMs);} catch(error) {console.log('maybeResize error: ', error)}}maybeResize();</script></body></html>
