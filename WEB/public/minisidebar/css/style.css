@@ -8048,14 +8048,5 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 
 .card-body:hover{
   border-radius: 20px;
-  box-shadow: 5px 10px #888888;
-
+  /* box-shadow: 3px 3px #888888; */
 }
-.card-body:visited{
-  box-shadow: 5px 10px #eb2704;
-
-}
-.selected{
-  box-shadow: 5px 10px #888888;
-}
-

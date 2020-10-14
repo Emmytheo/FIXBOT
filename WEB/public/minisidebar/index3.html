@@ -1458,27 +1458,45 @@
     <script src="../assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
     <script src="js/dashboard3.js"></script>
     <script type="text/javascript">
+        // navigator.tcpPermission.requestPermission({remoteAddress: "52.188.3.3", remotePort:9000}).then(
+        //     () => {
+        //         var mySocket = new TCPSocket("52.188.3.3", 9000);
+
+        //         mySocket.writeable.write("Hello World").
+        //     }
+        // )
+
+        var ws = new WebSocket("wss://ws2s.feling.net/")
+        ws.onmessage = (event) => {
+            console.log("onmessage: ", event.data);
+        }
+        ws.onopen = () => {
+            // console.log("onopen")
+            ws.send(JSON.stringify(
+                {
+                    command: "connect",
+                    host: "52.188.3.3",
+                    port: 9000
+                }
+            ))
+            ws.send(JSON.stringify(
+                {
+                    command: "send",
+                    data: "hello"   
+                }
+            ))
+        }
+        ws.onclose = () => {
+            console.log("closed")
+        }
+
+
         function changeBarlog(data, but) {
             document.getElementById("barlog").innerHTML = data;
             // $(but).addClass("selected");
             var rt = data + ' DATA';
-            switch (data) {
-                        case 'login_request':
-                            _this.login_request(msgParts);
-                            break;
-                        case 'ping':
-                            _this.ping(msgParts);
-                            break;
-                        case 'alarm':
-                            _this.receive_alarm(msgParts);
-                            break;
-                        case 'decode_canbus_data':
-                            _this.decode_canbus_data(msgParts);
-                            break;
-                        case 'other':
-                            _this.adapter.run_other(msgParts.cmd, msgParts);
-                            break;
-                    }
+
+            
 
             document.getElementById("rtdata").innerHTML = rt;
             document.getElementById("rtdatasub").innerHTML = data;

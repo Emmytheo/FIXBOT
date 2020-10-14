@@ -1,0 +1,725 @@
+:root{
+
+    /*      Theme colors        */
+    --text-gray: #3f4954;
+    --text-light : #686666da;
+    --bg-color: #0f0f0f;
+    --white: #ffffff;
+    --midnight: #104f55;
+
+    /* gradient color   */
+    --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+    /*      theme font-family   */
+    --Abel: 'Abel', cursive;
+    --Anton: 'Anton', cursive;
+    --Josefin : 'Josefin', cursive;
+    --Lexend: 'Lexend', cursive;
+    --Livvic : 'Livvic', cursive;
+}
+
+.featuresubhead{
+    width: 100%;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    padding: 10px 20px;
+    
+}
+
+
+.firstpart{
+    width: 100%;
+    /* height: 1200px; */
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    background: url(../../assets/images/big/fixbot_backpic.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px;
+}
+.firstpart .banner{
+    width: 100%;
+    height: calc(100% - 200px);
+    padding: 20px 50px;
+    /* background: url(../../assets/images/big/fixbot_backpic.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover; */
+    z-index: 1;
+}
+.firstpart .banner .exp{
+    height: 700px;
+    margin-top: 150px;
+    margin-left: 50px;
+    
+
+}
+.firstpart .banner .exp .exptext{
+    width: 500px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 20px;
+    color: transparent;
+    /* display: none; */
+}
+.firstpart .banner .exp .exptext h1{
+    font-size: 40px;
+    font-weight: 700;
+    color: black;
+    display: none;
+}
+.firstpart .banner .exp .expbut{
+    width: 500px;
+    display: none;
+    margin-top: 200px;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.firstpart .banner .exp .expbut button{
+    text-align: center;
+    padding: 10px 10px;
+    border-radius: 20px;
+    width: 150px;
+    color: black;
+    border: 5px double black;
+    font-size: 16px;
+
+    
+    
+    
+}
+.firstpart .subsect{
+    flex-wrap: wrap;
+    background: white;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+    padding: 5px 20px;
+    width: 60%;
+    margin-top: -200px;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+}
+.firstpart .subsect .doubleimg{
+    align-content: center;
+    justify-content: center;
+    padding: 5px 20px;
+
+}
+.firstpart .subsect .doubleimg .card{
+    padding: 0px 30px;
+}
+.firstpart .subsect .text{
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+    max-width: 400px;
+    align-content: center;
+    padding: 70px 50px;
+
+}
+
+
+
+/*-------------Second part------------*/
+.secondpart{
+    width: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    background: rgb(222, 240, 243);
+    padding: 30px;
+}
+.secondpart .featurehead{
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    padding: 10px 20px;
+    text-align: center;
+}
+.secondpart .featuresubhead{
+    width: 50%;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+.secondpart .cardgrid{
+    width: 80%;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    text-align: center;
+    
+}
+.secondpart .cardgrid .card{
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 60px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.6);
+}
+.secondpart .cardgrid .card .card-img-top{
+    width: 65%;
+    margin-top: -60px;
+}
+
+
+/*-------------Explanation------------*/
+.explanation{
+    width: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    background: white;
+    padding: 30px;
+
+}
+.explanation .cardgrid{
+    width: 90%;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    
+
+
+    
+}
+.explanation .cardgrid .card{
+    flex-wrap: wrap;
+    padding: 10px;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.6);
+    display: flex;
+    margin: 10px 10px;
+    border-radius: 20px;
+    width: 100%;
+    background: white;
+    
+}
+.explanation .cardgrid .card .card-body{
+    text-align: start;
+}
+
+
+
+
+
+/*-------------Third part------------*/
+.thirdpart{
+    width: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+    display: none;
+    justify-content: center;
+    align-items: space-between;
+    background: white;
+    padding: 30px;
+}
+.thirdpart .featurehead{
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    padding: 10px 20px;
+    text-align: center;
+}
+.thirdpart .featuresubhead{
+    width: 50%;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+.thirdpart .cardgrid{
+    width: 80%;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    text-align: center;
+    
+}
+/*-------------Testimonials------------*/
+.testimonials{
+    width: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+    display: none;
+    justify-content: center;
+    align-items: space-between;
+    background: rgb(234, 243, 243);
+    padding: 30px;
+
+}
+.testimonials{position:relative}
+.testimonials .section-inner{padding-top:0;padding-bottom:108px}
+.testimonials .section-title{margin-bottom:72px}
+.testimonials-shape{position:absolute}
+.testimonials-shape-1{bottom:52px;left:calc(50% - 80px)}
+.testimonials-shape-2{top:84px;left:calc(50% + 30px)}
+.testimonials-shape-3{display:none}
+.testimonials-wrap{display:flex;flex-wrap:wrap;justify-content:center;margin-right:-16px;margin-left:-16px}
+.testimonials-wrap:first-child{margin-top:-16px}
+.testimonials-wrap:last-child{margin-bottom:-16px}
+.testimonial{position:relative;padding:44px 16px 16px;width:388px;max-width:388px;flex-grow:1}
+.testimonial-inner{position:relative;height:100%;display:flex;flex-wrap:wrap;background:#fff;padding:52px 24px 24px}
+.testimonial-inner>*{width:100%}
+.testimonial-inner::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;box-shadow:0 24px 48px rgba(17,16,62,0.12);mix-blend-mode:multiply}
+.testimonial-main{position:relative}
+.testimonial-header{position:absolute;top:-80px}
+.testimonial-header img{width:56px;height:auto;border-radius:50%;box-shadow:0 16px 24px rgba(17,16,62,0.12)}
+.testimonial-footer{align-self:flex-end}
+.testimonial-footer{font-weight:500;margin-bottom:12px}
+@media (min-width: 641px){
+    .testimonials .section-inner{padding-bottom:166px}
+    .testimonials .section-title{margin-bottom:126px}
+    .testimonials-wrap{margin-right:-24px;margin-left:-24px}
+    .testimonials-wrap:first-child{margin-top:-24px}
+    .testimonials-wrap:last-child{margin-bottom:-24px}
+    .testimonial{padding:52px 24px 24px}
+    .testimonials-shape-1{bottom:auto;top:170px;left:calc(50% - 305px)}
+    .testimonials-shape-1 svg{width:400px;height:400px}
+    .testimonials-shape-2{top:480px;left:calc(50% + 190px); }
+    .testimonials-shape-3{display:block;top:570px;left:calc(50% - 320px)}
+
+}
+@media (min-width: 1025px){
+    .testimonial:nth-child(odd){top:40px}
+    .testimonials-shape-2{z-index: -1}
+}
+
+/*-------------Abouts us------------*/
+.aboutus{
+    width: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    background: white;
+    padding: 30px;
+
+}
+.aboutus .featurehead{
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    padding: 10px 20px;
+    text-align: center;
+}
+.aboutus .cardgrid{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 0px;
+    
+
+
+    
+}
+.aboutus .cardgrid .card{
+    flex-wrap: wrap;
+    padding: 20px;
+    display: flex;
+    margin: 20px -50px;
+    border-radius: 20px;
+    width: 40%;
+    background: white;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.1);
+    
+}
+.aboutus .cardgrid .card .card-img-top{
+    height: 100%;
+    
+}
+#card2{
+    height: 70%; 
+    width: 30%; 
+    margin-top: 70px
+
+}
+
+/*-------------------contact us-----------*/
+.contactus{
+    width: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    background: white;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.6);
+    padding: 30px 0px;
+
+}
+.contactus .featurehead{
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    padding: 10px 20px;
+    text-align: center;
+}
+.contactus .cardgrid{
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    
+
+
+    
+}
+.contactus .cardgrid .card{
+    flex-wrap: wrap;
+    padding: 20px;
+    display: flex;
+    margin: 20px 10px;
+    border-radius: 20px;
+    width: 100%;
+    background: white;
+    
+}
+
+
+/*--------------footer------------*/
+footer.footer{
+    height: 100%;
+    background: var(--bg-color);
+    position: relative;
+    
+}
+
+footer.footer .container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+footer.footer .container > div{
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 3rem .9rem;
+}
+
+footer.footer .container h2{
+    color: var(--white);
+}
+
+footer.footer .newsletter1 .form-element{
+    background: black;
+    display: inline-block;
+}
+
+footer.footer .newsletter1 .form-element input{
+    padding: .5rem .7rem;
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: var(--Josefin);
+    font-size: 1rem;
+    width: 74%;
+}
+
+footer.footer .newsletter1 .form-element span{
+    background: var(--sky);
+    padding: .5rem .7rem;
+    cursor: pointer;
+}
+
+footer.footer .instagram div > img{
+    display: inline-block;
+    width: 25%;
+    height: 50%;
+    margin: .3rem .4rem;
+}
+
+footer.footer .follow div i{
+    color: var(--white);
+    padding: 0 .4rem;
+}
+
+footer.footer .rights{
+    justify-content: center;
+    font-family: var(--Josefin);
+}
+
+footer.footer .rights h4 a{
+    color: var(--white);
+}
+
+footer.footer .move-up{
+    position: absolute;
+    right: 6%;
+    top: 50%;
+}
+
+footer.footer .move-up span{
+    color: var(--midnight);
+}
+
+footer.footer .move-up span:hover{
+    color: var(--white);
+    cursor: pointer;
+}
+
+/* ---------x------- Footer ----------x---------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 900px) {
+    .firstpart{
+        /* display: none; */
+        padding: initial;
+        background-size: initial;
+        background-color: rgb(233, 243, 245);
+    }
+    #body{
+        padding: initial;
+    }
+    .firstpart .banner{
+        width: 100%;
+        padding: 5px 10px;
+        z-index: 1;
+        
+    }
+    .firstpart .banner .exp{
+        height: 350px;
+
+        width: calc(100% - 20px);
+        /* margin-top: initial; */
+        margin-left: initial;
+        
+
+    }
+    .firstpart .banner .exp .exptext{
+        width: 100%;
+        padding: 0px 20px;
+        text-align: start;
+        font-size: 12px;
+        color: transparent;
+        display: none;
+    }
+    .firstpart .banner .exp .expbut{
+        width: 80%;
+        padding:  0px 20px;
+        margin-top: -30px;
+        flex-wrap: wrap;
+        display: flex;
+        font-size: 12px;
+        align-items: flex-start;
+        justify-content: start;
+        flex-direction: row;
+        
+    
+    }
+    .firstpart .banner .exp .expbut button{
+        width: initial;
+        padding: 5px 20px;
+        margin-left: 10px;
+        
+        
+    
+    }
+    .firstpart .subsect{
+        padding: 30px 10px;
+        width: 90%;
+        height: initial;
+        z-index: initial;
+        
+    }
+    .firstpart .subsect .doubleimg{
+        align-content: center;
+        justify-content: center;
+        padding: 5px 20px;
+
+    }
+    .firstpart .subsect .doubleimg .card{
+        padding: 0px 30px;
+    }
+    .firstpart .subsect .text{
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: left;
+        max-width: 400px;
+        align-content: center;
+        padding: 10px 20px;
+
+    }
+    .secondpart{
+        padding: 70px 10px;
+    }
+    
+    .secondpart .featuresubhead{
+        width: 100%;
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 10px 5px;
+    }
+    .secondpart .cardgrid{
+        width: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+       
+    }
+    .explanation{
+        padding: 10px;
+    }
+     .explanation .cardgrid{
+        width: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+       
+    }
+    .thirdpart{
+        padding: 40px 10px;
+    }
+    
+    .thirdpart .featuresubhead{
+        width: 100%;
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 10px 5px;
+    }
+    .thirdpart .cardgrid{
+        width: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+       
+    }
+    .testimonials{
+        padding: 10px;
+    
+    }
+    .aboutus .cardgrid{
+        padding: 30px;
+        justify-content: center;
+        
+    }
+    .aboutus .cardgrid .card{
+        width: 100%;
+
+    }
+    .aboutus .cardgrid .card .card-img-top{
+        height: initial;
+    }
+    #card1{
+        z-index: 1;
+        border: none;
+        box-shadow: none;
+        background: rgb(245, 254, 255)
+    }
+    #card2{
+        width: initial;
+        height: initial;
+        margin-top: -50px;
+        background: rgb(249, 255, 254);
+
+    }
+    
+}
+
+    
+
+
+@media only screen and (max-width: 1130px){
+
+    footer.footer .container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/*      x       Viewport less then or equal to 1130px    x     */
+
+
+/*              Viewport less then or equal to 750px            */
+
+@media only screen and (max-width: 750px){
+
+    footer.footer .container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+
+/*        x      Viewport less then or equal to 750px       x     */
+
+
+/*              Viewport less then or equal to 520px            */
+
+@media only screen and (max-width: 520px){
+    
+    footer.footer .container > div{
+        padding:  1rem .9rem !important;
+    }
+
+    footer .rights{
+        padding: 0 1.4rem;
+        text-align: center;
+    }
+
+    
+
+}

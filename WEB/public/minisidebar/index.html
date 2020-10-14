@@ -16,7 +16,14 @@
     <!-- Bootstrap Core CSS -->
     <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
+    <link href="css/defstyle.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    
+    <!-- <link href="https://fonts.googleapis.com/css?family=Heebo:400,500,700|Fira+Sans:600" rel="stylesheet"> -->
+    <!-- ------------ AOS Library ------------------------- -->
+    
+
+    <!-- <link rel="stylesheet" href="../w3.css"> -->
     <!-- You can change the theme colors from here -->
     <link href="css/colors/default-dark.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -402,35 +409,25 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            <div class="container-fluid" style="padding: 0px 20px;">
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
+                        <h3 class="text-themecolor m-b-0 m-t-0">FIXBOT</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            
                         </ol>
                     </div>
                     <div class="col-md-7 col-4 align-self-center">
                         <div class="d-flex m-t-10 justify-content-end">
                             <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                                <div class="chart-text m-r-10">
-                                    <h6 class="m-b-0"><small>THIS MONTH</small></h6>
-                                    <h4 class="m-t-0 text-info">$58,356</h4></div>
-                                <div class="spark-chart">
-                                    <div id="monthchart"></div>
-                                </div>
+                                
                             </div>
                             <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                                <div class="chart-text m-r-10">
-                                    <h6 class="m-b-0"><small>LAST MONTH</small></h6>
-                                    <h4 class="m-t-0 text-primary">$48,356</h4></div>
-                                <div class="spark-chart">
-                                    <div id="lastmonthchart"></div>
-                                </div>
+                                
                             </div>
                             <div class="">
                                 <button class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
@@ -445,10 +442,416 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                This is some text within a card block.
+                    <div class="col-12 " id="body">
+                        <div class="card" style="height: 100%; width: 100%" >
+                            <div class="card-body" id="body">
+                                <!-- ============================================================== -->
+                                <!-- First part -->
+                                <!-- ============================================================== -->
+                                <div class="firstpart">
+                                    <div class="banner">
+                                        <div class="exp">
+                                            <div class="exptext">
+                                                <h1>FIXBOT - Automobile Fault Diagnosis at your fingertips</h1>
+                                                
+
+                                            </div>
+                                            <div class="expbut">
+                                                <p>FIXBOT is a device that uses state of the art IoT(Internet of things) technology and WEB platforms to give you</p>
+                                                <a href="pages-login.html.htm"><button class="btn btn-block btn-outline-success">Login</button></a>
+                                                
+                                                <a href="register.html.htm"><button class="btn btn-block btn-outline-success">Register</button></a>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="subsect">
+                                        <div class="doubleimg">
+                                            <div class="card">
+                                                <img class="card-img-top" src="../assets/fixbot.jpg" style="height: 200px; width: 200px;" alt="Card image cap">
+                                                <div class="card-body">
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="text">
+                                            <h1>What is FIXBOT</h1>
+                                            <p>
+                                                FIXBOT is a device that uses state of the art IoT(Internet of things) technology and WEB platforms to give you
+                                                access to Diagonstic information about your car in real-time, anytime, anywhere using a simple SMS.
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!-- ============================================================== -->
+                                <!-- Second Part -->
+                                <!-- ============================================================== -->
+                                <div class="secondpart">
+                                    <div class="featurehead">
+                                        <h1>Features</h1>
+                                    </div>
+
+                                    <div class="featuresubhead">
+                                        <p>Knowing when and what part of your car, bikes, and trucks is faulty is very vital and important to know.</p>
+                                    </div>
+                                    <div class="cardgrid">
+                                        <div class="card" style="width: 20rem; height: 18rem;">
+                                            <img class="card-img-top" src="../assets/images/big/img6.jpg" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Card title</h4>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                                                    content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="width: 20rem; height: 18rem;">
+                                            <img class="card-img-top" src="../assets/images/big/img5.jpg" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Card title</h4>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                                                    content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="width: 20rem; height: 18rem;">
+                                            <img class="card-img-top" src="../assets/images/big/img1.jpg" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Card title</h4>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                                                    content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="width: 20rem; height: 18rem;">
+                                            <img class="card-img-top" src="../assets/images/big/img2.jpg" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Card title</h4>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                                                    content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="width: 20rem; height: 18rem;">
+                                            <img class="card-img-top" src="../assets/images/big/img3.jpg" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Card title</h4>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                                                    content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="width: 20rem; height: 18rem;">
+                                            <img class="card-img-top" src="../assets/images/big/img4.jpg" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Card title</h4>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                                                    content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                
+                                    </div>
+                                </div>
+                                <!-- ============================================================== -->
+                                <!-- Feature Explanation -->
+                                <!-- ============================================================== -->
+                                <div class="explanation">
+                                    <div class="cardgrid">
+                                        <div class="card" style="width: 100%;">
+                                            <img class="card-img-top" src="../assets/images/big/img4.jpg" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Card title</h4>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                                                    content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- ============================================================== -->
+                                <!-- Feature Explanation -->
+                                <!-- ============================================================== -->
+                                <div class="aboutus">
+                                    <div class="featurehead">
+                                        <h1>About Us</h1>
+                                    </div>
+                                    <div class="cardgrid">
+                                        <div class="card" id="card1" >
+                                            <img class="card-img-top" style="width: 400px;" src="../assets/images/big/fixbot_login.jpeg" alt="Card image cap">
+                                        </div>
+                                        <div class="card" id="card2" >
+                                            <div class="card-body">
+                                                <h3 class="card-title">Card title</h3>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                                    card's
+                                                    content. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, aperiam labore. Dolorem, vel molestias doloribus velit sint ipsum laboriosam minima debitis commodi iste! Asperiores ea sed nam saepe. Consequatur, consectetur!</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+
+                                <!-- ============================================================== -->
+                                <!-- Third part -->
+                                <!-- ============================================================== -->
+                                <div class="thirdpart">
+                                    <div class="featurehead">
+                                        <h1>Meet the Dream Team</h1>
+                                    </div>
+
+                                    <div class="featuresubhead">
+                                        <p>It all started out as an idea and materialized into existence after much hardwork, team effort and collaboration. <br> Here are the Great Minds and Hands behind this Great success. </p>
+                                    </div>
+                                    <div class="cardgrid el-element-overlay">
+                                        <div class="card" style="width: 20rem; height: 26rem; box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.6);">
+                                            <div class="el-card-item">
+                                                <div class="el-card-avatar el-overlay-1"> <img src="../assets/images/users/1.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="el-info">
+                                                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                                                    href="../plugins/images/users/1.html"><i class="icon-magnifier"></i></a></li>
+                                                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h3 class="box-title">Genelia Deshmukh</h3> <small>Managing Director</small>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="width: 20rem; height: 26rem; box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.6);">
+                                            <div class="el-card-item">
+                                                <div class="el-card-avatar el-overlay-1"> <img src="../assets/images/users/2.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="el-info">
+                                                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                                                    href="../plugins/images/users/1.html"><i class="icon-magnifier"></i></a></li>
+                                                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h3 class="box-title">Genelia Deshmukh</h3> <small>Managing Director</small>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="width: 20rem; height: 26rem; box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.6);">
+                                            <div class="el-card-item">
+                                                <div class="el-card-avatar el-overlay-1"> <img src="../assets/images/users/3.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="el-info">
+                                                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                                                    href="../plugins/images/users/1.html"><i class="icon-magnifier"></i></a></li>
+                                                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h3 class="box-title">Genelia Deshmukh</h3> <small>Managing Director</small>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="width: 20rem; height: 26rem; box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.6);">
+                                            <div class="el-card-item">
+                                                <div class="el-card-avatar el-overlay-1"> <img src="../assets/images/users/4.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="el-info">
+                                                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                                                    href="../plugins/images/users/1.html"><i class="icon-magnifier"></i></a></li>
+                                                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h3 class="box-title">Genelia Deshmukh</h3> <small>Managing Director</small>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="width: 20rem; height: 26rem; box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.6);">
+                                            <div class="el-card-item">
+                                                <div class="el-card-avatar el-overlay-1"> <img src="../assets/images/users/5.jpg" alt="user" />
+                                                    <div class="el-overlay">
+                                                        <ul class="el-info">
+                                                            <li><a class="btn default btn-outline image-popup-vertical-fit"
+                                                                    href="../plugins/images/users/1.html"><i class="icon-magnifier"></i></a></li>
+                                                            <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="el-card-content">
+                                                    <h3 class="box-title">Genelia Deshmukh</h3> <small>Managing Director</small>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                
+                                    </div>
+                                </div>
+                                <!-- ============================================================== -->
+                                <!-- Feature Explanation -->
+                                <!-- ============================================================== -->
+                                <div class="contactus">
+                                    <div class="featurehead">
+                                        <h1>Contact Us</h1>
+                                    </div>
+                                    <div class="cardgrid">
+                                        <div class="card" style="width: 100%;">
+                                            <h3 style="text-align: center;">Have any questions?, <br>Just leave us a message and we will get back to you in a moment.</h3>
+                                            <form class="form-material m-t-40">
+                                                <div class="form-group">
+                                                    <label for="example-name"> Your Full Name</label>
+                                                    <input type="text" class="form-control form-control-line" value="Name..."> </div>
+                                                <div class="form-group">
+                                                    <label for="example-email">Email <span class="help"> <a
+                                                                href="https://www.wrappixel.com/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                                data-cfemail="26435e474b564a4366414b474f4a0845494b">[email&#160;protected]</a>"</span></label>
+                                                    <input type="email" id="example-email2" name="example-email" class="form-control" placeholder="Email"> </div>
+                                                
+                
+                                                <div class="form-group">
+                                                    <label> Your Message</label>
+                                                    <textarea class="form-control" rows="5"></textarea>
+                                                </div>
+                                            
+                                                <a href="#" class="btn btn-primary" style="width: 200px; margin-left: calc(100% - 200px); height: 50px; padding: 10px;">Go somewhere</a>
+                                                    
+                                            </form>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                                <!-- ============================================================== -->
+                                <!-- Testimonials -->
+                                <!-- ============================================================== -->
+                                <div class="testimonials">
+                                    <section class="testimonials section">
+                                        <div class="testimonials-shape testimonials-shape-1">
+                                            <svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+                                                <defs>
+                                                    <linearGradient x1="100%" y1="0%" x2="0%" y2="100%" id="testimonials-shape-1">
+                                                        <stop stop-color="#261FB6" offset="0%" />
+                                                        <stop stop-color="#4950F6" offset="100%" />
+                                                    </linearGradient>
+                                                </defs>
+                                                <circle cx="140" cy="685" r="140" transform="translate(0 -545)" fill="url(#testimonials-shape-1)"
+                                                    fill-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <div class="testimonials-shape testimonials-shape-2">
+                                            <svg width="125" height="107" viewBox="0 0 125 107" xmlns="http://www.w3.org/2000/svg">
+                                                <g fill="none" fill-rule="evenodd">
+                                                    <circle fill="#C6FDF3" cx="48" cy="59" r="48" />
+                                                    <path
+                                                        d="M58.536 39.713c0-6.884 1.72-14.007 5.163-21.368 3.443-7.36 8.167-13.458 14.173-18.292l11.645 7.91c-3.589 4.98-6.262 10.016-8.02 15.106S78.86 33.598 78.86 39.384v13.623H58.536V39.713z"
+                                                        fill="#55EBD0" />
+                                                    <path
+                                                        d="M93.252 39.713c0-6.884 1.722-14.007 5.164-21.368 3.442-7.36 8.166-13.458 14.172-18.292l11.646 7.91c-3.589 4.98-6.262 10.016-8.02 15.106s-2.637 10.529-2.637 16.315v13.623H93.252V39.713z"
+                                                        fill="#1ADAB7" />
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="testimonials-shape testimonials-shape-3">
+                                            <svg width="48" height="48" viewBox="0 0 48 48" mlns="http://www.w3.org/2000/svg">
+                                                <defs>
+                                                    <linearGradient x1="93.05%" y1="19.767%" x2="15.034%" y2="85.765%" id="testimonials-shape-3">
+                                                        <stop stop-color="#FF3058" offset="0%" />
+                                                        <stop stop-color="#FF6381" offset="100%" />
+                                                    </linearGradient>
+                                                </defs>
+                                                <circle cx="24" cy="434" r="24" transform="translate(0 -410)" fill="url(#testimonials-shape-3)"
+                                                    fill-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                        <div class="container">
+                                            <div class="testimonials-inner section-inner">
+                                                <div class="section-title mt-0 text-center">
+                                                    <h1>Testimonials</h1>
+                                                    <h3 style="z-index: 10">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                        eiusmod tempor incididunt.</h3>
+                                                    </div>
+                                                
+                                                <div class="testimonials-wrap">
+                                                    <div class="testimonial text-xs is-revealing">
+                                                        <div class="testimonial-inner">
+                                                            <div class="testimonial-main">
+                                                                <div class="testimonial-header">
+                                                                    <img class="mb-16" src="../dist/images/testimonial-01.png" alt="Testimonial">
+                                                                </div>
+                                                                <div class="testimonial-body">
+                                                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                                        eiusmod tempor incididunt.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="testimonial-footer">
+                                                                <div class="testimonial-link">
+                                                                    <a href="#">@martajones</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial text-xs is-revealing">
+                                                        <div class="testimonial-inner">
+                                                            <div class="testimonial-main">
+                                                                <div class="testimonial-header">
+                                                                    <img class="mb-16" src="../dist/images/testimonial-02.png" alt="Testimonial">
+                                                                </div>
+                                                                <div class="testimonial-body">
+                                                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                                        eiusmod tempor incididunt.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="testimonial-footer">
+                                                                <div class="testimonial-link">
+                                                                    <a href="#">@michealpahm</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="testimonial text-xs is-revealing">
+                                                        <div class="testimonial-inner">
+                                                            <div class="testimonial-main">
+                                                                <div class="testimonial-header">
+                                                                    <img class="mb-16" src="../dist/images/testimonial-03.png" alt="Testimonial">
+                                                                </div>
+                                                                <div class="testimonial-body">
+                                                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                                        eiusmod tempor incididunt.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="testimonial-footer">
+                                                                <div class="testimonial-link">
+                                                                    <a href="#">@markbrown</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                
+                                </div>
+
+                                <!-- ============================================================== -->
+                                <!-- Feature Explanation -->
+                                <!-- ============================================================== -->
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -520,8 +923,39 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer">
-                © 2020 FixBot Landing page by myfixbot.com
+            <footer class="footer" style="left:0;">
+                <div class="container">
+                    <div class="about-us" data-aos="fade-right" data-aos-delay="200">
+                        <h2>About us</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quia atque nemo ad modi officiis
+                            iure, autem nulla tenetur repellendus.</p>
+                    </div>
+                    <div class="newsletter1" data-aos="fade-right" data-aos-delay="200">
+                        <h2>Newsletter</h2>
+                        <p>Stay update with our latest</p>
+                        <div class="form-element">
+                            <input type="text" placeholder="Email"><span><i class="fas fa-chevron-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="instagram" data-aos="fade-left" data-aos-delay="200">
+            
+                    </div>
+                    <div class="follow" data-aos="fade-left" data-aos-delay="200">
+                        <h2>Follow us</h2>
+                        <p>Let us be Social</p>
+                        <div>
+                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-twitter"></i>
+                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="move-up">
+                    <span><i class="fas fa-arrow-circle-up fa-2x"></i></span>
+                </div>
+                <div class="footer-copyright">&copy; 2020 FixBot, all rights reserved</div>
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
