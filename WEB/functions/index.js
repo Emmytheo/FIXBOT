@@ -9,7 +9,7 @@ app.get('/login', (request, response) => {
 app.get('/register', (request, response) => {
     response.redirect('/minisidebar/pages-register.html.htm')
 })
-app.get('/', (request, response) => {
+app.get('/index', (request, response) => {
     response.redirect('/minisidebar/index.html')
 })
 app.get('/dashboard', (request, response) => {
