@@ -6,9 +6,19 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [ {
-    "source": "/",
-    "destination": "/minisidebar/index.html"
-  } ]
+    "rewrites": [ 
+      {
+        "source": "/",
+        "destination": "/minisidebar/index.html"
+      },
+      {
+        "source": "/login",
+        "destination": "/minisidebar/login.html.htm"
+      },
+      {
+        "source": "/register",
+        "destination": "/minisidebar/register.html.htm"
+      }
+    ]
   }
 }
