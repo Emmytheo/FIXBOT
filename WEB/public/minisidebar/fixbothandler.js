@@ -10,6 +10,7 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+var dri = firebase.database().ref().child("public/FIXBOT/Registered devices/");
 var page = window.location.href.split('/')[window.location.href.split('/').length - 1];
 var admins = [
     "chidi.mgbara@gmail.com",
@@ -17,6 +18,9 @@ var admins = [
     "emmyfinest",
 
 ];
+var dve;
+
+
 console.log(page);
 var userinfo;
 var userd;
@@ -25,7 +29,7 @@ var passwordd = admins[2];
 var unm = admins[1];
 
 
-switch(page){
+switch (page) {
     case "register.html.htm": {
         document.getElementById('regform').onsubmit = function () {
             var fullname = document.getElementById('fullname').value;
@@ -42,28 +46,28 @@ switch(page){
             var street = document.getElementById('street').value;
             var city = document.getElementById('city').value;
             var state = document.getElementById('state').value;
-            var country =  document.getElementById('country').value;
+            var country = document.getElementById('country').value;
             var phone = document.getElementById('phone').value;
             var passed = true;
-            
 
-            if (admins.includes(email) == false){
+
+            if (admins.includes(email) == false) {
                 $('#classs').addClass('has-danger');
                 document.getElementById("adm").innerText = "You're not allowed to Choose this Option, Switch to a different Class";
                 passed = !passed;
-                
+
             }
-            if (admins.includes(email) == true){
+            if (admins.includes(email) == true) {
                 $('#classs').removeClass('has-danger');
                 document.getElementById("adm").innerText = "You're Good to Go";
                 $('#classs').addClass('has-success');
                 passed = true;
-                
+
             }
             if (confpass != password) {
                 $('.pass').addClass('has-danger');
                 var el = document.getElementsByClassName("passtxt");
-                
+
 
                 for (var i = 0; i < el.length; i++) {
                     el[i].innerText = "Passwords don't Match";
@@ -83,10 +87,10 @@ switch(page){
                 }
                 passed = true;
             }
-            
-            
 
-            
+
+
+
             userinfo = {
                 "fullname": fullname,
                 "email": email,
@@ -94,7 +98,7 @@ switch(page){
                 "plan": plan,
                 "username": username,
                 "password": password,
-                "dob" : dob,
+                "dob": dob,
                 "cls": cls,
                 'street': street,
                 'city': city,
@@ -105,13 +109,13 @@ switch(page){
                 'phone': phone
 
             }
-            if(passed){
+            if (passed) {
                 if (userinfo.email !== undefined && userinfo.password !== undefined) {
                     firebase.auth().createUserWithEmailAndPassword(userinfo.email, userinfo.password).catch(function (error) {
-                        if(error){
+                        if (error) {
                             var errorCode = error.code;
                             var errorMessage = error.message;
-                            
+
                             var err = errorCode.split('/');
                             console.log("Error Code : " + errorCode);
                             console.log("Error Message : " + errorMessage);
@@ -143,7 +147,7 @@ switch(page){
 
                             }
                         }
-                       }).then(function () {
+                    }).then(function () {
                         firebase.auth().signInWithEmailAndPassword(userinfo.email, userinfo.password).catch(function (error) {
                             // Handle Errors here.
                             var errorCod = error.code;
@@ -155,7 +159,7 @@ switch(page){
                                 console.log("Error Message : " + errorMessag);
                             }
 
-                        }).then(function (){
+                        }).then(function () {
                             firebase.auth().onAuthStateChanged(function (user) {
                                 if (user) {
                                     // User is signed in.
@@ -172,83 +176,83 @@ switch(page){
                                         city: userinfo.city,
                                         state: userinfo.state,
                                         country: userinfo.country,
-                                        deviceids : userinfo.ids,
-                                        carnames : userinfo.cnames,
+                                        deviceids: userinfo.ids,
+                                        carnames: userinfo.cnames,
                                         Imeis: userinfo.imeis,
                                         phone: userinfo.phone
 
                                     }).catch(function (error) {
-                                            var errorCo = error.code;
-                                            var errorMessa = error.message;
+                                        var errorCo = error.code;
+                                        var errorMessa = error.message;
 
-                                            // ...
-                                            if (error) {
-                                                console.log("Error Code : " + errorCo);
-                                                console.log("Error Message : " + errorMessa);
-                                            }
-                                        }).then(
-                                            function () {
-                                                if (userinfo.cls == 'FixbotAdmin') {
-                                                    var dir = firebase.database().ref().child("public/FIXBOT/FIXBOT ADMINS/");
-                                                    dir.update(userinfo);
-                                                }
-                                                if (userinfo.cls == 'Admin') {
-                                                    var dir = firebase.database().ref().child("public/FIXBOT/GROUP ADMINS/");
-                                                    dir.update(userinfo);
-                                                }
-                                                if (userinfo.cls == 'User') {
-                                                    var dir = firebase.database().ref().child("public/FIXBOT/SINGLE USERS/");
-                                                    dir.update(userinfo);
-                                                }
-                                                
-                                                document.getElementById("net").innerText = "";
-                                                user.providerData.forEach(function (profile) {
-                                                    console.log("Sign-in provider: " + profile.providerId);
-                                                    console.log("  Provider-specific UID: " + profile.uid);
-                                                    console.log("  Name: " + profile.displayName);
-                                                    console.log("  Email: " + profile.email);
-                                                    console.log("  Photo URL: " + profile.photoURL);
-                                                });
-
-                                            }).catch(function (error) {
-                                                if(error){
-                                                    document.getElementById("net").innerText = error;
-                                                }
-                                                
-                                                // An error happened.
-                                            }).then(function(){
-                                                window.localStorage.setItem('emailForSignIn', userinfo.email);
-                                                window.localStorage.setItem('passwordForSignIn', userinfo.password);
-                                                window.location.assign("pages-login.html.htm");
-                                            });
-                                        } else {
-                                            document.getElementById("net").innerText = errorMessage;
-                                            // No user is signed in.
+                                        // ...
+                                        if (error) {
+                                            console.log("Error Code : " + errorCo);
+                                            console.log("Error Message : " + errorMessa);
                                         }
-                                    })
-                                });
-                            });
-                    
-                        }
+                                    }).then(
+                                        function () {
+                                            if (userinfo.cls == 'FixbotAdmin') {
+                                                var dir = firebase.database().ref().child("public/FIXBOT/FIXBOT ADMINS/");
+                                                dir.update(userinfo);
+                                            }
+                                            if (userinfo.cls == 'Admin') {
+                                                var dir = firebase.database().ref().child("public/FIXBOT/GROUP ADMINS/");
+                                                dir.update(userinfo);
+                                            }
+                                            if (userinfo.cls == 'User') {
+                                                var dir = firebase.database().ref().child("public/FIXBOT/SINGLE USERS/");
+                                                dir.update(userinfo);
+                                            }
+
+                                            document.getElementById("net").innerText = "";
+                                            user.providerData.forEach(function (profile) {
+                                                console.log("Sign-in provider: " + profile.providerId);
+                                                console.log("  Provider-specific UID: " + profile.uid);
+                                                console.log("  Name: " + profile.displayName);
+                                                console.log("  Email: " + profile.email);
+                                                console.log("  Photo URL: " + profile.photoURL);
+                                            });
+
+                                        }).catch(function (error) {
+                                            if (error) {
+                                                document.getElementById("net").innerText = error;
+                                            }
+
+                                            // An error happened.
+                                        }).then(function () {
+                                            window.localStorage.setItem('emailForSignIn', userinfo.email);
+                                            window.localStorage.setItem('passwordForSignIn', userinfo.password);
+                                            window.location.assign("pages-login.html.htm");
+                                        });
+                                } else {
+                                    document.getElementById("net").innerText = errorMessage;
+                                    // No user is signed in.
+                                }
+                            })
+                        });
+                    });
+
+                }
 
             }
-                    
-            
-            
-            return false   
+
+
+
+            return false
         };
 
     }
-    break;
+        break;
     case "pages-login.html.htm": {
-        
+
         if (emaill !== undefined && passwordd !== undefined) {
-            document.getElementById("Uname").value = emaill;
-            document.getElementById("Upass").value = passwordd;
-            
+            // document.getElementById("Uname").value = emaill;
+            // document.getElementById("Upass").value = passwordd;
+
         }
-        
-     
+
+
         document.getElementById('loginform').onsubmit = function () {
             document.getElementById("note").innerHTML = "Signing you in, please be patient";
             firebase.auth().signInWithEmailAndPassword(emaill, passwordd).catch(function (error) {
@@ -256,16 +260,16 @@ switch(page){
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 // ...
-                if(error){
+                if (error) {
                     console.log("Error Code : " + errorCode);
                     console.log("Error Message : " + errorMessage);
                     document.getElementById("note").innerHTML = "Sign Error, please reload page and sign in again.";
                 }
                 else {
                     document.getElementById("note").innerHTML = "Signed In, Fetching your data";
-                    
+
                 }
-            }).then(function (){
+            }).then(function () {
                 firebase.auth().onAuthStateChanged(function (user) {
                     if (user) {
                         var userdata = {
@@ -294,32 +298,32 @@ switch(page){
                             userdata.address = profile.street + ', ' + profile.city + ", " + profile.state + ', ' + profile.country;
                         });
                         userd = userdata;
-                        for (id in userd.devices){
-                            if(typeof(id) !== undefined){
+                        for (id in userd.devices) {
+                            if (typeof (id) !== undefined) {
                                 userd.device_data[userd.devices[id]] = firebase.database().ref().child("public/FIXBOT/Registered devices/" + userd.devices[id]);
                             }
                         }
                         document.getElementById("note").innerHTML = "Data Fetch Successful, Preparing The Dashboard";
-                        switch(userd.cls.toLowerCase()){
+                        switch (userd.cls.toLowerCase()) {
                             case "fixbotadmin": {
                                 window.location.assign("indexFixbotAdmin.html");
                             }
-                            break;
+                                break;
                             case "admin": {
                                 window.location.assign("indexAdmin.html");
                             }
-                            break;
+                                break;
                             case "user": {
                                 window.location.assign("indexUser.html");
                             }
-                            break;
+                                break;
                         }
 
 
                         // User is signed in.
                     } else {
                         document.getElementById("note").innerHTML = "Encountered an error while fetching data, Try logging in again";
-                        
+
 
                         // No user is signed in.
                     }
@@ -328,7 +332,7 @@ switch(page){
         }
 
     }
-    break;
+        break;
     case "indexFixbotAdmin.html": {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
@@ -541,49 +545,56 @@ switch(page){
                         , barWidth: '2'
                         , resize: true
                         , barSpacing: '6'
-                        , barColor: 'rgba(255, 255, 255, 0.3)'
+                        , barColor: 'rgba(255, 255, 255, 0.5)'
                     });
                 }
                 var sparkResize;
 
-                sparklineLogin();    
+                sparklineLogin();
 
 
 
 
-                
+
             }
-            else{
+            else {
                 window.location.assign("pages-login.html.htm");
             }
         });
-        
+
 
     }
-    break;
-        // var userdata = {
-        //     'username': '',
-        //     'fullname': '',
-        //     'email': '',
-        //     'phone': '',
-        //     'address': '',
-        //     'gender': '',
-        //     'plan': '',
-        //     'cls': '',
-        //     'dob': '',
-        //     'devices': '',
-        //     'device_data': ''
-        // }
+        break;
+    // var userdata = {
+    //     'username': '',
+    //     'fullname': '',
+    //     'email': '',
+    //     'phone': '',
+    //     'address': '',
+    //     'gender': '',
+    //     'plan': '',
+    //     'cls': '',
+    //     'dob': '',
+    //     'devices': '',
+    //     'device_data': ''
+    // }
     case "indexAdmin.html": {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
+                userd.devices.forEach(function(devo){
+                    if (dri.child(devo)){
+                        dri.child(devo).on("value", snap => {
+                            userd.device_data.devo = snap.value();
+                        })
+                    }
+                });
                 var fnam = document.getElementsByClassName("fnam");
                 var nam = document.getElementsByClassName("nam");
                 var namclass = document.getElementById("namclass");
                 var namdetails = document.getElementById("namdetails");
                 var namsubstart = document.getElementById("namsubstart");
                 var namsubexp = document.getElementById("namsubexp");
-                var namsubbal= document.getElementsByClassName("namsubbal");
+                var namsubbal = document.getElementsByClassName("namsubbal");
                 var eml = document.getElementsByClassName("eml");
                 var phnnum = document.getElementsByClassName("phnnum");
                 var add = document.getElementsByClassName("add");
@@ -593,14 +604,11 @@ switch(page){
                 var namuserovw = document.getElementById("namuserovw");
                 var namcarsubs = document.getElementById("namcarsubs");
                 var namassets = document.getElementById("namassets");
-                var sngnam =  document.getElementById("sngnam");
-                var sngnamcond =  document.getElementById("sngnamcond");
-                var sngnamdet =  document.getElementById("sngnamdet");
+                var sngnam = document.getElementById("sngnam");
+                var sngnamcond = document.getElementById("sngnamcond");
+                var sngnamdet = document.getElementById("sngnamdet");
                 var namcarmodel = document.getElementById("namcarmodel");
                 var namtrackmap = document.getElementById("namtrackmap");
-                var namwindspeed = document.getElementById("namwindspeed");
-                var namtotalmileage = document.getElementById("namtotalmileage");
-                var namtotalcrashes = document.getElementById("namtotalcrashes");
                 var namwindspeed = document.getElementById("namwindspeed");
                 var namtotalmileage = document.getElementById("namtotalmileage");
                 var namtotalcrashes = document.getElementById("namtotalcrashes");
@@ -644,20 +652,30 @@ switch(page){
                 var namengrotation = document.getElementById("namengrotation");
                 var namharshaccel = document.getElementById("namharshaccel");
                 var namharshbraking = document.getElementById("namharshbraking");
+                var namignbar = document.getElementById("namignbar");
+                var namdrivtimbar = document.getElementById("namdrivtimbar");
+                var namidltimbar = document.getElementById("namidltimbar");
+                var namhotstartsbar = document.getElementById("namhotstartsbar");
+                var namavgspeedbar = document.getElementById("namavgspeedbar");
+                var namhighestspeedbar = document.getElementById("namhighestspeedbar");
+                var namengrotationbar = document.getElementById("namengrotationbar");
+                var namharshaccelbar = document.getElementById("namharshaccelbar");
+                var namharshbrakingbar = document.getElementById("namharshbrakingbar");
+                var weekly = [];
 
 
 
-                for(it in fnam){
+                for (it in fnam) {
                     console.log(fnam[it]);
-                    if(userd !== undefined){
+                    if (userd !== undefined) {
                         fnam[it].value = userd.fullname;
                         fnam[it].innerHTML = userd.fullname;
                     }
-                    else{
+                    else {
                         fnam[it].value = "Not Set";
                         fnam[it].innerHTML = "Not Set";
                     }
-                    
+
                 }
                 for (it in nam) {
                     console.log(nam[it]);
@@ -680,7 +698,7 @@ switch(page){
                     // fnam[it].value = "Not Set";
                     namclass.innerHTML = "Not Set";
                 }
-                
+
                 console.log(namdetails);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
@@ -693,7 +711,7 @@ switch(page){
                 console.log(namsubstart);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    namsubstart.innerHTML = userd.details;
+                    namsubstart.innerHTML = "TBD";
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -702,7 +720,7 @@ switch(page){
                 console.log(namsubexp);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    namsubexp.innerHTML = userd.details;
+                    namsubexp.innerHTML = "TBD";
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -712,7 +730,7 @@ switch(page){
                     console.log(namsubbal[it]);
                     if (userd !== undefined) {
                         // nam[it].value = userd.fullname;
-                        namsubbal[it].innerHTML = userd.username;
+                        namsubbal[it].innerHTML = "$1000";
                     }
                     else {
                         // fnam[it].value = "Not Set";
@@ -723,8 +741,8 @@ switch(page){
                 for (it in eml) {
                     console.log(eml[it]);
                     if (userd !== undefined) {
-                        eml[it].value = userd.fullname;
-                        eml[it].innerHTML = userd.username;
+                        eml[it].value = userd.email;
+                        eml[it].innerHTML = userd.email;
                     }
                     else {
                         eml[it].value = "Not Set";
@@ -735,8 +753,8 @@ switch(page){
                 for (it in phnnum) {
                     console.log(phnnum[it]);
                     if (userd !== undefined) {
-                        phnnum[it].value = userd.fullname;
-                        phnnum[it].innerHTML = userd.username;
+                        phnnum[it].value = userd.phone;
+                        phnnum[it].innerHTML = userd.phone;
                     }
                     else {
                         phnnum[it].value = "Not Set";
@@ -747,8 +765,8 @@ switch(page){
                 for (it in add) {
                     console.log(add[it]);
                     if (userd !== undefined) {
-                        add[it].value = userd.fullname;
-                        add[it].innerHTML = userd.username;
+                        add[it].value = userd.address;
+                        add[it].innerHTML = userd.address;
                     }
                     else {
                         add[it].value = "Not Set";
@@ -756,35 +774,66 @@ switch(page){
                     }
 
                 }
-                
+
                 console.log(assets);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    assets.innerHTML = userd.cls;
+                    dve = userd.devices[0];
+                    var asss = "";
+                    for (it in userd.devices) {
+                        asss += `
+                            <div class="col-lg-3 col-md-6 m-b-20 ${userd.devices[it]}">
+                                <center>
+                                    <img src="../assets/images/big/img1.jpg" class="img-responsive radius userpic" />
+                                    <br><br>
+                                    <p class="btn btn-success" onclick="vwasset(${userd.devices[it]})" >${userd.devices[it]}</p>
+                                </center>
+                            </div>`
+                            ;
+
+                    }
+                    assets.innerHTML = asss;
                 }
                 else {
                     // fnam[it].value = "Not Set";
+                    dve = "noasset";
+
+
                     assets.innerHTML = `
-                    <div class="row" id="assets">
-                        <div class="col-lg-3 col-md-6 m-b-20">
-                        <img src="../assets/images/big/img1.jpg" class="img-responsive radius userpic" />
-                        </div>
+                    <div class="col-lg-3 col-md-6 m-b-20 noasset">
+                        <center>
+                            <img src="../assets/images/big/img1.jpg" class="img-responsive radius userpic" />
+                            <br><br>
+                            <p class="btn btn-success" onclick="vwasset('noasset')">noasset</p>
+                        </center>
                     </div>
                     `;
+                    assets.innerHTML += `
+                    <div class="col-lg-3 col-md-6 m-b-20 noasset1">
+                        <center>
+                            <img src="../assets/images/big/img1.jpg" class="img-responsive radius userpic" />
+                            <br><br>
+                            <p class="btn btn-success" onclick="vwasset('noasset1')">noasset</p>
+                        </center>
+                    </div>
+                    `;
+
+
                 }
+
                 console.log(asset);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    asset.innerHTML = userd.cls;
+                    asset.innerHTML = userd.dve;
                 }
                 else {
                     // fnam[it].value = "Not Set";
-                    asset.innerHTML = "Not Set";
+                    asset.innerHTML = dve;
                 }
                 console.log(namuserovw);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    namuserovw.innerHTML = userd.cls;
+                    namuserovw.innerHTML = "TBD";
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -793,7 +842,12 @@ switch(page){
                 console.log(carnams);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    carnams.innerHTML = userd.cls;
+                    var dvc = `Assets: '\r\n'`;
+                    userd.devices.forEach(function (device){
+                        dvc += '<span class="btn btn-success">${device}</span><br><br>'
+                    })
+
+                    carnams.innerHTML = dvc;
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -804,7 +858,7 @@ switch(page){
                 console.log(namcarsubs);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    namcarsubs.innerHTML = userd.cls;
+                    namcarsubs.innerHTML = "TBD";
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -821,13 +875,49 @@ switch(page){
                 console.log(namassets);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    namassets.innerHTML = userd.cls;
+                    var dvs;
+                    userd.devices.forEach(function (device){
+                        dvs += `
+                        <div class="col-lg-3 col-md-6 ">
+                            <div class="card ${device}" onclick="vwasset(${device})">
+                                <div class="card-body">
+                                    <div class="d-flex flex-row">
+                                        <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i>
+                                        </div>
+                                        <div class="m-l-10 align-self-center">
+                                            <h3 class="m-b-0 font-light">Asset Name</h3>
+                                            <h5 class="text-muted m-b-0">${device}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                    });
+
+                    namassets.innerHTML = dvs;
                 }
                 else {
                     // fnam[it].value = "Not Set";
                     namassets.innerHTML = `
                     <div class="col-lg-3 col-md-6">
-                        <div class="card">
+                        <div class="card noasset" onclick="vwasset('noasset')">
+                            <div class="card-body">
+                                <div class="d-flex flex-row">
+                                    <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i>
+                                    </div>
+                                    <div class="m-l-10 align-self-center">
+                                        <h3 class="m-b-0 font-light">Asset Name</h3>
+                                        <h5 class="text-muted m-b-0">No Assets Present</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    namassets.innerHTML += `
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card noasset1" onclick="vwasset('noasset1')">
                             <div class="card-body">
                                 <div class="d-flex flex-row">
                                     <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i>
@@ -845,7 +935,7 @@ switch(page){
                 console.log(sngnam);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    sngnam.innerHTML = userd.cls;
+                    sngnam.innerHTML = dve;
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -854,7 +944,7 @@ switch(page){
                 console.log(sngnamcond);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    sngnamcond.innerHTML = userd.cls;
+                    sngnamcond.innerHTML = "Good Condition";
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -863,7 +953,7 @@ switch(page){
                 console.log(sngnamdet);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    sngnamdet.innerHTML = userd.cls;
+                    sngnamdet.innerHTML = "No Details To Be Shown for Now";
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -872,7 +962,9 @@ switch(page){
                 console.log(namcarmodel);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    namcarmodel.innerHTML = userd.cls;
+                    namcarmodel.innerHTML = `
+                    <span class="btn btn-success">None Available</span>
+                    `;
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -881,10 +973,7 @@ switch(page){
                     `;
                 }
                 if (userd !== undefined) {
-                    if (userd.devices !== undefined){
-                        
-                    }
-                    else{
+                    if (userd.devices !== undefined) {
                         runningspeed.innerText = "Not Set";
                         throttleopeningwidth.innerText = "Not Set";
                         engineload.innerText = "Not Set";
@@ -901,21 +990,40 @@ switch(page){
                         drivingbehaviourdata.innerText = "Not Set";
                         batteryvoltage.innerText = "Not Set";
                         enginespeed.innerText = "Not Set";
-                        batteryvoltagebar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        enginespeedbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        runningspeedbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        throttleopeningwidthbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        engineloadbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        coolanttemperaturebar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        instantenousfuelconsumptionbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        averagefuelconsumptionbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        drivingrangebar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        totalmileagebar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        singlefuelconsumptionvolbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        totalfuelconsumptionvolbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        currenterrorcodenosbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                        harshaccelerationnobar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`
-                        harshbrakenobar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+
+                    }
+                    else {
+                        runningspeed.innerText = "Not Set";
+                        throttleopeningwidth.innerText = "Not Set";
+                        engineload.innerText = "Not Set";
+                        coolanttemperature.innerText = "Not Set";
+                        instantenousfuelconsumption.innerText = "Not Set";
+                        averagefuelconsumption.innerText = "Not Set";
+                        drivingrange.innerText = "Not Set";
+                        totalmileage.innerText = "Not Set";
+                        singlefuelconsumptionvol.innerText = "Not Set";
+                        totalfuelconsumptionvol.innerText = "Not Set";
+                        currenterrorcodenos.innerText = "Not Set";
+                        harshaccelerationno.innerText = "Not Set";
+                        harshbrakeno.innerText = "Not Set";
+                        drivingbehaviourdata.innerText = "Not Set";
+                        batteryvoltage.innerText = "Not Set";
+                        enginespeed.innerText = "Not Set";
+                        batteryvoltagebar.innerHTML = `<div data-label="${getpcnt("batteryvoltage", userd.device_data.dve.batteryvoltage)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        enginespeedbar.innerHTML = `<div data-label="${getpcnt("enginespeed", userd.device_data.dve.enginespeed)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        runningspeedbar.innerHTML = `<div data-label="${getpcnt("runningspeed", userd.device_data.dve.runningspeed)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        throttleopeningwidthbar.innerHTML = `<div data-label="${getpcnt("throttleopeningwidth", userd.device_data.dve.throttleopeningwidth)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        engineloadbar.innerHTML = `<div data-label="${getpcnt("engineload", userd.device_data.dve.engineload)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        coolanttemperaturebar.innerHTML = `<div data-label="${getpcnt("coolanttemperature", userd.device_data.dve.coolanttemperature)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        instantenousfuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("instantenousfuelconsumption", userd.device_data.dve.instantenousfuelconsumption)} class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        averagefuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("averagefuelconsumption", userd.device_data.dve.averagefuelconsumption)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        drivingrangebar.innerHTML = `<div data-label="${getpcnt("drivingrange", userd.device_data.dve.drivingrange)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        totalmileagebar.innerHTML = `<div data-label="${getpcnt("totalmileage", userd.device_data.dve.totalmileage)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        singlefuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("singlefuelconsumptionvol", userd.device_data.dve.singlefuelconsumptionvol)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        totalfuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("totalfuelconsumptionvol", userd.device_data.dve.totalfuelconsumptionvol)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        currenterrorcodenosbar.innerHTML = `<div data-label="${getpcnt("currenterrorcodenos", userd.device_data.dve.currenterrorcodenos)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                        harshaccelerationnobar.innerHTML = `<div data-label="${getpcnt("harshaccelerationno", userd.device_data.dve.harshaccelerationno)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`
+                        harshbrakenobar.innerHTML = `<div data-label="${getpcnt("harshbrakeno", userd.device_data.dve.harshbrakeno)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
 
                     }
                 }
@@ -933,7 +1041,7 @@ switch(page){
                     currenterrorcodenos.innerText = "Not Set";
                     harshaccelerationno.innerText = "Not Set";
                     harshbrakeno.innerText = "Not Set";
-                    drivingbehaviourdata.innerText = "Not Set";
+                    // drivingbehaviourdata.innerText = "Not Set";
                     batteryvoltage.innerText = "Not Set";
                     enginespeed.innerText = "Not Set";
                     batteryvoltagebar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
@@ -951,12 +1059,50 @@ switch(page){
                     currenterrorcodenosbar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
                     harshaccelerationnobar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`
                     harshbrakenobar.innerHTML = `<div data-label="0%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    
-                    
-                    
+                    namign.innerText = "Not Set";
+                    namdrivtim.innerText = "Not Set";
+                    namidltim.innerText = "Not Set";
+                    namhotstarts.innerText = "Not Set";
+                    namavgspeed.innerText = "Not Set";
+                    namhighestspeed.innerText = "Not Set";
+                    namengrotation.innerText = "Not Set";
+                    namharshaccel.innerText = "Not Set";
+                    namharshbraking.innerText = "Not Set";
+                    $("#namignbar").addClass("label-info");
+                    $("#namdrivtimbar").addClass("label-info");
+                    $("#namidltimbar").addClass("label-info");
+                    $("#namhotstartsbar").addClass("label-info");
+                    $("#namavgspeedbar").addClass("label-info");
+                    $("#namhighestspeedbar").addClass("label-info");
+                    $("#namengrotationbar").addClass("label-info");
+                    $("#namharshaccelbar").addClass("label-info");
+                    $("#namharshbrakingbar").addClass("label-info");
+                    namignbar.innerText = "Not Set";
+                    namdrivtimbar.innerText = "Not Set";
+                    namidltimbar.innerText = "Not Set";
+                    namhotstartsbar.innerText = "Not Set";
+                    namavgspeedbar.innerText = "Not Set";
+                    namhighestspeedbar.innerText = "Not Set";
+                    namengrotationbar.innerText = "Not Set";
+                    namharshaccelbar.innerText = "Not Set";
+                    namharshbrakingbar.innerText = "Not Set";
+                    weekly = [0, 0, 0, 0, 0, 0, 0];
+
+
                 }
-                
-          
+
+
+                var sel = document.getElementsByClassName(dve);
+
+                for (ind in sel) {
+                    if (ind < sel.length) {
+                        console.log(ind);
+                        sel[ind].style.boxShadow = "0px 25px 42px rgba(0, 0, 0, 0.5)";
+                    }
+                }
+
+
+
 
 
 
@@ -969,9 +1115,9 @@ switch(page){
                 // Sales overview
                 // ============================================================== 
                 var chart2 = new Chartist.Bar('.amp-pxl', {
-                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', "Sun"],
                     series: [
-                        [2, 5, 3, 7, 5, 10],
+                        weekly,
                         // [6, 3, 9, 5, 4, 6]
                     ]
                 }, {
@@ -1090,7 +1236,7 @@ switch(page){
                 // This is for the map
                 // ==============================================================
 
-                $('#usa').googleMap({
+                $('#usa').vectorMap({
                     map: 'us_aea_en',
                     backgroundColor: 'transparent',
                     zoomOnScroll: false,
@@ -1158,7 +1304,7 @@ switch(page){
                         , barWidth: '2'
                         , resize: true
                         , barSpacing: '6'
-                        , barColor: 'rgba(255, 255, 255, 0.3)'
+                        , barColor: 'rgba(255, 255, 255, 0.5)'
                     });
                 }
                 var sparkResize;
@@ -1176,12 +1322,12 @@ switch(page){
         });
 
     }
-    break;
+        break;
     case "indexUser.html": {
-
+        console.log("a;iurlvnfjtv");
 
     }
-    break;
+        break;
 
 }
 
@@ -1196,4 +1342,116 @@ function changeBarlog(data, but) {
     document.getElementById("rtdatasub").innerHTML = data;
 
 
+
 };
+
+var render = function (data, element) {
+    switch (data) {
+
+    }
+
+}
+
+// console.log(dve);
+function vwasset(data) {
+    document.getElementById('asset').innerText = data;
+    var se = document.getElementsByClassName(dve);
+    for (ind in se) {
+        if (ind < se.length) {
+            se[ind].style.boxShadow = "initial";
+        }
+    }
+    console.log(dve);
+    dve = data;
+    console.log(data);
+    se = document.getElementsByClassName(dve);
+    for (ind in se) {
+        if (ind < se.length) {
+            se[ind].style.boxShadow = "0px 25px 42px rgba(0, 0, 0, 0.5)";
+        }
+    }
+
+    if (userd) {
+        // document.getElementById("namuserovw").innerHTML = userd.device_data[data];
+        document.getElementById("sngnam").innerHTML = data;
+        document.getElementById("runningspeed").innerHTML = data;
+        document.getElementById("throttleopeningwidth").innerHTML = data;
+        document.getElementById("engineload").innerHTML = data;
+        document.getElementById("coolanttemperature").innerHTML = data;
+        document.getElementById("instantenousfuelconsumption").innerHTML = data;
+        document.getElementById("averagefuelconsumption").innerHTML = data;
+        document.getElementById("drivingrange").innerHTML = data;
+        document.getElementById("totalmileage").innerHTML = data;
+        document.getElementById("singlefuelconsumptionvol").innerHTML = data;
+        document.getElementById("totalfuelconsumptionvol").innerHTML = data;
+        document.getElementById("currenterrorcodenos").innerHTML = data;
+        document.getElementById("harshaccelerationno").innerHTML = data;
+        document.getElementById("harshbrakeno").innerHTML = data;
+        document.getElementById("batteryvoltage").innerHTML = data;
+        document.getElementById("enginespeed").innerHTML = data;
+    }
+    else {
+        document.getElementById("namuserovw").innerHTML = data;
+        document.getElementById("sngnam").innerHTML = data;
+        document.getElementById("runningspeed").innerHTML = data;
+        document.getElementById("throttleopeningwidth").innerHTML = data;
+        document.getElementById("engineload").innerHTML = data;
+        document.getElementById("coolanttemperature").innerHTML = data;
+        document.getElementById("instantenousfuelconsumption").innerHTML = data;
+        document.getElementById("averagefuelconsumption").innerHTML = data;
+        document.getElementById("drivingrange").innerHTML = data;
+        document.getElementById("totalmileage").innerHTML = data;
+        document.getElementById("singlefuelconsumptionvol").innerHTML = data;
+        document.getElementById("totalfuelconsumptionvol").innerHTML = data;
+        document.getElementById("currenterrorcodenos").innerHTML = data;
+        document.getElementById("harshaccelerationno").innerHTML = data;
+        document.getElementById("harshbrakeno").innerHTML = data;
+        document.getElementById("batteryvoltage").innerHTML = data;
+        document.getElementById("enginespeed").innerHTML = data;
+
+    }
+
+    // console.log("oadbv usdbca");
+};
+
+var getpcnt = function(name, amt){
+    var pcnt;
+    switch(name){
+        case "runningspeed" : {
+            pcnt = (amt/100) * 100;
+        }
+        break;
+        case "throttleopeningwidth": {
+            pcnt = (amt / 100) * 100;
+        }
+        break;
+        case "engineload": {
+            pcnt = (amt / 100) * 100;
+        }
+        break;
+        case "coolanttemperature": {
+            pcnt = (amt / 100) * 100;
+        }
+        break;
+        case "instantenousfuelconsumption": {
+            pcnt = (amt / 100) * 100;
+        }
+        break;
+        case "averagefuelconsumption": {
+            pcnt = (amt / 100) * 100;
+        }
+        break;
+        case "singlefuelconsumptionvol": {
+            pcnt = (amt / 100) * 100;
+        }
+        break;
+        case "totalfuelconsumptionvol": {
+            pcnt = (amt / 100) * 100;
+        }
+            break;
+    }
+    return pcnt.toString();
+
+};
+
+
