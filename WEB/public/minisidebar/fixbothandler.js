@@ -247,8 +247,7 @@ switch (page) {
     case "pages-login.html.htm": {
 
         if (emaill !== undefined && passwordd !== undefined) {
-            // document.getElementById("Uname").value = emaill;
-            // document.getElementById("Upass").value = passwordd;
+            
 
         }
 
