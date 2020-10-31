@@ -2,7 +2,6 @@
   "hosting": {
     "public": "public/minisidebar",
     "ignore": [
-      "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
