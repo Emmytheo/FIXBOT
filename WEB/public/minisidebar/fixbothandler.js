@@ -239,7 +239,7 @@ switch (page) {
 
 
 
-            return false
+            
         };
 
     }
@@ -329,7 +329,7 @@ switch (page) {
                 });
             });
         }
-
+        return false;
     }
         break;
     case "indexFixbotAdmin.html": {
