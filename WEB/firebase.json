@@ -9,15 +9,15 @@
     "rewrites": [ 
       {
         "source": "/",
-        "destination": "/minisidebar/index.html"
+        "destination": "/index.html"
       },
       {
         "source": "/login",
-        "destination": "/minisidebar/pages-login.html.htm"
+        "destination": "/pages-login.html.htm"
       },
       {
         "source": "/register",
-        "destination": "/minisidebar/register.html.htm"
+        "destination": "/register.html.htm"
       }
     ]
   }
