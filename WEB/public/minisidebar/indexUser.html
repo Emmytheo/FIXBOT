@@ -320,7 +320,7 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid container-sm-padless pt-1" id="mount-point" style="background: rgb(226, 230, 230)">
+            <div class="container-fluid container-sm-padless pt-2" id="mount-point" style="background: rgb(226, 230, 230)">
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
@@ -652,15 +652,14 @@
                 <template data-route="/dashboard/fleet">
                 <div class="row" id="namassets">
                     <!-- Column -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
+                    <div class="col-lg-4 col-md-6 mx-auto text-center">
+                        <div class="card ">
                             <div class="card-body">
                                 <div class="d-flex flex-row">
-                                    <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i>
+                                    <div class="round round-lg align-self-center round-info"><i class="mdi mdi-car"></i>
                                     </div>
                                     <div class="m-l-10 align-self-center">
-                                        <h3 class="m-b-0 font-light">CAR 1</h3>
-                                        <h5 class="text-muted m-b-0">Honda Civic 2020</h5>
+                                        <h3 class="m-b-0 font-light">Honda Civic 2020</h3>
                                     </div>
                                 </div>
                             </div>
@@ -778,14 +777,14 @@
                         <div class="card card-body" id="instantenousfuelconsumption"
                             onclick="changeBarlog('INSTANTENOUS FUEL CONSUMPTION', this)">
                             <!-- Row -->
-                            <div class="row">
+                            <div class="row pa-2">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
                                     <h4 class="text-muted">INSTANTENOUS FUEL CONSUMPTION</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right align-self-center">
+                                <div class="col-5 text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
                                 </div>
                             </div>
@@ -796,14 +795,14 @@
                         <div class="card card-body" id="averagefuelconsumption"
                             onclick="changeBarlog('AVERGAE FUEL CONSUMPTION', this)">
                             <!-- Row -->
-                            <div class="row">
+                            <div class="row pa-2">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center text-wrap">
                                     <h2 class="font-light m-b-0">36870</h2>
                                     <h4 class="text-muted">AVERGAE FUEL CONSUMPTION</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right align-self-center">
+                                <div class="col-5 text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
                                 </div>
                             </div>
@@ -852,12 +851,12 @@
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">1795</h2>
                                     <h4 class="text-muted">SINGLE FUEL CONSUMPTION VOL</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right ">
+                                <div class="col-5 text-right ">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-primary css-bar-40"></div>
                                 </div>
                             </div>
@@ -870,12 +869,12 @@
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
                                     <h4 class="text-muted">TOTAL FUEL CONSUMPTION VOL</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right align-self-center">
+                                <div class="col-5 text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
                                 </div>
                             </div>
@@ -906,12 +905,12 @@
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
                                     <h4 class="text-muted">NUMBER OF HARSH ACCELERATIONS</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right align-self-center">
+                                <div class="col-5 text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
                                 </div>
                             </div>
@@ -934,26 +933,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <a href="#dB">
-                            <div class="card card-body" id="drivingbehaviourdata"
-                                onclick="changeBarlog('DRIVING BEHAVIOUR DATA', this)">
-                                <!-- Row -->
-                                <div class="row">
-                                    <!-- Column -->
-                                    <div class="col p-r-0 align-self-center">
-                                        <h2 class="font-light m-b-0">DRIVING BEHAVIOUR DATA</h2>
-                                        <h4 class="text-muted">KNOW YOUR DRIVING PATTERN</h4>
-                                    </div>
-                                    <!-- Column -->
-                                    <!-- <div class="col text-right align-self-center">
-                                    <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
-                                </div> -->
-                                </div>
-                            </div>
-                        </a>
                     </div>
                 </div>
 
