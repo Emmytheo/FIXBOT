@@ -364,8 +364,8 @@ if(page.split(".").includes("register")){
     };
 }
 else if (page.split(".").includes("pages-login")) {
-    document.getElementById("Uname").value = "chidi.mgbara@gmail.com";
-    document.getElementById("Upass").value = "EMMYfinest@123";
+    // document.getElementById("Uname").value = "chidi.mgbara@gmail.com";
+    // document.getElementById("Upass").value = "EMMYfinest@123";
     emaill = document.getElementById("Uname").value;
     passwordd = document.getElementById("Upass").value;
     
