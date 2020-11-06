@@ -39,6 +39,7 @@ File: scss
     top: calc(50% - 3.5px);
     left: calc(50% - 3.5px); }
 
+
 /*
 Template Name: Material Pro Admin
 Author: Themedesigner
@@ -94,6 +95,7 @@ a.link {
 
 html body .mdi:before, html body .mdi-set {
   line-height: initial; }
+
 
 /*******************
 Headings
@@ -1785,6 +1787,10 @@ File: scss
   width: 60px;
   text-align: center; }
 
+  .red{
+    background-color: red !important;
+  }
+  
 .logo-center .top-navbar .navbar-header {
   position: absolute;
   left: 0;

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public/minisidebar",
+    "public": "public/minisidebar/",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -21,10 +21,18 @@
       },
       {
         "source": "/dashboard/**",
-        "destination": "/indexAdmin.html"
+        "destination": "/indexUser.html"
+      },
+      {
+        "source": "/dashboard",
+        "destination": "/indexUser.html"
       },
       {
         "source": "/admin-dashboard/**",
+        "destination": "/minisidebar/indexAdmin.html"
+      },
+      {
+        "source": "/admin-dashboard",
         "destination": "/minisidebar/indexAdmin.html"
       }
     ]
