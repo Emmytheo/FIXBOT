@@ -230,7 +230,7 @@
                         <li> 
                             <a 
                                 class="has-arrow waves-effect waves-dark" 
-                                href="#" aria-expanded="false"
+                                href="/dashboard" aria-expanded="false"
                             >
                                 <i class="mdi mdi-home"></i>
                                 <span class="hide-menu">Dashboard </span>
@@ -239,7 +239,7 @@
                         <li> 
                             <a 
                                 class="has-arrow waves-effect waves-dark" 
-                                href="#" aria-expanded="false"
+                                href="/dashboard/fleet" aria-expanded="false"
                             >
                                 <i class="mdi mdi-car"></i>
                                 <span class="hide-menu">Fleet </span>
@@ -252,10 +252,26 @@
                                 </li>
                             </ul>
                         </li>
+                        <li> 
+                            <a 
+                                class="has-arrow waves-effect waves-dark" 
+                                href="/dashboard/faults-alarms" aria-expanded="false"
+                            >
+                                <i class="mdi mdi-flash"></i>
+                                <span class="hide-menu">Faults and Alarms </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="index.html">
+                                        Volvo
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li > 
                             <a 
                                 class="has-arrow waves-effect waves-dark" 
-                                href="#" aria-expanded="false"
+                                href="/dashboard/locations" aria-expanded="false"
                             >
                                 <i class="mdi mdi-map-marker-multiple"></i>
                                 <span class="hide-menu">Locate Assets </span>
@@ -264,9 +280,9 @@
                         <li> 
                             <a 
                                 class="has-arrow waves-effect waves-dark" 
-                                href="#" aria-expanded="false"
+                                href="/dashboard/subscriptions" aria-expanded="false"
                             >
-                                <i class="mdi mdi-bank"></i>
+                                <i class="mdi mdi-cash-multiple"></i>
                                 <span class="hide-menu">Subscriptions </span>
                             </a>
                         </li>
@@ -304,7 +320,7 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid container-sm-padless" style="background: rgb(226, 230, 230)">
+            <div class="container-fluid container-sm-padless pt-2" id="mount-point" style="background: rgb(226, 230, 230)">
                 <!-- ============================================================== -->
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
@@ -315,6 +331,7 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
+                <template data-route="/dashboard">
                 <div class="row pt-3">
                     <!-- Column -->
                     <div class="col-lg-4 col-xlg-3 col-md-5">
@@ -582,73 +599,13 @@
                     </div>
                     <!-- Column -->
                 </div>
-                <h2 class="m-b-0 font-light">My Assets</h2>
+                </template>
+                
                 <!-- Row end -->
-                <div class="row" id="namassets">
-                    <!-- Column -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex flex-row">
-                                    <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i>
-                                    </div>
-                                    <div class="m-l-10 align-self-center">
-                                        <h3 class="m-b-0 font-light">CAR 1</h3>
-                                        <h5 class="text-muted m-b-0">Honda Civic 2020</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-
-                    <!-- Column -->
-                </div>
-                <!-- Row -->
-
-                <!-- Row -->
-                <!-- Row -->
+                <template data-route="/dashboard/locations">
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-4 col-xlg-3 col-md-5">
-                        <div class="card blog-widget">
-                            <div class="card-body">
-                                <div class="blog-image"><img src="/assets/images/big/img1.jpg" alt="img"
-                                        class="img-responsive" id="carnampic" />
-                                </div>
-                                <h3 id="sngnam">Honda Civic 2020 Model</h3>
-                                <label class="label label-rounded label-success" id="sngnamcond">Good Condition</label>
-                                <p class="m-t-20 m-b-20" id="sngnamdet">
-                                    Lorem ipsum dolor sit amet, this is a consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt
-                                    ut
-                                </p>
-                                <div class="d-flex">
-                                    <div class="read"><a href="javascript:void(0)" class="link font-medium">Read
-                                            More</a></div>
-                                    <div class="ml-auto">
-                                        <a href="javascript:void(0)" class="link m-r-10 " data-toggle="tooltip"
-                                            title="Like"><i class="mdi mdi-heart-outline"></i></a> <a
-                                            href="javascript:void(0)" class="link" data-toggle="tooltip"
-                                            title="Share"><i class="mdi mdi-share-variant"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="card blog-widget">
-                            <div class="card-body" style="height: 400px">
-                                <center>
-                                    <h3 class="card-title label-rounded label-success" style="color: white">3D Model
-                                    </h3>
-                                </center>
-                                <div id="namcarmodel"></div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <div class="col">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-wrap">
@@ -691,8 +648,24 @@
                         </div>
                     </div>
                 </div>
-
-
+                </template>
+                <template data-route="/dashboard/fleet">
+                <div class="row" id="namassets">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-md-6 mx-auto text-center">
+                        <div class="card ">
+                            <div class="card-body">
+                                <div class="d-flex flex-row">
+                                    <div class="round round-lg align-self-center round-info"><i class="mdi mdi-car"></i>
+                                    </div>
+                                    <div class="m-l-10 align-self-center">
+                                        <h3 class="m-b-0 font-light">Honda Civic 2020</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <!-- Column -->
@@ -804,14 +777,14 @@
                         <div class="card card-body" id="instantenousfuelconsumption"
                             onclick="changeBarlog('INSTANTENOUS FUEL CONSUMPTION', this)">
                             <!-- Row -->
-                            <div class="row">
+                            <div class="row pa-2">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
                                     <h4 class="text-muted">INSTANTENOUS FUEL CONSUMPTION</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right align-self-center">
+                                <div class="col-5 text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
                                 </div>
                             </div>
@@ -822,14 +795,14 @@
                         <div class="card card-body" id="averagefuelconsumption"
                             onclick="changeBarlog('AVERGAE FUEL CONSUMPTION', this)">
                             <!-- Row -->
-                            <div class="row">
+                            <div class="row pa-2">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center text-wrap">
                                     <h2 class="font-light m-b-0">36870</h2>
                                     <h4 class="text-muted">AVERGAE FUEL CONSUMPTION</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right align-self-center">
+                                <div class="col-5 text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
                                 </div>
                             </div>
@@ -878,12 +851,12 @@
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">1795</h2>
                                     <h4 class="text-muted">SINGLE FUEL CONSUMPTION VOL</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right ">
+                                <div class="col-5 text-right ">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-primary css-bar-40"></div>
                                 </div>
                             </div>
@@ -896,12 +869,12 @@
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
                                     <h4 class="text-muted">TOTAL FUEL CONSUMPTION VOL</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right align-self-center">
+                                <div class="col-5 text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
                                 </div>
                             </div>
@@ -932,12 +905,12 @@
                             <!-- Row -->
                             <div class="row">
                                 <!-- Column -->
-                                <div class="col p-r-0 align-self-center">
+                                <div class="col-7 p-r-0 align-self-center">
                                     <h2 class="font-light m-b-0">36870</h2>
                                     <h4 class="text-muted">NUMBER OF HARSH ACCELERATIONS</h4>
                                 </div>
                                 <!-- Column -->
-                                <div class="col text-right align-self-center">
+                                <div class="col-5 text-right align-self-center">
                                     <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
                                 </div>
                             </div>
@@ -960,26 +933,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Column -->
-                    <div class="col-md-6 col-lg-3">
-                        <a href="#dB">
-                            <div class="card card-body" id="drivingbehaviourdata"
-                                onclick="changeBarlog('DRIVING BEHAVIOUR DATA', this)">
-                                <!-- Row -->
-                                <div class="row">
-                                    <!-- Column -->
-                                    <div class="col p-r-0 align-self-center">
-                                        <h2 class="font-light m-b-0">DRIVING BEHAVIOUR DATA</h2>
-                                        <h4 class="text-muted">KNOW YOUR DRIVING PATTERN</h4>
-                                    </div>
-                                    <!-- Column -->
-                                    <!-- <div class="col text-right align-self-center">
-                                    <div data-label="40%" class="css-bar m-b-0 css-bar-danger css-bar-40"></div>
-                                </div> -->
-                                </div>
-                            </div>
-                        </a>
                     </div>
                 </div>
 
@@ -1147,65 +1100,6 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <!-- Column -->
-                        <div class="card">
-                            <div class="card-body bg-info">
-                                <h4 class="text-white card-title">Connected Phone Numbers</h4>
-                                <h6 class="card-subtitle text-white m-b-0 op-5"></h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="message-box contact-box">
-                                    <h2 class="add-ct-btn"><button type="button"
-                                            class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button>
-                                    </h2>
-                                    <div class="message-widget contact-widget">
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="/assets/images/users/1.jpg" alt="user"
-                                                    class="img-circle"> <span
-                                                    class="profile-status online pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc"><span class="__cf_email__"
-                                                        data-cfemail="147d7a727b5463667564647d6c71783a777b79">[Phone
-                                                        Number &#160;protected]</span></span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="/assets/images/users/2.jpg" alt="user"
-                                                    class="img-circle"> <span
-                                                    class="profile-status busy pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5> <span class="mail-desc"><span class="__cf_email__"
-                                                        data-cfemail="4e3e2f232b222f7f7776790e29232f2722602d2123">[Phone
-                                                        Number &#160;protected]</span></span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <span class="round">A</span> <span
-                                                    class="profile-status away pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Arijit Sinh</h5> <span class="mail-desc"><span class="__cf_email__"
-                                                        data-cfemail="c0a3b2b5a9b3a5f1f2f9f8eea6a9b0aca9b080a7ada1a9aceea3afad">[Phone
-                                                        Number &#160;protected]</span></span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#">
-                                            <div class="user-img"> <img src="/assets/images/users/4.jpg" alt="user"
-                                                    class="img-circle"> <span
-                                                    class="profile-status offline pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc"><span class="__cf_email__"
-                                                        data-cfemail="0b606a7f4b6c666a626725686466">[Phone Number
-                                                        &#160;protected]</span></span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Feeds</h4>
@@ -1238,159 +1132,9 @@
                         <!-- Column -->
                     </div>
                 </div>
+                </template>
                 <!-- Row -->
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <!-- card -->
-                        <div class="card m-b-0">
-                            <!-- .chat-row -->
-                            <div class="chat-main-box">
-                                <!-- .chat-left-panel -->
-                                <div class="chat-left-aside">
-                                    <div class="open-panel"><i class="ti-angle-right"></i></div>
-                                    <div class="chat-left-inner">
-                                        <div class="form-material">
-                                            <input class="form-control p-20" type="text" placeholder="Search Contact">
-                                        </div>
-                                        <ul class="chatonline style-none ">
-                                            <li>
-                                                <a href="javascript:void(0)"><img src="/assets/images/users/1.jpg"
-                                                        alt="user-img" class="img-circle"> <span>Varun Dhavan <small
-                                                            class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" class="active"><img
-                                                        src="/assets/images/users/2.jpg" alt="user-img"
-                                                        class="img-circle"> <span>Genelia Deshmukh <small
-                                                            class="text-warning">Away</small></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"><img src="/assets/images/users/3.jpg"
-                                                        alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small
-                                                            class="text-danger">Busy</small></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"><img src="/assets/images/users/4.jpg"
-                                                        alt="user-img" class="img-circle"> <span>Arijit Sinh <small
-                                                            class="text-muted">Offline</small></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"><img src="/assets/images/users/5.jpg"
-                                                        alt="user-img" class="img-circle"> <span>Govinda Star <small
-                                                            class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"><img src="/assets/images/users/6.jpg"
-                                                        alt="user-img" class="img-circle"> <span>John Abraham<small
-                                                            class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"><img src="/assets/images/users/7.jpg"
-                                                        alt="user-img" class="img-circle"> <span>Hritik Roshan<small
-                                                            class="text-success">online</small></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"><img src="/assets/images/users/8.jpg"
-                                                        alt="user-img" class="img-circle"> <span>Pwandeep rajan <small
-                                                            class="text-success">online</small></span></a>
-                                            </li>
-                                            <li class="p-20"></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- .chat-left-panel -->
-                                <!-- .chat-right-panel -->
-                                <div class="chat-right-aside">
-                                    <div class="chat-main-header">
-                                        <div class="p-20 b-b">
-                                            <h3 class="box-title">Chat Message</h3>
-                                        </div>
-                                    </div>
-                                    <div class="chat-rbox">
-                                        <ul class="chat-list p-20">
-                                            <!--chat Row -->
-                                            <li>
-                                                <div class="chat-img"><img src="/assets/images/users/1.jpg"
-                                                        alt="user" /></div>
-                                                <div class="chat-content">
-                                                    <h5>James Anderson</h5>
-                                                    <div class="box bg-light-info">Lorem Ipsum is simply dummy text of
-                                                        the printing & type
-                                                        setting industry.</div>
-                                                </div>
-                                                <div class="chat-time">10:56 am</div>
-                                            </li>
-                                            <!--chat Row -->
-                                            <li>
-                                                <div class="chat-img"><img src="/assets/images/users/2.jpg"
-                                                        alt="user" /></div>
-                                                <div class="chat-content">
-                                                    <h5>Bianca Doe</h5>
-                                                    <div class="box bg-light-success">It’s Great opportunity to work.
-                                                    </div>
-                                                </div>
-                                                <div class="chat-time">10:57 am</div>
-                                            </li>
-                                            <!--chat Row -->
-                                            <li class="reverse">
-                                                <div class="chat-time">10:57 am</div>
-                                                <div class="chat-content">
-                                                    <h5>Steave Doe</h5>
-                                                    <div class="box bg-light-inverse">It’s Great opportunity to work.
-                                                    </div>
-                                                </div>
-                                                <div class="chat-img"><img src="/assets/images/users/5.jpg"
-                                                        alt="user" /></div>
-                                            </li>
-                                            <!--chat Row -->
-                                            <li class="reverse">
-                                                <div class="chat-time">10:57 am</div>
-                                                <div class="chat-content">
-                                                    <h5>Steave Doe</h5>
-                                                    <div class="box bg-light-inverse">It’s Great opportunity to work.
-                                                    </div>
-                                                </div>
-                                                <div class="chat-img"><img src="/assets/images/users/5.jpg"
-                                                        alt="user" /></div>
-                                            </li>
-                                            <!--chat Row -->
-                                            <li>
-                                                <div class="chat-img"><img src="/assets/images/users/3.jpg"
-                                                        alt="user" /></div>
-                                                <div class="chat-content">
-                                                    <h5>Angelina Rhodes</h5>
-                                                    <div class="box bg-light-primary">Well we have good budget for the
-                                                        project</div>
-                                                </div>
-                                                <div class="chat-time">11:00 am</div>
-                                            </li>
-                                            <!--chat Row -->
-                                        </ul>
-                                    </div>
-                                    <div class="card-body b-t">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <textarea placeholder="Type your message here"
-                                                    class="form-control b-0"></textarea>
-                                            </div>
-                                            <div class="col-4 text-right">
-                                                <button type="button" class="btn btn-info btn-circle btn-lg"><i
-                                                        class="fas fa-paper-plane"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- .chat-right-panel -->
-                            </div>
-                            <!-- /.chat-row -->
-                        </div>
-                        <!-- card -->
-                        <br>
-                    </div>
-                </div>
-                <br>
-                <!-- Row -->
+                <template data-route="/dashboard/faults-alarms">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="card">
@@ -1565,89 +1309,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Row -->
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <div class="right-sidebar">
-                    <div class="slimscrollright">
-                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span>
-                        </div>
-                        <div class="r-panel-body">
-                            <ul id="themecolors" class="m-t-20">
-                                <li><b>With Light sidebar</b></li>
-                                <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
-                                <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
-                                <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
-                                <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
-                                <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
-                                <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
-                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
-                                <li><a href="javascript:void(0)" data-theme="default-dark"
-                                        class="default-dark-theme">7</a></li>
-                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a>
-                                </li>
-                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
-                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a>
-                                </li>
-                                <li><a href="javascript:void(0)" data-theme="purple-dark"
-                                        class="purple-dark-theme">11</a></li>
-                                <li><a href="javascript:void(0)" data-theme="megna-dark"
-                                        class="megna-dark-theme ">12</a></li>
-                            </ul>
-                            <ul class="m-t-20 chatonline">
-                                <li><b>Chat option</b></li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/assets/images/users/1.jpg" alt="user-img"
-                                            class="img-circle"> <span>Varun Dhavan <small
-                                                class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/assets/images/users/2.jpg" alt="user-img"
-                                            class="img-circle"> <span>Genelia Deshmukh <small
-                                                class="text-warning">Away</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/assets/images/users/3.jpg" alt="user-img"
-                                            class="img-circle"> <span>Ritesh Deshmukh <small
-                                                class="text-danger">Busy</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/assets/images/users/4.jpg" alt="user-img"
-                                            class="img-circle"> <span>Arijit Sinh <small
-                                                class="text-muted">Offline</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/assets/images/users/5.jpg" alt="user-img"
-                                            class="img-circle"> <span>Govinda Star <small
-                                                class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/assets/images/users/6.jpg" alt="user-img"
-                                            class="img-circle"> <span>John Abraham<small
-                                                class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/assets/images/users/7.jpg" alt="user-img"
-                                            class="img-circle"> <span>Hritik Roshan<small
-                                                class="text-success">online</small></span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><img src="/assets/images/users/8.jpg" alt="user-img"
-                                            class="img-circle"> <span>Pwandeep rajan <small
-                                                class="text-success">online</small></span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
+                </template>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -1655,7 +1317,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer">
+            <footer class="footer  d-block mx-auto text-center">
                 © 2020 FIXBOT Admin Dashboard by myfixbot.com
             </footer>
             <!-- ============================================================== -->
@@ -1712,7 +1374,9 @@
     <script src="/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="/assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
     <script src="/minisidebar/js/dashboard3.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jqueryrouter@2.2.11/dist/js/jquery.router.min.js"></script>
+    <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/silkrouter@4.1.1/dist/umd/silkrouter.min.js"></script>
+    <script src="/minisidebar/js/dashboard-pager.js"></script>
     <script type="text/javascript">
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         
@@ -1735,13 +1399,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
-    <script>
-
-
-
-
-
-    </script>
     <script src="fixbothandler.js"></script>
 
 
