@@ -14,7 +14,7 @@ var dri = firebase.database().ref().child("public/FIXBOT/Registered devices/");
 var page = window.location.href.split('/')[window.location.href.split('/').length - 1];
 
 var dve;
-
+var prid;
 
 console.log(page);
 var userinfo;
@@ -42,18 +42,18 @@ if(page.split(".").includes("register")){
         var phone = document.getElementById('phone').value;
         var passed = true;
         // console.log(ids.split(",").length)
-        
-        fullname = "Mgbaramuko Chidiebube Emmanuel";
-        email = "chidi.mgbara@gmail.com";
-        username = "Emmytheo";
-        password = "EMMYfinest@123";
-        confpass = "EMMYfinest@123";
-        ids = '359197080045546,';
-        dob = '7/12/1999';
-        phone = "07089602044";
-        street = "No 13 Nnokwa Street,";
-        city = "Umuahia";
-        state = "Abia State";
+        var done;
+        // fullname = "Mgbaramuko Chidiebube Emmanuel";
+        // email = "chidi.mgbara@fixbot.com";
+        // username = "Emmytheo247";
+        // password = "EMMYfinest@123";
+        // confpass = "EMMYfinest@123";
+        // ids = '359197080045546,';
+        // dob = '7/12/1999';
+        // phone = "07089602044";
+        // street = "No 13 Nnokwa Street,";
+        // city = "Umuahia";
+        // state = "Abia State";
 
 
         
@@ -190,10 +190,12 @@ if(page.split(".").includes("register")){
 
         if (passed) {
             console.log(passed);
+            done = passed;
             if (userinfo.email !== undefined && userinfo.password !== undefined) {
                 
                 firebase.auth().createUserWithEmailAndPassword(userinfo.email, userinfo.password).catch(function (error) {
                     if (error) {
+                        done = false;
                         var errorCode = error.code;
                         var errorMessage = error.message;
 
@@ -236,76 +238,120 @@ if(page.split(".").includes("register")){
                             document.getElementById("net").innerText = "";
 
                         }
-                        return false;
-                    }
-                }).then(function () {
-                    
-                    firebase.auth().signInWithEmailAndPassword(userinfo.email, userinfo.password).catch(function (error) {
-                        // Handle Errors here.
-                        var errorCod = error.code;
-                        var errorMessag = error.message;
-                        console.log("Error Code : " + errorCod);
-                        console.log("Error Message : " + errorMessag);
-                        return false;
-
-                    }).then(function () {
-                        console.log("Signing in");
                         
-                        firebase.auth().onAuthStateChanged(function (user) {
-                            if (user) {
+                    }
+                    else{
+                        done = true;
+                    }
+                }).then(function (){
+                    if(done){
+                        firebase.auth().signInWithEmailAndPassword(userinfo.email, userinfo.password).catch(function (error) {
+                            // Handle Errors here.
+                            
+                            var errorCod = error.code;
+                            var errorMessag = error.message;
+                            console.log("Error Code : " + errorCod);
+                            console.log("Error Message : " + errorMessag);
+                            if (error) {
+                                done = false;
+                            }
+                            else {
+                                done = true;
                                 
-                                // User is signed in.
-                                user.updateProfile({
-                                    displayName: userinfo.username,
-                                    email: userinfo.email
-                                }).catch(function (error) {
-                                    var errorCo = error.code;
-                                    var errorMessa = error.message;
-                                    console.log("Error Code : " + errorCo);
-                                    console.log("Error Message : " + errorMessa);
-                                    return false;
-                                    
-                                }).then(function () {
-                                    var prid;
-                                    user.providerData.forEach(function (profile) {
-                                        console.log("Sign-in provider: " + profile.providerId);
-                                        console.log("  Provider-specific UID: " + profile.uid);
-                                        console.log("  Name: " + profile.displayName);
-                                        console.log("  Email: " + profile.email);
-                                        // console.log("  Photo URL: " + profile.photoURL);
-                                        prid = profile.uid;
-                                    });
-                                    var dir = firebase.database().ref().child("public/FIXBOT/Accounts/");
-                                    dir = dir.child(prid);
-                                    dir.update(userinfo);
-                                    // console.log(email);
-                                    console.log("Logging in");    
+                            }
 
-                                    
-                                    document.getElementById("net").innerText = "Registration Complete";
 
-                                    }).catch(function (error) {
-                                        // document.getElementById("net").innerText = error.message;
-                                        console.log(error.message);
+                        }).then(function (){
+                            if(done){
+                                console.log("Signing in");
+
+                                firebase.auth().onAuthStateChanged(function (user) {
+                                    if (user) {
+
+                                        // User is signed in.
+                                        user.updateProfile({
+                                            displayName: userinfo.username,
+                                            email: userinfo.email
+                                        }).catch(function (error) {
+                                            if (error) {
+                                                done = false;
+                                                var errorCo = error.code;
+                                                var errorMessa = error.message;
+                                                console.log("Error Code : " + errorCo);
+                                                console.log("Error Message : " + errorMessa);
+                                                document.getElementById("net").innerText = errorMessage;
+                                            }
+                                            else {
+                                                done = true;
+                                                
+                                            }
+
+
+                                        }).then(function(){
+                                            
+                                            user.providerData.forEach(function (profile) {
+                                                console.log("Sign-in provider: " + profile.providerId);
+                                                console.log("  Provider-specific UID: " + profile.uid);
+                                                console.log("  Name: " + profile.displayName);
+                                                console.log("  Email: " + profile.email);
+                                                // console.log("  Photo URL: " + profile.photoURL);
+                                                prid = profile.displayName;
+                                                return;
+                                            })
+                                            
+                                        }).catch(function (error){
+                                            if(error){
+                                                done = false;
+                                                var errorCo = error.code;
+                                                var errorMessa = error.message;
+                                                console.log("Error Code : " + errorCo);
+                                                console.log("Error Message : " + errorMessa);
+                                                document.getElementById("net").innerText = errorMessage;
+                                            }
+                                            else{
+                                                console.log("ksufvulairfbarf");
+                                                done = true;
+                                            }
+
+                                        }).then(function(){
+                                            if(done){
+                                                console.log(prid);
+                                                var dir = firebase.database().ref().child("public/FIXBOT/Accounts/");
+                                                dir = dir.child(prid);
+                                                dir.update(userinfo);
+                                                // console.log(email);
+                                                console.log("Logging in");
+                                                console.log("Logging Done");
+
+
+
+                                                document.getElementById("net").innerText = "Registration Complete";
+                                                window.localStorage.setItem('emailForSignIn', userinfo.email);
+                                                window.localStorage.setItem('passwordForSignIn', userinfo.password);
+                                                console.log("Logging Done");
+                                                // window.location.assign("pages-login.html.htm");
+                                            }
+                                        })
+                                    } else {
+
+                                        console.log("Not working");
+                                        document.getElementById("net").innerText = errorMessage;
                                         return false;
+                                        // No user is signed in.
+                                    }
+                                })
 
-                                        // An error happened.
-                                    }).then(function () {
-                                        console.log("Logging Done");
-                                        
-                                        window.localStorage.setItem('emailForSignIn', userinfo.email);
-                                        window.localStorage.setItem('passwordForSignIn', userinfo.password);
-                                        window.location.assign("pages-login.html.htm");
-                                    });
-                            } else {
-                                document.getElementById("net").innerText = errorMessage;
-                                
-                                // No user is signed in.
+                            }
+                            else{
+
                             }
                         })
-                    });
-
-                });
+                    }
+                    else{
+                        return;
+                    }
+                    
+                })
 
             }
 
@@ -318,7 +364,7 @@ if(page.split(".").includes("register")){
     };
 }
 else if (page.split(".").includes("pages-login")) {
-    document.getElementById("Uname").value = "chidi.mgbara@fixbot.com";
+    document.getElementById("Uname").value = "chidi.mgbara@gmail.com";
     document.getElementById("Upass").value = "EMMYfinest@123";
     emaill = document.getElementById("Uname").value;
     passwordd = document.getElementById("Upass").value;
@@ -365,7 +411,7 @@ else if (page.split(".").includes("pages-login")) {
                     user.providerData.forEach(function (profile) {
                         userdata.username = profile.displayName;
                         userdata.email = profile.email;
-                        userdata.providerid = profile.providerId;
+                        userdata.uid = profile.uid;
                         // userdata.gender = profile.gender;
                         // userdata.plan = profile.plan;
                         // userdata.cls = profile.cls;
