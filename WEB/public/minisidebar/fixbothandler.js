@@ -21,45 +21,74 @@ var userinfo;
 var userd;
 if(page.split(".").includes("register")){
     // console.log(document.getElementById('country').value);
-    var fullname = document.getElementById('fullname').value;
-    var dob = document.getElementById('dob').value;
-    var email = document.getElementById('email').value;
-    var gender = document.getElementById('gender').value;
-    var plan = document.getElementById('plan').value;
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    var confpass = document.getElementById('confpass').value;
-    var cls = document.getElementById('cls').value;
-    var ids = document.getElementById('ids').value;
-    var cnames = document.getElementById('cnames').value;
-    var street = document.getElementById('street').value;
-    var city = document.getElementById('city').value;
-    var state = document.getElementById('state').value;
-    var country = document.getElementById('country').value;
-    var phone = document.getElementById('phone').value;
-    var passed = true;
+    
+    console.log("aulbvfiuakejs");
     //console.log(document.getElementById('country').value);
     document.getElementById('regform').onsubmit = function () {
+        var fullname = document.getElementById('fullname').value;
+        var dob = document.getElementById('dob').value;
+        var email = document.getElementById('email').value;
+        var gender = document.getElementById('gender').value;
+        var plan = document.getElementById('plan').value;
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var confpass = document.getElementById('confpass').value;
+        var cls = document.getElementById('cls').value;
+        var ids = document.getElementById('ids').value;
+        var street = document.getElementById('street').value;
+        var city = document.getElementById('city').value;
+        var state = document.getElementById('state').value;
+        var country = document.getElementById('country').value;
+        var phone = document.getElementById('phone').value;
+        var passed = true;
+        // console.log(ids.split(",").length)
         
+        fullname = "Mgbaramuko Chidiebube Emmanuel";
+        email = "chidi.mgbara@fixbot.com";
+        username = "Emmytheo";
+        password = "EMMYfinest@123";
+        confpass = "EMMYfinest@123";
+        ids = '359197080045546,';
+        dob = '7/12/1999';
+        phone = "07089602044";
+        street = "No 13 Nnokwa Street,";
+        city = "Umuahia";
+        state = "Abia State";
+
+
         
-        
+        if (confpass !== "" || email !== ""){
+            if (email.split("@").includes("fixbot.com")) {
+                if (cls == "FixbotAdmin") {
+                    passed = true;
+                    $('#classs').removeClass('has-danger');
+                    document.getElementById("adm").innerText = "You're Good to Go";
+                    $('#classs').addClass('has-success');
+                }
+                else {
+                    passed = false;
+                    $('#classs').addClass('has-danger');
+                    document.getElementById("adm").innerText = "You're not allowed to Choose this Option, Switch to a different Class";
+                    return false;
 
+                }
+            }
+            if (!email.split("@").includes("fixbot.com")) {
+                if (cls == "FixbotAdmin") {
+                    passed = false;
+                    $('#classs').addClass('has-danger');
+                    document.getElementById("adm").innerText = "You're not allowed to Choose this Option, Switch to a different Class";
+                    console.log(cls);
+                    return false;
+                }
+                else {
+                    passed = true;
+                    $('#classs').removeClass('has-danger');
+                    document.getElementById("adm").innerText = "You're Good to Go";
+                    $('#classs').addClass('has-success');
+                }
 
-        // if (admins.includes(email) == false) {
-        //     $('#classs').addClass('has-danger');
-        //     document.getElementById("adm").innerText = "You're not allowed to Choose this Option, Switch to a different Class";
-        //     passed = !passed;
-        //     //return false;
-
-        // }
-        // if (admins.includes(email) == true) {
-        //     $('#classs').removeClass('has-danger');
-        //     document.getElementById("adm").innerText = "You're Good to Go";
-        //     $('#classs').addClass('has-success');
-        //     passed = true;
-
-        // }
-        if(confpass !== null){
+            }
             if (confpass != password) {
                 $('.pass').addClass('has-danger');
                 var el = document.getElementsByClassName("passtxt");
@@ -69,9 +98,10 @@ if(page.split(".").includes("register")){
                     el[i].innerText = "Passwords don't Match";
                 }
                 passed = !passed;
+                return false;
 
             }
-            else if (confpass == password) {
+            if (confpass == password) {
                 $('.pass').removeClass('has-danger');
                 $('.pass').addClass('has-success');
                 var el = document.getElementsByClassName("passtxt");
@@ -83,10 +113,55 @@ if(page.split(".").includes("register")){
                 }
                 passed = true;
             }
+            if (password.length < 5) {
+                $('.pass').addClass('has-danger');
+                var el = document.getElementsByClassName("passtxt");
+
+
+                for (var i = 0; i < el.length; i++) {
+                    el[i].innerText = "Passwords Must be atleast 6 Characters Long";
+                }
+                passed = !passed;
+                return false;
+
+            }
+            if (password.length > 5) {
+                $('.pass').removeClass('has-danger');
+                $('.pass').addClass('has-success');
+                var el = document.getElementsByClassName("passtxt");
+                // console.log(el.length);
+
+
+                for (var i = 0; i < el.length; i++) {
+                    el[i].innerText = "Password Strength Okay";
+                }
+                passed = true;
+
+            }
+            
+
+            if (ids.split(",").length < 2) {
+                passed = false;
+                $('#idtxt').addClass('has-danger');
+                document.getElementById("idtxte").innerText = "Use atleast One Device";
+                console.log(cls);
+                return false;
+
+            }
+            else {
+                passed = true;
+                $('#idtxt').removeClass('has-danger');
+                document.getElementById("idtxte").innerText = "You're Good to Go";
+                $('#classs').addClass('has-success');
+            }
+
             
         }
         else{
             passed = false;
+            return false;
+            
+            
         }
         
 
@@ -107,7 +182,7 @@ if(page.split(".").includes("register")){
             'state': state,
             'country': country,
             'deviceids': ids,
-            'Car names': cnames,
+            // 'Car names': cnames,
             'phone': phone
 
         }
@@ -116,7 +191,7 @@ if(page.split(".").includes("register")){
         if (passed) {
             console.log(passed);
             if (userinfo.email !== undefined && userinfo.password !== undefined) {
-                console.log(userinfo.email);
+                
                 firebase.auth().createUserWithEmailAndPassword(userinfo.email, userinfo.password).catch(function (error) {
                     if (error) {
                         var errorCode = error.code;
@@ -130,115 +205,105 @@ if(page.split(".").includes("register")){
                             document.getElementById("eml").innerText = errorMessage;
                             $("#emll").addClass('has-danger');
                         }
-                        else if (err[err.length - 1].search('email') == -1) {
+                        if (err[err.length - 1].search('email-') == -1) {
                             document.getElementById("eml").innerText = "You're Good To Go";
                             $("#emll").removeClass("has-danger");
                             $("#emll").addClass("has-success");
                         }
-                        else if (err[err.length - 1].search('password') !== -1) {
+                        if (err[err.length - 1].search('email-') !== -1) {
+                            document.getElementById("eml").innerText = errorMessage;
+                            $("#emll").addClass('has-danger');
+                        }
+                        if (err[err.length - 1].search('email') == -1) {
+                            document.getElementById("eml").innerText = "You're Good To Go";
+                            $("#emll").removeClass("has-danger");
+                            $("#emll").addClass("has-success");
+                        }
+                        if (err[err.length - 1].search('password') !== -1) {
                             document.getElementById("pss").innerText = errorMessage;
                             $(".pass").addClass("has-danger");
                         }
 
-                        else if (err[err.length - 1].search('password') == -1) {
+                        if (err[err.length - 1].search('password') == -1) {
                             document.getElementById("pss").innerText = "You're Good to Go";
                             $(".pass").removeClass("has-danger");
                         }
-                        else if (err[err.length - 1].search('network') !== -1) {
+                        if (err[err.length - 1].search('network-request-failed') !== -1) {
                             document.getElementById("net").innerText = errorMessage;
 
                         }
-                        else if (err[err.length - 1].search('network') == -1) {
+                        if (err[err.length - 1].search('network-request-failed') == -1) {
                             document.getElementById("net").innerText = "";
 
                         }
-                    }
-                    else{
-                        firebase.auth().signInWithEmailAndPassword(userinfo.email, userinfo.password).catch(function (error) {
-                            // Handle Errors here.
-                            var errorCod = error.code;
-                            var errorMessag = error.message;
-
-                            // ...
-                            if (error) {
-                                console.log("Error Code : " + errorCod);
-                                console.log("Error Message : " + errorMessag);
-                            }
-
-                        }).then(function () {
-                            firebase.auth().onAuthStateChanged(function (user) {
-                                if (user) {
-                                    // User is signed in.
-                                    user.updateProfile({
-                                        displayName: userinfo.username,
-                                        fullname: userinfo.fullname,
-                                        email: userinfo.email,
-                                        gender: userinfo.gender,
-                                        plan: userinfo.plan,
-                                        password: userinfo.password,
-                                        dob: userinfo.dob,
-                                        cls: userinfo.cls,
-                                        street: userinfo.street,
-                                        city: userinfo.city,
-                                        state: userinfo.state,
-                                        country: userinfo.country,
-                                        deviceids: userinfo.ids,
-                                        carnames: userinfo.cnames,
-                                        Imeis: userinfo.imeis,
-                                        phone: userinfo.phone
-
-                                    }).catch(function (error) {
-                                        var errorCo = error.code;
-                                        var errorMessa = error.message;
-
-                                        // ...
-                                        if (error) {
-                                            console.log("Error Code : " + errorCo);
-                                            console.log("Error Message : " + errorMessa);
-                                        }
-                                    }).then(
-                                        function () {
-                                            if (userinfo.cls == 'FixbotAdmin') {
-                                                var dir = firebase.database().ref().child("public/FIXBOT/FIXBOT ADMINS/");
-                                                dir.update(userinfo);
-                                            }
-                                            if (userinfo.cls == 'Admin') {
-                                                var dir = firebase.database().ref().child("public/FIXBOT/GROUP ADMINS/");
-                                                dir.update(userinfo);
-                                            }
-                                            if (userinfo.cls == 'User') {
-                                                var dir = firebase.database().ref().child("public/FIXBOT/SINGLE USERS/");
-                                                dir.update(userinfo);
-                                            }
-
-                                            document.getElementById("net").innerText = "";
-                                            user.providerData.forEach(function (profile) {
-                                                console.log("Sign-in provider: " + profile.providerId);
-                                                console.log("  Provider-specific UID: " + profile.uid);
-                                                console.log("  Name: " + profile.displayName);
-                                                console.log("  Email: " + profile.email);
-                                                console.log("  Photo URL: " + profile.photoURL);
-                                            });
-
-                                        }).catch(function (error) {
-                                            if (error) {
-                                                document.getElementById("net").innerText = error;
-                                            }
-
-                                            // An error happened.
-                                        }).then(function () {
-                                            window.localStorage.setItem('emailForSignIn', userinfo.email);
-                                            window.localStorage.setItem('passwordForSignIn', userinfo.password);
-                                            window.location.assign("pages-login.html.htm");
-                                        });
-                                } else {
-                                    document.getElementById("net").innerText = errorMessage;
-                                    // No user is signed in.
-                                }
-                            })
-                        });
+                        return false;
                     }
                 }).then(function () {
+                    
+                    firebase.auth().signInWithEmailAndPassword(userinfo.email, userinfo.password).catch(function (error) {
+                        // Handle Errors here.
+                        var errorCod = error.code;
+                        var errorMessag = error.message;
+                        console.log("Error Code : " + errorCod);
+                        console.log("Error Message : " + errorMessag);
+                        return false;
+
+                    }).then(function () {
+                        console.log("Signing in");
+                        
+                        firebase.auth().onAuthStateChanged(function (user) {
+                            if (user) {
+                                
+                                // User is signed in.
+                                user.updateProfile({
+                                    displayName: userinfo.username,
+                                    email: userinfo.email
+                                }).catch(function (error) {
+                                    var errorCo = error.code;
+                                    var errorMessa = error.message;
+                                    console.log("Error Code : " + errorCo);
+                                    console.log("Error Message : " + errorMessa);
+                                    return false;
+                                    
+                                }).then(function () {
+                                    var prid;
+                                    user.providerData.forEach(function (profile) {
+                                        console.log("Sign-in provider: " + profile.providerId);
+                                        console.log("  Provider-specific UID: " + profile.uid);
+                                        console.log("  Name: " + profile.displayName);
+                                        console.log("  Email: " + profile.email);
+                                        // console.log("  Photo URL: " + profile.photoURL);
+                                        prid = profile.uid;
+                                    });
+                                    var dir = firebase.database().ref().child("public/FIXBOT/Accounts/");
+                                    dir = dir.child(prid);
+                                    dir.update(userinfo);
+                                    // console.log(email);
+                                    console.log("Logging in");    
+
+                                    
+                                    document.getElementById("net").innerText = "Registration Complete";
+
+                                    }).catch(function (error) {
+                                        // document.getElementById("net").innerText = error.message;
+                                        console.log(error.message);
+                                        return false;
+
+                                        // An error happened.
+                                    }).then(function () {
+                                        console.log("Logging Done");
+                                        
+                                        window.localStorage.setItem('emailForSignIn', userinfo.email);
+                                        window.localStorage.setItem('passwordForSignIn', userinfo.password);
+                                        window.location.assign("pages-login.html.htm");
+                                    });
+                            } else {
+                                document.getElementById("net").innerText = errorMessage;
+                                
+                                // No user is signed in.
+                            }
+                        })
+                    });
 
                 });
 
@@ -253,31 +318,35 @@ if(page.split(".").includes("register")){
     };
 }
 else if (page.split(".").includes("pages-login")) {
-    if (emaill !== undefined && passwordd !== undefined) {
-
-
-    }
+    document.getElementById("Uname").value = "chidi.mgbara@fixbot.com";
+    document.getElementById("Upass").value = "EMMYfinest@123";
+    emaill = document.getElementById("Uname").value;
+    passwordd = document.getElementById("Upass").value;
+    
+    console.log(emaill);
+    
+    
 
 
     document.getElementById('loginform').onsubmit = function () {
+        console.log(emaill);
         document.getElementById("note").innerHTML = "Signing you in, please be patient";
         firebase.auth().signInWithEmailAndPassword(emaill, passwordd).catch(function (error) {
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
-            if (error) {
-                console.log("Error Code : " + errorCode);
-                console.log("Error Message : " + errorMessage);
-                document.getElementById("note").innerHTML = "Sign Error, please reload page and sign in again.";
-            }
-            else {
-                document.getElementById("note").innerHTML = "Signed In, Fetching your data";
-
-            }
+            console.log("Error Code : " + errorCode);
+            console.log("Error Message : " + errorMessage);
+            document.getElementById("note").innerHTML = errorMessage;
+            
+            
         }).then(function () {
+            
+            
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
+                    
                     var userdata = {
                         'username': '',
                         'fullname': '',
@@ -289,41 +358,64 @@ else if (page.split(".").includes("pages-login")) {
                         'cls': '',
                         'dob': '',
                         'devices': '',
-                        'device_data': ''
+                        'device_data': {},
+                        "providerid" : ""
                     }
+                    var dta;
                     user.providerData.forEach(function (profile) {
                         userdata.username = profile.displayName;
-                        userdata.fullname = profile.fullname;
                         userdata.email = profile.email;
-                        userdata.phone = profile.phone;
-                        userdata.gender = profile.gender;
-                        userdata.plan = profile.plan;
-                        userdata.cls = profile.cls;
-                        userdata.dob = profile.dob;
-                        userdata.devices = profile.deviceids.split(',');
-                        userdata.address = profile.street + ', ' + profile.city + ", " + profile.state + ', ' + profile.country;
+                        userdata.providerid = profile.providerId;
+                        // userdata.gender = profile.gender;
+                        // userdata.plan = profile.plan;
+                        // userdata.cls = profile.cls;
+                        // userdata.dob = profile.dob;
+                        // userdata.devices = profile.deviceids.split(',');
+                        // userdata.address = profile.street + ', ' + profile.city + ", " + profile.state + ', ' + profile.country;
                     });
-                    userd = userdata;
-                    for (id in userd.devices) {
-                        if (typeof (id) !== undefined) {
-                            userd.device_data[userd.devices[id]] = firebase.database().ref().child("public/FIXBOT/Registered devices/" + userd.devices[id]);
+                    var dir = firebase.database().ref().child("public/FIXBOT/Accounts/");
+                    dir.child(userdata.uid).on("value", function(snap) {
+                        dta = snap.val();
+                        
+
+
+                    }).then(function(){
+                        userdata.username = dta.username;
+                        userdata.email = dta.email;
+                        userdata.gender = dta.gender;
+                        userdata.plan = dta.plan;
+                        userdata.cls = dta.cls;
+                        userdata.dob = dta.dob;
+                        userdata.devices = dta.deviceids;
+                        userdata.address = dta.street + ', ' + dta.city + ", " + dta.state + ', ' + dta.country;
+                        userdata.phone = dta.phone;
+                        userdata.fullname = dta.fullname;
+
+                    }).then(function (){
+                        userd = userdata;
+                        console.log(userd);
+                        document.getElementById("note").innerHTML = "Signed In, Fetching your data";
+                        for (id in userd.deviceids.split(",")) {
+                            if (typeof (id) !== undefined) {
+                                userd.device_data[id] = firebase.database().ref().child("public/FIXBOT/Registered devices/" + id); 
+                            }
                         }
-                    }
-                    document.getElementById("note").innerHTML = "Data Fetch Successful, Preparing The Dashboard";
-                    switch (userd.cls.toLowerCase()) {
-                        case "fixbotadmin": {
-                            window.location.assign("indexFixbotAdmin.html");
+                        document.getElementById("note").innerHTML = "Data Fetch Successful, Preparing The Dashboard";
+                    // console.log(userd);
+                        switch (userd.cls.toLowerCase()) {
+                            case "fixbotadmin": {
+                                window.location.assign("indexFixbotAdmin.html");
+                            }
+                                break;
+                            case "admin": {
+                                window.location.assign("indexAdmin.html");
+                            }
+                                break;
                         }
-                            break;
-                        case "admin": {
-                            window.location.assign("indexAdmin.html");
-                        }
-                            break;
-                        case "user": {
-                            window.location.assign("indexUser.html");
-                        }
-                            break;
-                    }
+                    })
+                    
+                    
+                    
 
 
                     // User is signed in.
@@ -335,20 +427,14 @@ else if (page.split(".").includes("pages-login")) {
                 }
             });
         });
-        return false;
+        return false;    
     }
+    
 
 }
 else if (page.split(".").includes("indexAdmin")) {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            userd.devices.forEach(function (devo) {
-                if (dri.child(devo)) {
-                    dri.child(devo).on("value", snap => {
-                        userd.device_data.devo = snap.value();
-                    })
-                }
-            });
             var fnam = document.getElementsByClassName("fnam");
             var nam = document.getElementsByClassName("nam");
             var namclass = document.getElementById("namclass");
@@ -472,7 +558,7 @@ else if (page.split(".").includes("indexAdmin")) {
             console.log(namsubstart);
             if (userd !== undefined) {
                 // nam[it].value = userd.fullname;
-                namsubstart.innerHTML = "TBD";
+                namsubstart.innerHTML = "--/--/----";
             }
             else {
                 // fnam[it].value = "Not Set";
@@ -481,7 +567,7 @@ else if (page.split(".").includes("indexAdmin")) {
             console.log(namsubexp);
             if (userd !== undefined) {
                 // nam[it].value = userd.fullname;
-                namsubexp.innerHTML = "TBD";
+                namsubexp.innerHTML = "--/--/----";
             }
             else {
                 // fnam[it].value = "Not Set";
@@ -491,7 +577,7 @@ else if (page.split(".").includes("indexAdmin")) {
                 console.log(namsubbal[it]);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
-                    namsubbal[it].innerHTML = "$1000";
+                    namsubbal[it].innerHTML = "$0";
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -585,7 +671,7 @@ else if (page.split(".").includes("indexAdmin")) {
             console.log(asset);
             if (userd !== undefined) {
                 // nam[it].value = userd.fullname;
-                asset.innerHTML = userd.dve;
+                asset.innerHTML = dve;
             }
             else {
                 // fnam[it].value = "Not Set";
@@ -605,7 +691,7 @@ else if (page.split(".").includes("indexAdmin")) {
                 // nam[it].value = userd.fullname;
                 var dvc = `Assets: '\r\n'`;
                 userd.devices.forEach(function (device) {
-                    dvc += '<span class="btn btn-success">${device}</span><br><br>'
+                    dvc += `<span class="btn btn-success">${device}</span><br><br>`
                 })
 
                 carnams.innerHTML = dvc;
@@ -619,12 +705,26 @@ else if (page.split(".").includes("indexAdmin")) {
             console.log(namcarsubs);
             if (userd !== undefined) {
                 // nam[it].value = userd.fullname;
-                namcarsubs.innerHTML = "TBD";
+                var dav = `Subscriptions: '\r\n'`;
+                userd.devices.forEach(function (device) {
+                    dav += `
+                    <h5 class="m-t-30">Current Subscription----<span class="pull-right">${device}</span></h5>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar"
+                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                            style="width:100%; height:6px;"> <span class="sr-only"></span> 
+                        </div>
+                    </div>
+                    <br>
+                    `;
+                })
+
+                namcarsubs.innerHTML = dav;
             }
             else {
                 // fnam[it].value = "Not Set";
                 namcarsubs.innerHTML = `
-                    <h5 class="m-t-30">Current Subscriptions----<span class="pull-right">None</span></h5>
+                    <h5 class="m-t-30">Current Subscription----<span class="pull-right">None</span></h5>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar"
                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
