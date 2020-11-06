@@ -44,7 +44,7 @@ if(page.split(".").includes("register")){
         // console.log(ids.split(",").length)
         
         fullname = "Mgbaramuko Chidiebube Emmanuel";
-        email = "chidi.mgbara@fixbot.com";
+        // email = "chidi.mgbara@fixbot.com";
         username = "Emmytheo";
         password = "EMMYfinest@123";
         confpass = "EMMYfinest@123";
