@@ -411,7 +411,7 @@ else if (page.split(".").includes("pages-login")) {
                     user.providerData.forEach(function (profile) {
                         userdata.username = profile.displayName;
                         userdata.email = profile.email;
-                        userdata.uid = profile.uid;
+                        // userdata.uid = profile.uid;
                         // userdata.gender = profile.gender;
                         // userdata.plan = profile.plan;
                         // userdata.cls = profile.cls;
@@ -420,7 +420,7 @@ else if (page.split(".").includes("pages-login")) {
                         // userdata.address = profile.street + ', ' + profile.city + ", " + profile.state + ', ' + profile.country;
                     });
                     var dir = firebase.database().ref().child("public/FIXBOT/Accounts/");
-                    dir.child(userdata.uid).on("value", function(snap) {
+                    dir.child(userdata.username).on("value", function(snap) {
                         dta = snap.val();
                         
 
