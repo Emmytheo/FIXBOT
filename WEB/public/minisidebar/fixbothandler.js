@@ -366,15 +366,16 @@ if(page.split(".").includes("register")){
 else if (page.split(".").includes("pages-login")) {
     // document.getElementById("Uname").value = "chidi.mgbara@gmail.com";
     // document.getElementById("Upass").value = "EMMYfinest@123";
-    emaill = document.getElementById("Uname").value;
-    passwordd = document.getElementById("Upass").value;
     
-    console.log(emaill);
+    
+    // console.log(emaill);
     
     
 
 
     document.getElementById('loginform').onsubmit = function () {
+        var emaill = document.getElementById("Uname").value;
+        var passwordd = document.getElementById("Upass").value;
         console.log(emaill);
         document.getElementById("note").innerHTML = "Signing you in, please be patient";
         firebase.auth().signInWithEmailAndPassword(emaill, passwordd).catch(function (error) {
@@ -389,7 +390,7 @@ else if (page.split(".").includes("pages-login")) {
             
         }).then(function () {
             
-            
+            document.getElementById("note").innerHTML = "logging you in, please be patient";
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     
@@ -419,13 +420,13 @@ else if (page.split(".").includes("pages-login")) {
                         // userdata.devices = profile.deviceids.split(',');
                         // userdata.address = profile.street + ', ' + profile.city + ", " + profile.state + ', ' + profile.country;
                     });
+                    
                     var dir = firebase.database().ref().child("public/FIXBOT/Accounts/");
                     dir.child(userdata.username).on("value", function(snap) {
                         dta = snap.val();
                         
+                        document.getElementById("note").innerHTML = "Fetching .....";
 
-
-                    }).then(function(){
                         userdata.username = dta.username;
                         userdata.email = dta.email;
                         userdata.gender = dta.gender;
@@ -436,18 +437,33 @@ else if (page.split(".").includes("pages-login")) {
                         userdata.address = dta.street + ', ' + dta.city + ", " + dta.state + ', ' + dta.country;
                         userdata.phone = dta.phone;
                         userdata.fullname = dta.fullname;
-
-                    }).then(function (){
+                        console.log(userdata);
                         userd = userdata;
                         console.log(userd);
                         document.getElementById("note").innerHTML = "Signed In, Fetching your data";
-                        for (id in userd.deviceids.split(",")) {
-                            if (typeof (id) !== undefined) {
-                                userd.device_data[id] = firebase.database().ref().child("public/FIXBOT/Registered devices/" + id); 
+                        for (id in userd.devices.split(",")) {
+                            console.log();
+                            if (typeof (userd.devices.split(",")[id]) !== undefined) {
+                                // userd.device_data[userd.devices.split(",")[id]];
+                                console.log(userd.devices.split(",")[id]);
+                                var dataa = firebase.database().ref().child("public/FIXBOT/Registered devices/Data").child(+ userd.devices.split(",")[id]);
+                                userd.device_data[userd.devices.split(",")[id]] = dataa;
+                                // dataa.once('value', function (snap) {
+                                //     // console.log(snap.val());
+                                //      = snap.val();
+                                   
+                                // });
+                                
+                                // console.log(dataa);
+                                // userd.device_data[userd.devices.split(",")[id]].append();
                             }
+                            
+                            
                         }
+                        console.log(userd.device_data);
+                        
+                        
                         document.getElementById("note").innerHTML = "Data Fetch Successful, Preparing The Dashboard";
-                    // console.log(userd);
                         switch (userd.cls.toLowerCase()) {
                             case "fixbotadmin": {
                                 window.location.assign("indexFixbotAdmin.html");
@@ -458,6 +474,7 @@ else if (page.split(".").includes("pages-login")) {
                             }
                                 break;
                         }
+
                     })
                     
                     
@@ -559,7 +576,7 @@ else if (page.split(".").includes("indexAdmin")) {
 
 
             for (it in fnam) {
-                console.log(fnam[it]);
+                console.log(userd);
                 if (userd !== undefined) {
                     fnam[it].value = userd.fullname;
                     fnam[it].innerHTML = userd.fullname;
