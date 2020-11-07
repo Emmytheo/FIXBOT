@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public/minisidebar/",
+    "public": "public/",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,23 +9,23 @@
     "rewrites": [ 
       {
         "source": "/",
-        "destination": "/index.html"
+        "destination": "/minisidebar/index.html"
       },
       {
         "source": "/login",
-        "destination": "/pages-login.html.htm"
+        "destination": "/minisidebar/pages-login.html.htm"
       },
       {
         "source": "/register",
-        "destination": "/register.html.htm"
+        "destination": "/minisidebar/register.html.htm"
       },
       {
         "source": "/dashboard/**",
-        "destination": "/indexUser.html"
+        "destination": "/minisidebar/indexUser.html"
       },
       {
         "source": "/dashboard",
-        "destination": "/indexUser.html"
+        "destination": "/minisidebar/indexUser.html"
       },
       {
         "source": "/admin-dashboard/**",
