@@ -31,6 +31,10 @@ app.post("/preorder", async function(req, res){
     res.send({status: status})
 });
 
+app.get("/hello", async function(req, res){
+    res.send({status: "hi"})
+});
+
 exports.app  = functions.https.onRequest(app);
 
 
