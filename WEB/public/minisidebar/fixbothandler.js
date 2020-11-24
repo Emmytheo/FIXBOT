@@ -1451,7 +1451,7 @@ switch (page) {
                                     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
                                     // style: 'mapbox://styles/mapbox/satellite-v9',
                                     center: [snap.val().location.longitude, snap.val().location.latitude], // starting position [lng, lat]
-                                    zoom: 15 // starting zoom
+                                    zoom: 10 // starting zoom
                                 });
                                 map.addControl(new mapboxgl.NavigationControl());
                                 
