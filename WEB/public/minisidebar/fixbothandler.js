@@ -982,7 +982,27 @@ else if (page.split(".").includes("indexAdmin")) {
                     }
                 }
                 var dataa = firebase.database().ref().child("public/FIXBOT/Registered devices/Data");
-                dataa.child(dve).on("value", function (snap) {
+                dataa.child(dve).child("Device data").on("value", function (snap) {
+                    console.log(snap.val());
+                    mapboxgl.accessToken = accesstoken;
+                    var map = new mapboxgl.Map({
+                        container: 'map',
+                        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                        // style: 'mapbox://styles/mapbox/satellite-v9',
+                        center: [snap.val().location.longitude, snap.val().location.latitude], // starting position [lng, lat]
+                        zoom: 10 // starting zoom
+                    });
+                    map.addControl(new mapboxgl.NavigationControl());
+
+
+                    // fly the map to the drone's current location
+                    map.flyTo({
+                        center: [snap.val().location.longitude, snap.val().location.latitude],
+                        speed: 0.5
+                    });
+                    var marker = new mapboxgl.Marker()
+                        .setLngLat([snap.val().location.longitude, snap.val().location.latitude])
+                        .addTo(map);
                     runningspeed.innerText = "Not Set";
                     throttleopeningwidth.innerText = "Not Set";
                     engineload.innerText = "Not Set";
