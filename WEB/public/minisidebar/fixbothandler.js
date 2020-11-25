@@ -1000,25 +1000,11 @@ else if (page.split(".").includes("indexAdmin")) {
                 
                 dataa.child(dve).child("Device data").on("value", function (snap) {
                     console.log(snap.val());
-                    mapboxgl.accessToken = accesstoken;
-                    var map = new mapboxgl.Map({
-                        container: 'map',
-                        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-                        // style: 'mapbox://styles/mapbox/satellite-v9',
-                        center: [snap.val().location.longitude, snap.val().location.latitude], // starting position [lng, lat]
-                        zoom: 10 // starting zoom
+                    map = new google.maps.Map(document.getElementById("map"), {
+                        center: { lat: snap.val().location.latitude, lng: snap.val().location.longitude },
+                        zoom: 8,
                     });
-                    map.addControl(new mapboxgl.NavigationControl());
-
-
-                    // fly the map to the drone's current location
-                    map.flyTo({
-                        center: [snap.val().location.longitude, snap.val().location.latitude],
-                        speed: 0.5
-                    });
-                    var marker = new mapboxgl.Marker()
-                        .setLngLat([snap.val().location.longitude, snap.val().location.latitude])
-                        .addTo(map);
+                    mark = new google.maps.Marker({ position: { lat: snap.val().location.latitude, lng: snap.val().location.longitude }, map: map });
                     runningspeed.innerText = "Not Set";
                     throttleopeningwidth.innerText = "Not Set";
                     engineload.innerText = "Not Set";
@@ -1371,41 +1357,42 @@ switch (page) {
                                     if (device.length == 14) {
                                         console.log(device.length);
                                         dvs += `
-                            <div class="col-lg-3 col-md-6 ">
-                                <div class="card ${device}" onclick="vwasset(${device})">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-row">
-                                            <div class="round round-lg align-self-center round-info"><i class="mdi mdi-car"></i>
+                                            <div class="col-lg-3 col-md-6 ">
+                                                <div class="card ${device}" onclick="vwasset(${device})">
+                                                    <div class="card-body">
+                                                        <div class="d-flex flex-row">
+                                                            <div class="round round-lg align-self-center round-info"><i class="mdi mdi-car"></i>
+                                                            </div>
+                                                            <div class="m-l-10 align-self-center">
+                                                                <h3 class="m-b-0 font-light">Asset Name</h3>
+                                                                <h5 class="text-muted m-b-0">${device}</h5>
+                                                                <div style="width: 20px; position: absolute; top: 20px; right: 20px; height:20px; border-radius: 50px; background: yellow;" id="${device}"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="m-l-10 align-self-center">
-                                                <h3 class="m-b-0 font-light">Asset Name</h3>
-                                                <h5 class="text-muted m-b-0">${device}</h5>
-                                                <div style="width: 20px; position: absolute; top: 20px; right: 20px; height:20px; border-radius: 50px; background: yellow;" id="${device}"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            `;
+                                            `;
 
                                     }
                                     
+                                    var timer = setTimeout(function () {
+                                        var deve = document.getElementById(device);
+                                        deve.style.background = "grey";
+                                    }, 5000);
+                                    dataa.child(device).on("child_changed", function () {
+                                        clearTimeout(timer);
+                                        var dev = document.getElementById(device);
+                                        dev.style.background = "green";
+                                        timer = setTimeout(function () {
+                                            dev.style.background = "grey";
+                                        }, 20000);
+                                    });
                                     
                                 });
-                                // console.log(dvs);
                                 namassets.innerHTML = dvs;
-                                var timer = setTimeout(function () {
-                                    var deve = document.getElementById(device);
-                                    deve.style.background = "grey";
-                                }, 5000);
-                                dataa.child(device).on("child_changed", function () {
-                                    clearTimeout(timer);
-                                    var dev = document.getElementById(device);
-                                    dev.style.background = "green";
-                                    timer = setTimeout(function () {
-                                        dev.style.background = "grey";
-                                    }, 20000);
-                                });
+                                // console.log(dvs);
+                                
                             }
                             else {
                                 // fnam[it].value = "Not Set";
@@ -1494,28 +1481,37 @@ switch (page) {
                                 }
                             }
                             userdd = udata;
-                            var dataa = firebase.database().ref().child("public/FIXBOT/Registered devices/Data");
+                            // var dataa = firebase.database().ref().child("public/FIXBOT/Registered devices/Data");
                             dataa.child(dve).child("Device data").on("value", function (snap) {
                                 console.log(snap.val());
-                                mapboxgl.accessToken = accesstoken;
-                                var map = new mapboxgl.Map({
-                                    container: 'map',
-                                    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-                                    // style: 'mapbox://styles/mapbox/satellite-v9',
-                                    center: [snap.val().location.longitude, snap.val().location.latitude], // starting position [lng, lat]
-                                    zoom: 10 // starting zoom
+                                map = new google.maps.Map(document.getElementById("map"), {
+                                    center: { lat: snap.val().location.latitude, lng: snap.val().location.longitude },
+                                    zoom: 8,
                                 });
-                                map.addControl(new mapboxgl.NavigationControl());
+                                mark = new google.maps.Marker({ position: { lat: snap.val().location.latitude, lng: snap.val().location.longitude }, map: map });
+
+                                
                                 
 
-                                // fly the map to the drone's current location
-                                map.flyTo({
-                                    center: [snap.val().location.longitude, snap.val().location.latitude],
-                                    speed: 0.5
-                                });
-                                var marker = new mapboxgl.Marker()
-                                    .setLngLat([snap.val().location.longitude, snap.val().location.latitude])
-                                    .addTo(map);
+                                // mapboxgl.accessToken = accesstoken;
+                                // var map = new mapboxgl.Map({
+                                //     container: 'map',
+                                //     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                                //     // style: 'mapbox://styles/mapbox/satellite-v9',
+                                //     center: [snap.val().location.longitude, snap.val().location.latitude], // starting position [lng, lat]
+                                //     zoom: 10 // starting zoom
+                                // });
+                                // map.addControl(new mapboxgl.NavigationControl());
+                                
+
+                                // // fly the map to the drone's current location
+                                // map.flyTo({
+                                //     center: [snap.val().location.longitude, snap.val().location.latitude],
+                                //     speed: 0.5
+                                // });
+                                // var marker = new mapboxgl.Marker()
+                                //     .setLngLat([snap.val().location.longitude, snap.val().location.latitude])
+                                //     .addTo(map);
                                 runningspeed.innerText = "not set";
                                 throttleopeningwidth.innerText = "Not Set";
                                 engineload.innerText = "Not Set";
