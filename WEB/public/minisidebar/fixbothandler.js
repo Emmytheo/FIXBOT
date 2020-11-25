@@ -976,7 +976,7 @@ else if (page.split(".").includes("indexAdmin")) {
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
                     namcarmodel.innerHTML = `
-                    <span class="btn btn-success">None Available</span>
+                    <span class="btn btn-success" id="errorcode">None Available</span>
                     `;
                 }
                 else {
@@ -1005,6 +1005,10 @@ else if (page.split(".").includes("indexAdmin")) {
                         zoom: 8,
                     });
                     mark = new google.maps.Marker({ position: { lat: snap.val().location.latitude, lng: snap.val().location.longitude }, map: map });
+                    if(snap.val().error_code){
+                        var er = document.getElementById("errorcode");
+                        er.innerText = snap.val().error_code;
+                    }
                     runningspeed.innerText = "Not Set";
                     throttleopeningwidth.innerText = "Not Set";
                     engineload.innerText = "Not Set";
@@ -1460,7 +1464,7 @@ switch (page) {
                             if (dve !== undefined) {
                                 // nam[it].value = userd.fullname;
                                 namcarmodel.innerHTML = `
-                    <span class="btn btn-success">None Available</span>
+                    <span class="btn btn-success" id="errorcode" >None Available</span>
                     `;
                             }
                             else {
@@ -1489,6 +1493,10 @@ switch (page) {
                                     zoom: 8,
                                 });
                                 mark = new google.maps.Marker({ position: { lat: snap.val().location.latitude, lng: snap.val().location.longitude }, map: map });
+                                if (snap.val().error_code) {
+                                    var er = document.getElementById("errorcode");
+                                    er.innerText = snap.val().error_code;
+                                }
 
                                 
                                 
