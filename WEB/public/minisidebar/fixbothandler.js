@@ -1384,7 +1384,8 @@ switch (page) {
                                         var deve = document.getElementById(device);
                                         deve.style.background = "grey";
                                     }, 5000);
-                                    dataa.child(device).on("child_changed", function () {
+                                    dataa.child(device).on("value", function (snapz) {
+                                        udata.device_data[device] = snapz.val();
                                         clearTimeout(timer);
                                         var dev = document.getElementById(device);
                                         dev.style.background = "green";
@@ -1486,100 +1487,76 @@ switch (page) {
                             }
                             userdd = udata;
                             // var dataa = firebase.database().ref().child("public/FIXBOT/Registered devices/Data");
-                            dataa.child(dve).child("Device data").on("value", function (snap) {
-                                console.log(snap.val());
-                                map = new google.maps.Map(document.getElementById("map"), {
-                                    center: { lat: snap.val().location.latitude, lng: snap.val().location.longitude },
-                                    zoom: 8,
-                                });
-                                mark = new google.maps.Marker({ position: { lat: snap.val().location.latitude, lng: snap.val().location.longitude }, map: map });
-                                if (snap.val().error_code) {
-                                    var er = document.getElementById("errorcode");
-                                    er.innerText = snap.val().error_code;
-                                }
-
-                                
-                                
-
-                                // mapboxgl.accessToken = accesstoken;
-                                // var map = new mapboxgl.Map({
-                                //     container: 'map',
-                                //     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-                                //     // style: 'mapbox://styles/mapbox/satellite-v9',
-                                //     center: [snap.val().location.longitude, snap.val().location.latitude], // starting position [lng, lat]
-                                //     zoom: 10 // starting zoom
-                                // });
-                                // map.addControl(new mapboxgl.NavigationControl());
-                                
-
-                                // // fly the map to the drone's current location
-                                // map.flyTo({
-                                //     center: [snap.val().location.longitude, snap.val().location.latitude],
-                                //     speed: 0.5
-                                // });
-                                // var marker = new mapboxgl.Marker()
-                                //     .setLngLat([snap.val().location.longitude, snap.val().location.latitude])
-                                //     .addTo(map);
-                                runningspeed.innerText = "not set";
-                                throttleopeningwidth.innerText = "Not Set";
-                                engineload.innerText = "Not Set";
-                                coolanttemperature.innerText = "Not Set";
-                                instantenousfuelconsumption.innerText = "Not Set";
-                                averagefuelconsumption.innerText = "Not Set";
-                                drivingrange.innerText = "Not Set";
-                                totalmileage.innerText = "Not Set";
-                                singlefuelconsumptionvol.innerText = "Not Set";
-                                totalfuelconsumptionvol.innerText = "Not Set";
-                                currenterrorcodenos.innerText = "Not Set";
-                                harshaccelerationno.innerText = "Not Set";
-                                harshbrakeno.innerText = "Not Set";
-                                drivingbehaviourdata.innerText = "Not Set";
-                                batteryvoltage.innerText = "Not Set";
-                                enginespeed.innerText = "Not Set";
-                                // batteryvoltagebar.innerHTML = `<div data-label="${getpcnt("batteryvoltage", userd.device_data.dve.batteryvoltage)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // enginespeedbar.innerHTML = `<div data-label="${getpcnt("enginespeed", userd.device_data.dve.enginespeed)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // runningspeedbar.innerHTML = `<div data-label="${getpcnt("runningspeed", userd.device_data.dve.runningspeed)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // throttleopeningwidthbar.innerHTML = `<div data-label="${getpcnt("throttleopeningwidth", userd.device_data.dve.throttleopeningwidth)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // engineloadbar.innerHTML = `<div data-label="${getpcnt("engineload", userd.device_data.dve.engineload)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // coolanttemperaturebar.innerHTML = `<div data-label="${getpcnt("coolanttemperature", userd.device_data.dve.coolanttemperature)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // instantenousfuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("instantenousfuelconsumption", userd.device_data.dve.instantenousfuelconsumption)} class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // averagefuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("averagefuelconsumption", userd.device_data.dve.averagefuelconsumption)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // drivingrangebar.innerHTML = `<div data-label="${getpcnt("drivingrange", userd.device_data.dve.drivingrange)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // totalmileagebar.innerHTML = `<div data-label="${getpcnt("totalmileage", userd.device_data.dve.totalmileage)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // singlefuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("singlefuelconsumptionvol", userd.device_data.dve.singlefuelconsumptionvol)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // totalfuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("totalfuelconsumptionvol", userd.device_data.dve.totalfuelconsumptionvol)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // currenterrorcodenosbar.innerHTML = `<div data-label="${getpcnt("currenterrorcodenos", userd.device_data.dve.currenterrorcodenos)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                // harshaccelerationnobar.innerHTML = `<div data-label="${getpcnt("harshaccelerationno", userd.device_data.dve.harshaccelerationno)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`
-                                // harshbrakenobar.innerHTML = `<div data-label="${getpcnt("harshbrakeno", userd.device_data.dve.harshbrakeno)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                                namign.innerText = "Not Set";
-                                namdrivtim.innerText = "Not Set";
-                                namidltim.innerText = "Not Set";
-                                namhotstarts.innerText = "Not Set";
-                                namavgspeed.innerText = "Not Set";
-                                namhighestspeed.innerText = "Not Set";
-                                namengrotation.innerText = "Not Set";
-                                namharshaccel.innerText = "Not Set";
-                                namharshbraking.innerText = "Not Set";
-                                $("#namignbar").addClass("label-info");
-                                $("#namdrivtimbar").addClass("label-info");
-                                $("#namidltimbar").addClass("label-info");
-                                $("#namhotstartsbar").addClass("label-info");
-                                $("#namavgspeedbar").addClass("label-info");
-                                $("#namhighestspeedbar").addClass("label-info");
-                                $("#namengrotationbar").addClass("label-info");
-                                $("#namharshaccelbar").addClass("label-info");
-                                $("#namharshbrakingbar").addClass("label-info");
-                                // namignbar.innerText = "Not Set";
-                                // namdrivtimbar.innerText = "Not Set";
-                                // namidltimbar.innerText = "Not Set";
-                                // namhotstartsbar.innerText = "Not Set";
-                                // namavgspeedbar.innerText = "Not Set";
-                                // namhighestspeedbar.innerText = "Not Set";
-                                // namengrotationbar.innerText = "Not Set";
-                                // namharshaccelbar.innerText = "Not Set";
-                                // namharshbrakingbar.innerText = "Not Set";
-                                weekly = [0, 0, 0, 0, 0, 0, 0];
-                            })
+                            map = new google.maps.Map(document.getElementById("map"), {
+                                center: { lat: -2.24243, lng: 5.5343 },
+                                zoom: 15,
+                            });
+                            mark = new google.maps.Marker({ position: { lat: udata.device_data.dve["Device data"].location.latitude, lng: udata.device_data.dve["Device data"].location.longitude}, map: map });
+                            if (udata.device_data.dve["Device data"].error_code) {
+                                var er = document.getElementById("errorcode");
+                                er.innerText = udata.device_data.dve["Device data"].error_code;
+                            }
+                            runningspeed.innerText = udata.device_data.dve["Device data"].running_speed;
+                            throttleopeningwidth.innerText = udata.device_data.dve["Device data"].throttle_opening_width;
+                            engineload.innerText = udata.device_data.dve["Device data"].engine_load;
+                            coolanttemperature.innerText = udata.device_data.dve["Device data"].coolant_temp;
+                            instantenousfuelconsumption.innerText = udata.device_data.dve["Device data"].instantenous_fuel_consumption;
+                            averagefuelconsumption.innerText = udata.device_data.dve["Device data"].average_fuel_consumption;
+                            drivingrange.innerText = udata.device_data.dve["Device data"].driving_range;
+                            totalmileage.innerText = udata.device_data.dve["Device data"].total_mileage;
+                            singlefuelconsumptionvol.innerText = udata.device_data.dve["Device data"].single_fuel_consumptionvol;
+                            totalfuelconsumptionvol.innerText = udata.device_data.dve["Device data"].total_fuel_consumptionvol;
+                            currenterrorcodenos.innerText = udata.device_data.dve["Device data"].current_error_code_nos;
+                            harshaccelerationno.innerText = udata.device_data.dve["Device data"].harsh_acceleration_no;
+                            harshbrakeno.innerText = udata.device_data.dve["Device data"].harsh_brake_no;
+                            // drivingbehaviourdata.innerText = udata.device_data.dve["Device data"].driving_behaviourdata
+                            batteryvoltage.innerText = udata.device_data.dve["Device data"].battery_voltage;
+                            enginespeed.innerText = udata.device_data.dve["Device data"].engine_speed;
+                            // batteryvoltagebar.innerHTML = `<div data-label="${getpcnt("batteryvoltage", userd.device_data.dve.batteryvoltage)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // enginespeedbar.innerHTML = `<div data-label="${getpcnt("enginespeed", userd.device_data.dve.enginespeed)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // runningspeedbar.innerHTML = `<div data-label="${getpcnt("runningspeed", userd.device_data.dve.runningspeed)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // throttleopeningwidthbar.innerHTML = `<div data-label="${getpcnt("throttleopeningwidth", userd.device_data.dve.throttleopeningwidth)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // engineloadbar.innerHTML = `<div data-label="${getpcnt("engineload", userd.device_data.dve.engineload)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // coolanttemperaturebar.innerHTML = `<div data-label="${getpcnt("coolanttemperature", userd.device_data.dve.coolanttemperature)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // instantenousfuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("instantenousfuelconsumption", userd.device_data.dve.instantenousfuelconsumption)} class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // averagefuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("averagefuelconsumption", userd.device_data.dve.averagefuelconsumption)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // drivingrangebar.innerHTML = `<div data-label="${getpcnt("drivingrange", userd.device_data.dve.drivingrange)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // totalmileagebar.innerHTML = `<div data-label="${getpcnt("totalmileage", userd.device_data.dve.totalmileage)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // singlefuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("singlefuelconsumptionvol", userd.device_data.dve.singlefuelconsumptionvol)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // totalfuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("totalfuelconsumptionvol", userd.device_data.dve.totalfuelconsumptionvol)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // currenterrorcodenosbar.innerHTML = `<div data-label="${getpcnt("currenterrorcodenos", userd.device_data.dve.currenterrorcodenos)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            // harshaccelerationnobar.innerHTML = `<div data-label="${getpcnt("harshaccelerationno", userd.device_data.dve.harshaccelerationno)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`
+                            // harshbrakenobar.innerHTML = `<div data-label="${getpcnt("harshbrakeno", userd.device_data.dve.harshbrakeno)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
+                            namign.innerText = "Not Set";
+                            namdrivtim.innerText = "Not Set";
+                            namidltim.innerText = "Not Set";
+                            namhotstarts.innerText = "Not Set";
+                            namavgspeed.innerText = "Not Set";
+                            namhighestspeed.innerText = "Not Set";
+                            namengrotation.innerText = "Not Set";
+                            namharshaccel.innerText = "Not Set";
+                            namharshbraking.innerText = "Not Set";
+                            $("#namignbar").addClass("label-info");
+                            $("#namdrivtimbar").addClass("label-info");
+                            $("#namidltimbar").addClass("label-info");
+                            $("#namhotstartsbar").addClass("label-info");
+                            $("#namavgspeedbar").addClass("label-info");
+                            $("#namhighestspeedbar").addClass("label-info");
+                            $("#namengrotationbar").addClass("label-info");
+                            $("#namharshaccelbar").addClass("label-info");
+                            $("#namharshbrakingbar").addClass("label-info");
+                            // namignbar.innerText = "Not Set";
+                            // namdrivtimbar.innerText = "Not Set";
+                            // namidltimbar.innerText = "Not Set";
+                            // namhotstartsbar.innerText = "Not Set";
+                            // namavgspeedbar.innerText = "Not Set";
+                            // namhighestspeedbar.innerText = "Not Set";
+                            // namengrotationbar.innerText = "Not Set";
+                            // namharshaccelbar.innerText = "Not Set";
+                            // namharshbrakingbar.innerText = "Not Set";
+                            weekly = [0, 0, 0, 0, 0, 0, 0];
+                            
+                            
 
                             var sel = document.getElementsByClassName(dva);
 
