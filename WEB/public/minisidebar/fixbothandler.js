@@ -540,7 +540,7 @@ else if (page.split(".").includes("indexAdmin")) {
             dir.child(userdata.username).on("value", function (snap) {
                 var dta = snap.val();
                 // console.log("rjst");/
-                console.log(dta);
+                // console.log(dta);
                 userdata.username = dta.username;
                 userdata.email = dta.email;
                 userdata.gender = dta.gender;
@@ -634,7 +634,7 @@ else if (page.split(".").includes("indexAdmin")) {
 
 
                 for (it in fnam) {
-                    console.log(userd);
+                    // console.log(userd);
                     if (userd !== undefined) {
                         fnam[it].value = userd.fullname;
                         fnam[it].innerHTML = userd.fullname;
@@ -646,7 +646,7 @@ else if (page.split(".").includes("indexAdmin")) {
 
                 }
                 for (it in nam) {
-                    console.log(nam[it]);
+                    // console.log(nam[it]);
                     if (userd !== undefined) {
                         // nam[it].value = userd.fullname;
                         nam[it].innerHTML = userd.username;
@@ -896,13 +896,15 @@ else if (page.split(".").includes("indexAdmin")) {
                             var deve = document.getElementById(device);
                             deve.style.background = "grey";
                         }, 5000);
-                        dataa.child(device).on("child_changed", function(){
+                        dataa.child(device).on("value", function(){
                             clearTimeout(timer);
                             var dev = document.getElementById(device);
                             dev.style.background = "green";
                             timer = setTimeout(function (){
                                 dev.style.background = "grey";
                             }, 20000);
+                            // userd.device_data[device] = data.val();
+                            // console.log(userd.device_data[device]);
                         });
                         
 
@@ -1001,7 +1003,7 @@ else if (page.split(".").includes("indexAdmin")) {
                 dataa.child(dve).child("Device data").on("value", function (snap) {
                     console.log(snap.val());
                     map = new google.maps.Map(document.getElementById("map"), {
-                        center: { lat: snap.val().location.latitude, lng: snap.val().location.longitude },
+                        center: { lat: -2.24243, lng: 5.5343 },
                         zoom: 8,
                     });
                     mark = new google.maps.Marker({ position: { lat: snap.val().location.latitude, lng: snap.val().location.longitude }, map: map });
@@ -1009,46 +1011,49 @@ else if (page.split(".").includes("indexAdmin")) {
                         var er = document.getElementById("errorcode");
                         er.innerText = snap.val().error_code;
                     }
-                    runningspeed.innerText = "Not Set";
-                    throttleopeningwidth.innerText = "Not Set";
-                    engineload.innerText = "Not Set";
-                    coolanttemperature.innerText = "Not Set";
-                    instantenousfuelconsumption.innerText = "Not Set";
-                    averagefuelconsumption.innerText = "Not Set";
-                    drivingrange.innerText = "Not Set";
-                    totalmileage.innerText = "Not Set";
-                    singlefuelconsumptionvol.innerText = "Not Set";
-                    totalfuelconsumptionvol.innerText = "Not Set";
-                    currenterrorcodenos.innerText = "Not Set";
-                    harshaccelerationno.innerText = "Not Set";
-                    harshbrakeno.innerText = "Not Set";
-                    drivingbehaviourdata.innerText = "Not Set";
-                    batteryvoltage.innerText = "Not Set";
-                    enginespeed.innerText = "Not Set";
-                    batteryvoltagebar.innerHTML = `<div data-label="${getpcnt("batteryvoltage", userd.device_data.dve.batteryvoltage)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    enginespeedbar.innerHTML = `<div data-label="${getpcnt("enginespeed", userd.device_data.dve.enginespeed)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    runningspeedbar.innerHTML = `<div data-label="${getpcnt("runningspeed", userd.device_data.dve.runningspeed)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    throttleopeningwidthbar.innerHTML = `<div data-label="${getpcnt("throttleopeningwidth", userd.device_data.dve.throttleopeningwidth)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    engineloadbar.innerHTML = `<div data-label="${getpcnt("engineload", userd.device_data.dve.engineload)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    coolanttemperaturebar.innerHTML = `<div data-label="${getpcnt("coolanttemperature", userd.device_data.dve.coolanttemperature)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    instantenousfuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("instantenousfuelconsumption", userd.device_data.dve.instantenousfuelconsumption)} class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    averagefuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("averagefuelconsumption", userd.device_data.dve.averagefuelconsumption)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    drivingrangebar.innerHTML = `<div data-label="${getpcnt("drivingrange", userd.device_data.dve.drivingrange)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    totalmileagebar.innerHTML = `<div data-label="${getpcnt("totalmileage", userd.device_data.dve.totalmileage)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    singlefuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("singlefuelconsumptionvol", userd.device_data.dve.singlefuelconsumptionvol)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    totalfuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("totalfuelconsumptionvol", userd.device_data.dve.totalfuelconsumptionvol)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    currenterrorcodenosbar.innerHTML = `<div data-label="${getpcnt("currenterrorcodenos", userd.device_data.dve.currenterrorcodenos)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    harshaccelerationnobar.innerHTML = `<div data-label="${getpcnt("harshaccelerationno", userd.device_data.dve.harshaccelerationno)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`
-                    harshbrakenobar.innerHTML = `<div data-label="${getpcnt("harshbrakeno", userd.device_data.dve.harshbrakeno)}%" class="css-bar m-b-0 css-bar-danger css-bar-0"></div>`;
-                    namign.innerText = "Not Set";
-                    namdrivtim.innerText = "Not Set";
-                    namidltim.innerText = "Not Set";
-                    namhotstarts.innerText = "Not Set";
-                    namavgspeed.innerText = "Not Set";
-                    namhighestspeed.innerText = "Not Set";
-                    namengrotation.innerText = "Not Set";
-                    namharshaccel.innerText = "Not Set";
-                    namharshbraking.innerText = "Not Set";
+                    
+                    runningspeed.innerText = snap.val().canbus.running_speed;
+                    throttleopeningwidth.innerText = snap.val().canbus.throttle_opening_width;
+                    engineload.innerText = snap.val().canbus.engine_load;
+                    coolanttemperature.innerText = snap.val().canbus.coolant_temp;
+                    instantenousfuelconsumption.innerText = snap.val().canbus.instantenous_fuel_consumption;
+                    averagefuelconsumption.innerText = snap.val().canbus.average_fuel_consumption;
+                    drivingrange.innerText = snap.val().canbus.driving_range;
+                    totalmileage.innerText = snap.val().canbus.total_mileage;
+                    singlefuelconsumptionvol.innerText = snap.val().canbus.single_fuel_consumption_vol;
+                    totalfuelconsumptionvol.innerText = snap.val().canbus.total_fuel_consumption_vol;
+                    currenterrorcodenos.innerText = snap.val().canbus.current_error_code_nos;
+                    harshaccelerationno.innerText = snap.val().canbus.harsh_acceleration_no;
+                    harshbrakeno.innerText = snap.val().canbus.harsh_brake_no;
+                    batteryvoltage.innerText = snap.val().canbus.battery_voltage;
+                    enginespeed.innerText = snap.val().canbus.engine_speed;
+                    // console.log(snap.val()['canbus']);
+                    
+                    batteryvoltagebar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.battery_voltage, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.battery_voltage, "bar")}"></div>`;
+                    enginespeedbar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.engine_speed, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.engine_speed, "bar")}"></div>`;
+                    runningspeedbar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.running_speed, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.running_speed, "bar")}"></div>`;
+                    throttleopeningwidthbar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.throttle_opening_width, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.throttle_opening_width, "bar")}"></div>`;
+                    engineloadbar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.engine_load, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.engine_load, "bar")}"></div>`;
+                    coolanttemperaturebar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.coolant_temp, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.coolant_temp, "bar")}"></div>`;
+                    instantenousfuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.instantenous_fuel_consumption, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.instantenous_fuel_consumption, "bar")}"></div>`;
+                    averagefuelconsumptionbar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.average_fuel_consumption, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.average_fuel_consumption, "bar")}"></div>`;
+                    drivingrangebar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.driving_range, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.driving_range, "bar")}"></div>`;
+                    totalmileagebar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.total_mileage, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.total_mileage, "bar")}"></div>`;
+                    singlefuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.single_fuel_consumption_vol, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.single_fuel_consumption_vol, "bar")}"></div>`;
+                    totalfuelconsumptionvolbar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.total_fuel_consumption_vol, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.total_fuel_consumption_vol, "bar")}"></div>`;
+                    currenterrorcodenosbar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.current_error_code_nos, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.current_error_code_nos, "bar")}"></div>`;
+                    harshaccelerationnobar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.harsh_acceleration_no, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.harsh_acceleration_no, "bar")}"></div>`;
+                    harshbrakenobar.innerHTML = `<div data-label="${getpcnt("runningspeed", snap.val().canbus.harsh_brake_no, "val")}%" class="css-bar m-b-0 css-bar-danger css-bar-${getpcnt("runningspeed", snap.val().canbus.harsh_brake_no, "bar")}"></div>`;
+                    namign.innerText = snap.val()["driver behavior"].total_ignition_no;
+                    namdrivtim.innerText = snap.val()["driver behavior"].total_driving_time;
+                    namidltim.innerText = snap.val()["driver behavior"].total_idling_time;
+                    namhotstarts.innerText = snap.val()["driver behavior"].average_hot_start_time;
+                    namavgspeed.innerText = snap.val()["driver behavior"].average_speed;
+                    namhighestspeed.innerText = snap.val()["driver behavior"].history_highest_speed;
+                    namengrotation.innerText = snap.val()["driver behavior"].history_highest_rotation;
+                    namharshaccel.innerText = snap.val()["driver behavior"].total_harsh_acceleration_no;
+                    namharshbraking.innerText = snap.val()["driver behavior"].total_harsh_brake_no;
+                    console.log(parseFloat(snap.val().canbus.engine_load))
                     $("#namignbar").addClass("label-info");
                     $("#namdrivtimbar").addClass("label-info");
                     $("#namidltimbar").addClass("label-info");
@@ -1058,15 +1063,15 @@ else if (page.split(".").includes("indexAdmin")) {
                     $("#namengrotationbar").addClass("label-info");
                     $("#namharshaccelbar").addClass("label-info");
                     $("#namharshbrakingbar").addClass("label-info");
-                    namignbar.innerText = "Not Set";
-                    namdrivtimbar.innerText = "Not Set";
-                    namidltimbar.innerText = "Not Set";
-                    namhotstartsbar.innerText = "Not Set";
-                    namavgspeedbar.innerText = "Not Set";
-                    namhighestspeedbar.innerText = "Not Set";
-                    namengrotationbar.innerText = "Not Set";
-                    namharshaccelbar.innerText = "Not Set";
-                    namharshbrakingbar.innerText = "Not Set";
+                    namignbar.innerText = "Normal";
+                    namdrivtimbar.innerText = "Normal";
+                    namidltimbar.innerText = "Normal";
+                    namhotstartsbar.innerText = "Normal";
+                    namavgspeedbar.innerText = "Normal";
+                    namhighestspeedbar.innerText = "Normal";
+                    namengrotationbar.innerText = "Normal";
+                    namharshaccelbar.innerText = "Normal";
+                    namharshbrakingbar.innerText = "Normal";
                     weekly = [0, 0, 0, 0, 0, 0, 0];
                 })
                 
@@ -1771,7 +1776,14 @@ function vwassete(data) {
     // console.log("oadbv usdbca");
 };
 
-var getpcnt = function(name, amt){
+var getpcnt = function(name, amt, typ){
+    if(typ == "val"){
+        amt = parseInt(amt, 10);
+    }
+    if(typ == "bar"){
+        amt = Math.ceil(parseInt(amt, 10) / 10) * 10;
+    }
+    
     var pcnt;
     switch(name){
         case "runningspeed" : {
@@ -1807,7 +1819,8 @@ var getpcnt = function(name, amt){
         }
             break;
     }
-    return pcnt.toString();
+    // console.log(typeof(pcnt));
+    return parseInt(pcnt, 10);
 
 };
 
