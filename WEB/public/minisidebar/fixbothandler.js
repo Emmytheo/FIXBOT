@@ -12,7 +12,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var dri = firebase.database().ref().child("public/FIXBOT/Registered devices/");
 var page = window.location.href.split('/')[window.location.href.split('/').length - 1];
-
+var la;
+var ln;
 var dve;
 var dva;
 var prid;
@@ -895,14 +896,14 @@ else if (page.split(".").includes("indexAdmin")) {
                         var timer = setTimeout(function () {
                             var deve = document.getElementById(device);
                             deve.style.background = "grey";
-                        }, 5000);
+                        }, 3000);
                         dataa.child(device).on("value", function(){
                             clearTimeout(timer);
                             var dev = document.getElementById(device);
                             dev.style.background = "green";
                             timer = setTimeout(function (){
                                 dev.style.background = "grey";
-                            }, 20000);
+                            }, 10000);
                             // userd.device_data[device] = data.val();
                             // console.log(userd.device_data[device]);
                         });
@@ -999,14 +1000,30 @@ else if (page.split(".").includes("indexAdmin")) {
                     }
                 }
                 
-                
+                // dataa.child(dve).child("Device data").once("value", function (snap) {
+                //     la = snap.val().location.latitude; 
+                //     ln = snap.val().location.longitude;
+                // });
                 dataa.child(dve).child("Device data").on("value", function (snap) {
                     console.log(snap.val());
                     map = new google.maps.Map(document.getElementById("map"), {
-                        center: { lat: -2.24243, lng: 5.5343 },
+                        center: { lat: 10, lng: 10 },
                         zoom: 8,
                     });
                     mark = new google.maps.Marker({ position: { lat: snap.val().location.latitude, lng: snap.val().location.longitude }, map: map });
+                    var latLng = new google.maps.LatLng(snap.val().location.latitude, snap.val().location.longitude); //Makes a latlng
+                    map.panTo(latLng);
+                    map.addListener("center_changed", () => {
+                        // 3 seconds after the center of the map has changed, pan back to the
+                        // marker.
+                        window.setTimeout(() => {
+                            map.panTo(latLng);
+                        }, 3000);
+                    });
+                    mark.addListener("click", () => {
+                        map.setZoom(15);
+                        map.setCenter(latLng);
+                    });
                     if(snap.val().error_code){
                         var er = document.getElementById("errorcode");
                         er.innerText = snap.val().error_code;
