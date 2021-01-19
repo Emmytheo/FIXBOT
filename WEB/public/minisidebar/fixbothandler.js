@@ -566,7 +566,7 @@ else if (page.split(".").includes("indexAdmin")) {
                 var eml = document.getElementsByClassName("eml");
                 var phnnum = document.getElementsByClassName("phnnum");
                 var add = document.getElementsByClassName("add");
-                var assets = document.getElementById("assets");
+                var assets = document.getElementById("assetz");
                 var carnams = document.getElementById("carnams");
                 var asset = document.getElementById("asset");
                 var namuserovw = document.getElementById("namuserovw");
@@ -744,7 +744,7 @@ else if (page.split(".").includes("indexAdmin")) {
 
                 }
 
-                console.log(assets);
+                // console.log(assets);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
                     // userd.devices = [];
@@ -763,17 +763,29 @@ else if (page.split(".").includes("indexAdmin")) {
                     var asss = "";
                     for (it in userd.devices) {
                         asss += `
-                            <div class="col-lg-3 col-md-6 m-b-20 ${userd.devices[it]}">
-                                <center>
-                                    <i style="font-size: 100px;" class="mdi mdi-car"></i>
-                                    <br><br>
-                                    <p class="btn btn-success" onclick="vwasset(${userd.devices[it]})" >${userd.devices[it]}</p>
-                                </center>
+                            <div class="swiper-slide" style="background-image:url(../img/car.jpg)">
+                                <p class="btn btn-success" onclick="vwasset(${userd.devices[it]})">${userd.devices[it]}</p>
                             </div>`
                             ;
 
                     }
-                    assets.innerHTML = asss;
+                    //assets.innerHTML = asss;
+                    // var swiper = new Swiper('.swiper-container', {
+                    //     effect: 'coverflow',
+                    //     grabCursor: true,
+                    //     centeredSlides: true,
+                    //     slidesPerView: 'auto',
+                    //     coverflowEffect: {
+                    //         rotate: 50,
+                    //         stretch: 0,
+                    //         depth: 400,
+                    //         modifier: 1,
+                    //         slideShadows: true,
+                    //     },
+                    //     pagination: {
+                    //         el: '.swiper-pagination',
+                    //     },
+                    // });
                 }
                 else {
                     // fnam[it].value = "Not Set";
@@ -1005,6 +1017,8 @@ else if (page.split(".").includes("indexAdmin")) {
                 //     ln = snap.val().location.longitude;
                 // });
                 dataa.child(dve).child("Device data").on("value", function (snap) {
+                    // swiper();
+                    
                     console.log(snap.val());
                     map = new google.maps.Map(document.getElementById("map"), {
                         center: { lat: 10, lng: 10 },
@@ -1840,5 +1854,6 @@ var getpcnt = function(name, amt, typ){
     return parseInt(pcnt, 10);
 
 };
+
 
 

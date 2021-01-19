@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- Demo styles -->
+    <style>
+        body {
+            background: rgb(0, 0, 0);
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container  {
+            width: 100%;
+            /* padding: 30px; */
+            border-radius: 20px !important;
+            background: rgba(255, 255, 255, 0.883) !important;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+            backdrop-filter: blur(4px) !important;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            
+        }
+        .swiper-wrapper{
+            height: 100%;
+            width: 100%;
+            
+        }
+        
+     
+        
+        
+        .swiper-slide {
+            border-radius: 30px !important;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+            background-image: url("../img/car.jpg"); 
+            background-position: center;
+            background-size: cover;
+            width: 250px;
+            height: 250px;
+            
+            
+
+            
+            
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="card">
+        <div class="swiper-container">
+            <div class="row swiper-wrapper" id="assets">
+                <div class="swiper-slide" style="background-image:url(./images/nature-1.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-2.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-3.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-4.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-5.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-6.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-7.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-8.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-9.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-10.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-1.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-2.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-3.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-4.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-5.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-6.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-7.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-8.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-9.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-10.jpg)"></div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <div class="card" style="height: 300px">
+        <div class="swiper-container">
+            <div class="row swiper-wrapper">
+                <div class="swiper-slide" style="background-image:url(./images/nature-1.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-2.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./images/nature-3.jpg)"></div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+    
+        </div>
+    </div>
+    
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        
+        // var assets = document.getElementById('assets');
+        // var asss = "";
+        //     for (var it = 0; it < 10; it++) {
+        //         asss += `
+        //                     <div class="swiper-slide" style="background-image:url(../img/car.jpg)">
+        //                         <p class="btn btn-success" >${it}</p>
+        //                     </div>
+        //                     <div class="swiper-slide" style="background-image:url(../img/car.jpg)">
+        //                         <p class="btn btn-success" >${it}</p>
+        //                     </div>
+        //                     <div class="swiper-slide" style="background-image:url(../img/car.jpg)">
+        //                         <p class="btn btn-success" >${it}</p>
+        //                     </div>
+        //                     <div class="swiper-slide" style="background-image:url(../img/car.jpg)">
+        //                         <p class="btn btn-success" >${it}</p>
+        //                     </div>
+        //                     <div class="swiper-slide" style="background-image:url(../img/car.jpg)">
+        //                         <p class="btn btn-success" >${it}</p>
+        //                     </div>
+        //                     <div class="swiper-slide" style="background-image:url(../img/car.jpg)">
+        //                         <p class="btn btn-success" >${it}</p>
+        //                     </div>
+                        
+                            
+                            
+        //                 `
+                            
+        //             ;
+
+        //     }
+        //     assets.innerHTML = asss;
+            var swiper = new Swiper('.swiper-container', {
+                    effect: 'coverflow',
+                    grabCursor: true,
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    coverflowEffect: {
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 500,
+                        modifier: 1,
+                        slideShadows: true,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                });
+    </script>
+</body>
+
+</html>

@@ -2090,7 +2090,9 @@ ul#themecolors {
   .card .card-subtitle {
     font-weight: 300;
     margin-bottom: 15px;
-    color: #99abb4; }
+    color: #99abb4;
+    
+   }
 
 .card-inverse .card-blockquote .blockquote-footer,
 .card-inverse .card-link,
