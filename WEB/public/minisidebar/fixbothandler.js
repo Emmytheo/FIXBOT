@@ -824,142 +824,142 @@ else if (page.split(".").includes("indexAdmin")) {
                     asset.innerHTML = dve;
                 }
                 console.log(namuserovw);
-                if (userd !== undefined) {
-                    // nam[it].value = userd.fullname;
-                    namuserovw.innerHTML = "TBD";
-                }
-                else {
-                    // fnam[it].value = "Not Set";
-                    namuserovw.innerHTML = "Not Set";
-                }
-                console.log(carnams);
-                if (userd !== undefined) {
-                    // nam[it].value = userd.fullname;
-                    var dvc = `Assets: <br>`;
-                    userd.devices.forEach(function (device) {
-                        dvc += `<span class="btn btn-success">${device}</span><br><br>`
-                    })
+                // if (userd !== undefined) {
+                //     // nam[it].value = userd.fullname;
+                //     namuserovw.innerHTML = "TBD";
+                // }
+                // else {
+                //     // fnam[it].value = "Not Set";
+                //     namuserovw.innerHTML = "Not Set";
+                // }
+                // console.log(carnams);
+                // if (userd !== undefined) {
+                //     // nam[it].value = userd.fullname;
+                //     var dvc = `Assets: <br>`;
+                //     userd.devices.forEach(function (device) {
+                //         dvc += `<span class="btn btn-success">${device}</span><br><br>`
+                //     })
 
-                    carnams.innerHTML = dvc;
-                }
-                else {
-                    // fnam[it].value = "Not Set";
-                    carnams.innerHTML = `
-                    Assets: <span class="btn btn-success">None Available</span><br><br>
-                    `;
-                }
-                console.log(namcarsubs);
-                if (userd !== undefined) {
-                    // nam[it].value = userd.fullname;
-                    var dav = `Subscriptions: '\r\n'`;
-                    userd.devices.forEach(function (device) {
-                        dav += `
-                    <h5 class="m-t-30">Current Subscription----<span class="pull-right">${device}</span></h5>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar"
-                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-                            style="width:100%; height:6px;"> <span class="sr-only"></span> 
-                        </div>
-                    </div>
-                    <br>
-                    `;
-                    })
+                //     carnams.innerHTML = dvc;
+                // }
+                // else {
+                //     // fnam[it].value = "Not Set";
+                //     carnams.innerHTML = `
+                //     Assets: <span class="btn btn-success">None Available</span><br><br>
+                //     `;
+                // }
+                // console.log(namcarsubs);
+                // if (userd !== undefined) {
+                //     // nam[it].value = userd.fullname;
+                //     var dav = `Subscriptions: '\r\n'`;
+                //     userd.devices.forEach(function (device) {
+                //         dav += `
+                //     <h5 class="m-t-30">Current Subscription----<span class="pull-right">${device}</span></h5>
+                //     <div class="progress">
+                //         <div class="progress-bar" role="progressbar"
+                //             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                //             style="width:100%; height:6px;"> <span class="sr-only"></span> 
+                //         </div>
+                //     </div>
+                //     <br>
+                //     `;
+                //     })
 
-                    namcarsubs.innerHTML = dav;
-                }
-                else {
-                    // fnam[it].value = "Not Set";
-                    namcarsubs.innerHTML = `
-                    <h5 class="m-t-30">Current Subscription----<span class="pull-right">None</span></h5>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar"
-                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                            style="width:100%; height:6px;"> <span class="sr-only"></span> 
-                        </div>
-                    </div>
-                    `;
-                }
-                console.log(namassets);
-                if (userd !== undefined) {
-                    // nam[it].value = userd.fullname;
-                    var dvs = "";
-                    userd.devices.forEach(function (device) {
+                //     namcarsubs.innerHTML = dav;
+                // }
+                // else {
+                //     // fnam[it].value = "Not Set";
+                //     namcarsubs.innerHTML = `
+                //     <h5 class="m-t-30">Current Subscription----<span class="pull-right">None</span></h5>
+                //     <div class="progress">
+                //         <div class="progress-bar" role="progressbar"
+                //             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                //             style="width:100%; height:6px;"> <span class="sr-only"></span> 
+                //         </div>
+                //     </div>
+                //     `;
+                // }
+                // console.log(namassets);
+                // if (userd !== undefined) {
+                //     // nam[it].value = userd.fullname;
+                //     var dvs = "";
+                //     userd.devices.forEach(function (device) {
 
-                        if (device.length == 14) {
-                            console.log(device.length);
-                            dvs += `
-                            <div class="col-lg-3 col-md-6 ">
-                                <div class="card ${device}" onclick="vwasset(${device})">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-row">
-                                            <div class="round round-lg align-self-center round-info"><i class="mdi mdi-car"></i>
-                                            </div>
-                                            <div class="m-l-10 align-self-center">
-                                                <h3 class="m-b-0 font-light">Asset Name</h3>
-                                                <h5 class="text-muted m-b-0">${device}</h5>
-                                            </div>
-                                            <div style="width: 20px; position: absolute; right: 20px; height:20px; border-radius: 50px; background: yellow;" id="${device}"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            `;
-                        }
-                        var timer = setTimeout(function () {
-                            var deve = document.getElementById(device);
-                            deve.style.background = "grey";
-                        }, 3000);
-                        dataa.child(device).on("value", function(){
-                            clearTimeout(timer);
-                            var dev = document.getElementById(device);
-                            dev.style.background = "green";
-                            timer = setTimeout(function (){
-                                dev.style.background = "grey";
-                            }, 10000);
-                            // userd.device_data[device] = data.val();
-                            // console.log(userd.device_data[device]);
-                        });
+                //         if (device.length == 14) {
+                //             console.log(device.length);
+                //             dvs += `
+                //             <div class="col-lg-3 col-md-6 ">
+                //                 <div class="card ${device}" onclick="vwasset(${device})">
+                //                     <div class="card-body">
+                //                         <div class="d-flex flex-row">
+                //                             <div class="round round-lg align-self-center round-info"><i class="mdi mdi-car"></i>
+                //                             </div>
+                //                             <div class="m-l-10 align-self-center">
+                //                                 <h3 class="m-b-0 font-light">Asset Name</h3>
+                //                                 <h5 class="text-muted m-b-0">${device}</h5>
+                //                             </div>
+                //                             <div style="width: 20px; position: absolute; right: 20px; height:20px; border-radius: 50px; background: yellow;" id="${device}"></div>
+                //                         </div>
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //             `;
+                //         }
+                //         var timer = setTimeout(function () {
+                //             var deve = document.getElementById(device);
+                //             deve.style.background = "grey";
+                //         }, 3000);
+                //         dataa.child(device).on("value", function(){
+                //             clearTimeout(timer);
+                //             var dev = document.getElementById(device);
+                //             dev.style.background = "green";
+                //             timer = setTimeout(function (){
+                //                 dev.style.background = "grey";
+                //             }, 10000);
+                //             // userd.device_data[device] = data.val();
+                //             // console.log(userd.device_data[device]);
+                //         });
                         
 
-                    });
-                    // console.log(dvs);
-                    namassets.innerHTML = dvs;
-                }
-                else {
-                    // fnam[it].value = "Not Set";
-                    namassets.innerHTML = `
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card noasset" onclick="vwasset('noasset')">
-                            <div class="card-body">
-                                <div class="d-flex flex-row">
-                                    <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i>
-                                    </div>
-                                    <div class="m-l-10 align-self-center">
-                                        <h3 class="m-b-0 font-light">Asset Name</h3>
-                                        <h5 class="text-muted m-b-0">No Assets Present</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    `;
-                    namassets.innerHTML += `
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card noasset1" onclick="vwasset('noasset1')">
-                            <div class="card-body">
-                                <div class="d-flex flex-row">
-                                    <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i>
-                                    </div>
-                                    <div class="m-l-10 align-self-center">
-                                        <h3 class="m-b-0 font-light">Asset Name</h3>
-                                        <h5 class="text-muted m-b-0">No Assets Present</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    `;
-                }
+                //     });
+                //     // console.log(dvs);
+                //     namassets.innerHTML = dvs;
+                // }
+                // else {
+                //     // fnam[it].value = "Not Set";
+                //     namassets.innerHTML = `
+                //     <div class="col-lg-3 col-md-6">
+                //         <div class="card noasset" onclick="vwasset('noasset')">
+                //             <div class="card-body">
+                //                 <div class="d-flex flex-row">
+                //                     <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i>
+                //                     </div>
+                //                     <div class="m-l-10 align-self-center">
+                //                         <h3 class="m-b-0 font-light">Asset Name</h3>
+                //                         <h5 class="text-muted m-b-0">No Assets Present</h5>
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //         </div>
+                //     </div>
+                //     `;
+                //     namassets.innerHTML += `
+                //     <div class="col-lg-3 col-md-6">
+                //         <div class="card noasset1" onclick="vwasset('noasset1')">
+                //             <div class="card-body">
+                //                 <div class="d-flex flex-row">
+                //                     <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i>
+                //                     </div>
+                //                     <div class="m-l-10 align-self-center">
+                //                         <h3 class="m-b-0 font-light">Asset Name</h3>
+                //                         <h5 class="text-muted m-b-0">No Assets Present</h5>
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //         </div>
+                //     </div>
+                //     `;
+                // }
                 console.log(sngnam);
                 if (userd !== undefined) {
                     // nam[it].value = userd.fullname;
@@ -987,19 +987,19 @@ else if (page.split(".").includes("indexAdmin")) {
                     // fnam[it].value = "Not Set";
                     sngnamdet.innerHTML = "Couldn't fetch any Asset";
                 }
-                console.log(namcarmodel);
-                if (userd !== undefined) {
-                    // nam[it].value = userd.fullname;
-                    namcarmodel.innerHTML = `
-                    <span class="btn btn-success" id="errorcode">None Available</span>
-                    `;
-                }
-                else {
-                    // fnam[it].value = "Not Set";
-                    namcarmodel.innerHTML = `
-                    <span class="btn btn-success">None Available</span>
-                    `;
-                }
+                // console.log(namcarmodel);
+                // if (userd !== undefined) {
+                //     // nam[it].value = userd.fullname;
+                //     namcarmodel.innerHTML = `
+                //     <span class="btn btn-success" id="errorcode">None Available</span>
+                //     `;
+                // }
+                // else {
+                //     // fnam[it].value = "Not Set";
+                //     namcarmodel.innerHTML = `
+                //     <span class="btn btn-success">None Available</span>
+                //     `;
+                // }
                 
 
 
